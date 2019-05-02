@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.转字符串
+        //    String()   转任何类型
+        //    变量.toString();  不能转 null  和  undefined
+        var a = 123,
+            b = true,
+            c = null,
+            d;
+
+            var aa = Number(true)
+        // console.log(a.toString()); // '123'
+        // console.log(b.toString()); // 'true'
+        // console.log(c.toString()); //  报错
+        // console.log(d.toString()); //  报错
+        // console.log(String(c)); // 'null'
+        // console.log(String(d)); // 'undefined'
+        // console.log(String()); //  ''
+
+        //转数字  Number() 
+        // parseInt()   从第一个字符开始检测，碰到非数字就返回
+        //              只能检测数字，无法检测就是NaN
+        // parseFloat()  从第一个字符开始检测，碰到非数字就返回
+        //               只能检测数字，无法检测就是NaN
+        //               能识别第一个小数点
+
+        // NaN:  not a number  ,数字类型
+        // NaN不等于任何值，包括它本身
+        // 涉及NaN的运算都返回NaN
+        // isNaN()  检测括号中的数是不是一个非数字，不是数字true,是数字false
+        // console.log(Number(undefined));  //  NaN
+        // console.log(Number(null));       //  0
+        // console.log(Number(true));       //  1
+        // console.log(Number(false));      //  0
+        // console.log(Number(''));         //  0
+        // console.log(Number('123asd'));   //  NaN
+        // console.log(Number('123'));      //  123
+        // console.log(Number());           //  0
+        //console.log(Number('123.22.22')) //NaN
+
+        // console.log(parseInt('123')); //123
+        // console.log(parseInt('123.22')); //123
+        // console.log(parseInt('123abc')); //123
+        // console.log(parseInt('a123')); // NaN
+        // console.log(parseInt('')); // NaN
+        // console.log(parseInt(true)); // NaN
+        // console.log(parseInt(null)); //NaN
+        // console.log(parseInt(undefined)); //NaN
+        // console.log(parseInt()); // NaN
+
+        // console.log(parseFloat('123.22')); //  123.22
+        // console.log(parseFloat('123.22.23')); //123.22
+        // console.log(parseFloat('123a')); // 123
+        // console.log(parseFloat('')); // NaN
+        // console.log(parseFloat()); // NaN
+        // console.log(parseFloat(true)); // NaN
+        // console.log(parseFloat(null)); // NaN
+        // console.log(parseFloat(undefined)); // NaN
+
+        // console.log(isNaN(null)); // false
+        // console.log(isNaN(undefined)); // true
+        // console.log(isNaN(true)); // false
+        // console.log(isNaN()); //true
+        // console.log(isNaN('')); //false
+        // console.log(isNaN('123a')); // true
+        // console.log(isNaN('123')); // false
+
+        //转布尔值
+        //  字符串:  非空为真，空为假
+        //  数字:    非0为真，0和NaN假
+        //  null 和 undefined:  假
+        //  任何对象都是true
+
+        // console.log(Boolean('')); // false
+        // console.log(Boolean('123qsdfdsf')); // true
+        // console.log(Boolean(0)); // false
+        // console.log(Boolean(NaN)); // false
+        // console.log(Boolean(333)); // true
+        // console.log(Boolean(0.5)); // true
+        // console.log(Boolean(-20)); // true
+        // console.log(Boolean()); // false
+        // console.log(Boolean(null)); // false
+        // console.log(Boolean(undefined)); // false
+        // console.log(Boolean([])); // true
+        // console.log(Boolean({})); // true
+    </script>
+</body>
+
+</html>

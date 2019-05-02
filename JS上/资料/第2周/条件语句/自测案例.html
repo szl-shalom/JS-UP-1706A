@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //案例1: 相亲
+        // 高(height)：180cm以上；富(money)：1000万以上；帅(face)：90以上；
+        // 如果这三个条件同时满足，则：“确认过眼神，你是对的人”
+        // 如果这三个条件有为真的情况，则：“嫁了吧，比上不足，比下有余。”
+        // 如果这三个条件都不满足，则：“好的爱情不怕迟到，有缘再见！”
+
+        // var height = prompt('请输入你的身高');
+        // var money = prompt('请输入你的存款');
+        // var face = prompt('你觉得你的颜值有几分？');
+
+        // if (height >= 180 && money >= 10000000 && face >= 90) {
+        //     alert('确认过眼神，你是对的人');
+        // } else if (height >= 180 || money >= 10000000 || face >= 90) {
+        //     alert('嫁了吧，比上不足，比下有余。');
+        // } else {
+        //     alert('好的爱情不怕迟到，有缘再见！');
+        // }
+
+        //案例2: 选择楼层 (switch)   (BAT)
+        //1.弹框提示用户输入想去的楼层号: 1、百度，2、阿里 ，3、腾讯 
+        //2.根据用户输入的楼层号弹出对应的公司名
+        var floor = prompt('请输入你想去的楼层号: 1、百度，2、阿里 ，3、腾讯,4.华为 ');
+        switch (floor) {
+            case '1':
+                alert('百度欢迎您');
+                break;
+            case '2':
+                alert('阿里欢迎您');
+                break;
+            case '3':
+                alert('腾讯欢迎您');
+                break;
+            case '4':
+                alert('华为欢迎您');
+                break;
+            default:
+                alert('输入有误');
+        }
+
+
+
+        //案例3: 求运算结果
+        // var x = "x";
+        // switch (x) {
+        //     default: alert("c");
+        //     case "aa":
+        //             alert("a");
+        //         break;
+        //     case "abc":
+        //             alert("b");
+        // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  do...while  直到型循环 >  先执行后判断
+        /* 语法:
+         初始值;
+         do{
+             循环体;
+             步长;
+         }while(循环条件)
+        */
+        // var i = 3;
+        // do {
+        //     i--;
+        //     console.log(i);
+        // } while (i > 0);
+
+        document.body.style.color = 'lime';
+        document.body.style.textAlign = 'center';
+
+        //案例1.倒三角
+        var i = 1;
+        do {
+            var j = 7;
+            do {
+                document.write('❤');
+                j--;
+            } while (j >= i);
+            document.write('<br>');
+            i++;
+        } while (i <= 7)
+    </script>
+</body>
+
+</html>

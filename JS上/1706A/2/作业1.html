@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+        <h1 id="myID1">
+            <li>11</li>
+            <li>22</li>
+        </h1>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <script>
+        //  作业 1  拿出一个纸   将下面语句用代码表示出来  纸上写上自己的名字
+        //     1 用一个var 声明 变量 a b c d
+                var a,b,c,d;
+        //     2 获取 id 名称为 myID1 的元素,并赋值给变量 a 
+                a = document.getElementById("myID1")
+        //     3 获取标签名称为 span 的元素，并赋值给变量 b
+                b = document.getElementsByTagName('span');  //dom集合
+        //     4 获取 a 下面标签名称为 li 的所有元素 并赋值给变量c
+                c = a.getElementsByTagName('li')
+        //     5 获取 b 里面第二个元素  并赋值给变量d  同时在控制台打印d
+                d=b[1]
+                console.log(d)
+        //     6 将 id 为 myID1 的元素  改为 id 名称 myID2  并将新的id名称打印到html页面中
+                a.id =  "myID2"
+                document.write(a.id)
+        //     7 获取 b  里面最后一个元素  并将类名 改为  myClass  
+                b[b.length - 1].className = "myClass"
+        //     8 把 id 名称为 myID2 里面的内容 改为  <h1>1706A!!!</h1>
+                a.innerHTML =  '<h1>1706A!!!</h1>'
+        //     9 将 id 名称为 myID2 的背景颜色改为 red  字体大小改为 32px
+                a.style.background = 'red'
+                a.style.fontSize = "32px"
+        </script>
+</body>
+
+</html>

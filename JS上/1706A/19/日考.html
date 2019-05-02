@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 题目要求：
+        // 1、按要求完成下面的各项需求。
+        // 2、必须有录屏，无录屏者一律0分处理，必须是完整的考试录屏(只有单独录效果录屏按0分处理)
+        //  ，录屏过程中不允许有暂停行为，若是发现，按考试作弊处理，桌面必须有自己的学院、班级、姓名。
+        // 3、上交U盘时，U盘中只允许有自己考试的项目，否则按零分处理。
+
+        // 。
+        // 1案例描述
+        // 自定义一个纯英文字符串，全部小写，然后转首位和末尾为大写并打印
+        // 2, 思路与要求
+        // 3，评分标准
+        // 正确定义字符串，正确打印
+
+        function fn(str) {
+            // 方法一
+            // var startStr = str[0].toUpperCase()
+            // var endStr = str[str.length - 1].toUpperCase()
+            // var midStr = str.slice(1, length - 1)
+
+            // return startStr + midStr + endStr
+
+            // 方法二
+            // var str1 = ''
+            // for (var i = 0; i < str.length; i++) {
+            //     if(i == 0 || i == str.length -1){
+            //         str1 +=str[i].toUpperCase()
+            //     }else{
+            //         str1 +=str[i]
+            //     }
+            // }
+
+            // return str1
+
+            // 方法三
+            // var str1 = str.replace(str[0], str[0].toUpperCase())
+            // return str1.replace(str1[str1.length - 1], str1[str1.length - 1].toUpperCase())
+
+
+        }
+        console.log(fn("adwetergsdfrhtyt"))
+
+
+    </script>
+</body>
+
+</html>

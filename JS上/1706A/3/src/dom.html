@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="myID">123</h1>
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+
+    <script>
+        // 获取id属性名称为myID的元素   赋值给变量el
+        var el = document.getElementById("myID")
+        //  获取el里面的内容   获取id名称为myID 里面的内容  赋值给变量b
+        var b = el.innerHTML
+        // 声明变量c  赋值为  "123"
+        var c = "123"
+        // 将el里面的内容  赋值  c 的数据类型
+        el.innerHTML = typeof(c) 
+        //  获取页面s所有的span标签  赋值 变量 d
+        var d = document.getElementsByTagName("span")   
+        //  将第二个span免签的类名改为myclass
+        d[1].className = 'myclass'
+        // 将id名称为myID该为 id名称  为myID2
+        el.id = 'myID2'
+        // 将最后一个span标签的背景颜色改为红色
+        d[d.length - 1].style.background = "red";
+        // 在myID2里面加内容  dom我会了
+        el.innerHTML +="dom我回了"
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 全局变量:  在函数外定义的变量
+        // 局部变量:  在函数内定义的变量
+        // 全局作用域: 全局变量拥有全局作用域,可以在任何地方使用
+        // 局部作用域: 局部变量拥有局部作用域,只在定义自己的函数内使用
+        // 变量提升: 使用var关键字声明的变量会把(var 变量名;)提升到当前作用域最顶端;
+        //           赋值留在原地;
+        // 函数提升: 函数声明会提升到当前作用域最顶端;
+        // 变量提升 >  函数提升 >  赋值
+        // 在函数内未使用var关键字声明的变量，自动成为全局变量。
+
+
+
+        // 案例1: 
+        // console.log(num); // ?  undefined
+        // var num = 2;
+        // console.log(num); // ?  2
+
+        //案例2:
+        // var num = 2;
+        // var num;
+        // console.log(num); // ?  
+
+        // 案例3:
+        // function f() {}
+        // var f;
+        // console.log(f); // ?
+
+
+        // 案例4:  
+        // var f = function() {
+        //     console.log(1);
+        // }
+
+        // function f() {
+        //     console.log(2);
+        // }
+        // f(); // ?
+
+
+        // 案例5:
+        // f(); // ?
+        // var f = function() {
+        //     console.log(1)
+        // }
+
+        // function f() {
+        //     console.log(2)
+        // }
+
+
+        // 案例6:
+        // f(); //?
+        // var f = function() {
+        //     console.log('k')
+        // }
+
+        // 案例7:
+        // console.log(num); // ? 
+        // num = 2;
+
+        // 案例8:
+        // function f() {
+        //     var num = 3;
+        // }
+        // f();
+        // console.log(num); // ?
+
+
+        // 案例9: 
+        // function f() {
+        //     num = 3;
+        // }
+
+        // console.log(num); // ?  
+        // f();
+
+
+        // 案例10:
+        // var num = 2;
+
+        // function f() {
+        //     num = 1;
+        //     console.log(num); // ？ 1
+        //     return;
+        //     var num = 3;
+        // }
+        // f();
+        // console.log(num); // ？ 2
+
+        // 案例11:
+        // var b = 5;
+
+        // function fn() {
+        //     var a;
+
+        //     function fn1() {
+        //         console.log(a, b);
+        //     }
+        //     fn1();
+        //     a = 3;
+        // }
+        // fn();
+
+        //案例12:
+        // function fn(a, b) {
+        //     function fn1(c) {
+        //         var b = 8;
+        //         console.log(a + b + c); // ? 24
+        //     }
+        //     fn1(a + b);
+        // }
+
+        // console.log(fn(3, 10)); // ?  undefined
+
+        // var a;
+        // function a(){
+
+        // }
+
+        // console.log(a)
+
+
+
+    </script>
+</body>
+
+</html>

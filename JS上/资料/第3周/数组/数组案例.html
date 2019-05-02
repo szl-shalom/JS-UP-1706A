@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //案例1：封装一个函数，将arrs中所有的数字乘以5，其他不执行任何操作，返回一个排序后的新数组
+        // var arrs = ["a", "5", 2, "e", 5, 3, "d"];
+
+        // function fn(arr) {
+        //     var arr1 = []; //新数组
+        //     for (var i = 0; i < arr.length; i++) { //循环判断数组中每一个元素
+        //         if (typeof arr[i] == 'number') { //是数字 *5 放入新数组
+        //             arr1.unshift(arr[i] * 5);
+        //         }
+        //     }
+        //     return arr1.sort(function(a, b) { //排序后返回
+        //         return a - b;
+        //     });
+        // }
+
+        // var res = fn(arrs);
+        // console.log(res);
+
+
+        //案例2.封装一个函数，将函数的内容反转
+        // var arr = [1, 2, 3, 4, 5];
+
+        // function reverse(arr) {
+        //     var arr1 = [];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         arr1.unshift(arr[i]);
+        //     }
+        //     return arr1;
+        // }
+        // var res = reverse(arr);
+        // console.log(res);
+
+
+        //案例3: 封装一个函数:实现数组去重
+        // var arr = [1, 1, 5, 9, 6, 6, 3, 4, 7, 2, 2];
+
+        // function noRepeat(arr) {
+        //     var arr1 = [];
+        //     for (var i = 0; i < arr.length; i++) { //循环数组是中每一个数
+        //         if (arr1.indexOf(arr[i]) == -1) { //找不到放入空数组
+        //             arr1.push(arr[i]);
+        //         }
+        //     }
+        //     return arr1;
+        // }
+
+        // var res = noRepeat(arr);
+        // console.log(res);
+
+        //案例4：模拟indexOf方法，有两个参数
+        //第一个参数为：要检测的内容
+        //第二个参数为从哪里检测
+        // var arr = [1, 2, 5, 6, 9, '2'];
+        // function indexOf(val, arr) {
+        //     for (var i = 0; i < arr.length; i++) { //循环遍历数组中每一个值
+        //         //判断是否与传进来的要检测的数据全等
+        //         if (arr[i] === val) {
+        //             return i;
+        //         }
+        //     }
+        //     return -1;
+        // }
+
+        // var res = indexOf('aaa', arr);
+        // console.log(res);
+
+
+        /*案例5:一维转二维
+         *如:数组   arr = [1,2,3,4,5,6,7,8,9,10];  
+         *参数为 3时
+         *生成新数组 newArr = [[1,2,3],[4,5,6],[7,8,9],[10]];
+         */
+        // var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        // function fn(arr, n) {
+        //     var arr1 = [];
+        //     while (arr.length > 0) {
+        //         arr1.push(arr.splice(0, n));
+        //     }
+        //     return arr1;
+        // }
+
+        // var res = fn(arr, 3);
+        // console.log(res);
+
+        // // 案例6:冒泡排序
+        // function bubbleSort(arr) {
+        //     for (var i = 1; i < arr.length; i++) { // 外层循环表示比较的轮数
+        //         for (var j = 0; j < arr.length - i; j++) { //内层循环遍历每一个值，两两比较
+        //             if (arr[j] > arr[j + 1]) { //如果当前值大于后一个值，交换位置
+        //                 var c;
+        //                 c = arr[j];
+        //                 arr[j] = arr[j + 1];
+        //                 arr[j + 1] = c;
+        //             }
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // var array = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 1];
+        // var res = bubbleSort(array);
+        // console.log(res);
+
+        // // 案例: 选择排序
+        function selectionSort(arr) {　　
+            var len = arr.length;　　
+            var minIndex, temp;　　
+            console.time('选择排序耗时');　　
+            for (var i = 0; i < len - 1; i++) {　　　　
+                minIndex = i;　　　　
+                for (var j = i + 1; j < len; j++) {　　　　　　
+                    if (arr[j] < arr[minIndex]) { //寻找最小的数
+                        minIndex = j; //将最小数的索引保存
+                        　　　　　　
+                    }　　　　
+                }　　　　
+                temp = arr[i];　　　　
+                arr[i] = arr[minIndex];　　　　
+                arr[minIndex] = temp;　　
+            }　　
+            console.timeEnd('选择排序耗时');　　
+            return arr;
+        }
+        var arr = [3, 44, 38, 5, 47, 15, 36, 26, 27, 2, 46, 4, 19, 50, 1];
+        console.log(selectionSort(arr)); //[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+
+        //案例6:现在有一个数组存放字符串数据：
+        // ['item1', 'item2', 'item3', 'item4', 'item5']
+        // 有另外一个数组存放一组数组：
+        // [
+        //   [ 'section1',  0 ],
+        //   [ 'section2',  2  ]
+        //   [ 'section3',  3  ]
+        // ]
+
+        // 最后结果是：['section1', 'item1', 'item2', 'section2', 'item3', 'item4', 'item5']
+        // 请你完成 injectSections 函数，可以达到上述的功能：
+        // var arr = ['item1', 'item2', 'item3', 'item4', 'item5'];
+        // var arr1 = [
+        //     ['section1', 0],
+        //     ['section2', 2],
+        //     ['section3', 3]
+        // ];
+
+        // function injectSections(arr, arr1) {
+        //     for (var i = 0; i < arr1.length; i++) {
+        //         var index = arr1[i][1]; //插入位置
+        //         var con = arr1[i][0]; //插入内容
+        //         arr.splice(index + i, 0, con);
+        //     }
+        //     return arr;
+        // }
+        // var res = injectSections(arr, arr1);
+        // console.log(arr);
+
+        /** 题目一：补全代码题：数组的每个元素都执行fn函数，且将数组 arr 中的元素及数组的下标作为调用函数 fn 的参数来使用。
+         * @param {object} [arr 数组]
+         * @param {function} [fn 回调函数]
+         */
+        // function forEach(arr, fn) {
+        //     // 此处补全代码，实现题目要求
+           
+        // }
+        // var arr = ['a', 'b', 'c'];
+        // // 调用forEach函数
+        // forEach(arr, function(item, index) {
+        //     console.log(item, index);
+        // });
+        /* 打印结果是:
+        'a',0 
+        'b',1
+        'c',2 
+        */
+
+        //案例4：模拟indexOf方法，有两个参数
+        //第一个参数为：数组
+        //第二个参数为:要检测的内容
+        // var arr = [1, 2, 5, 6, 9, '2'];
+
+
+        // function fn(arr, value) {
+        //     for (var i = 0; i < arr.length; i++) { //循环数组中每一个值
+        //         if (arr[i] === value) { //判断是否跟传递过来要查找的内容一致
+        //             return i; //是全等，说明数组中包含要查找的内容，返回下标
+        //         }
+        //     }
+        //     return -1; //循环结束都没有找到，则返回-1；
+        // }
+
+
+        // var res = fn(arr, 2);
+        // console.log(res);
+
+        // 案例1：编写一个函数 spacify，返回一个每个字符中添加空格的字符。例如：
+        // spacify("ScriptOJ") // => "S c r i p t O J"
+        // var a = 'spacity';
+
+
+        // function fn(arr) {
+        //     arr1 = '';
+        //     for (i = 1; i < a.length; i++) {
+        //         arr1.time;
+        //     }
+        // }
+
+
+        //案例2:将字符串 "get-element-by-id"转为小驼峰格式:  'getElementById';
+        // var str = 'get-element-by-id';
+        // var arr = str.split('-');
+        // var str1 = arr[0];
+        // for (var i = 1; i < arr.length; i++) {
+        //     str1 += arr[i].charAt(0).toUpperCase() + arr[i].substr(1);
+        // }
+        // console.log(str1);
+        // 案例3：补全代码题：给定字符串 str，检查其是否包含数字，包含返回 true，否则返回 false。
+
+
+        // function containsNumber(str) {
+        //     //  此处补全代码，实现题目要求
+
+
+        // }
+        // // 调用containsNumber() 
+        // console.log(containsNumber('abc001')); // 打印结果是true
+
+
+        /*  案例5：封装一个函数，使用prompt弹出输入框，要求用户输入一个英文的语句，
+         *  将输入语句的第二个单词截取出来
+         */
+        // function fn() {
+        //     var str = prompt('请输入一句英文');
+        //     var arr = str.split(' ');
+        //     return arr[1];
+        // }
+        // console.log(fn());
+
+        //案例3:封装一个noRepeat函数,从数组中随机取出3个不同的值，放入一个新数组，升序排序后返回。数组如下: var arr = [2,12,4,13,95,96,19,33];
+        // 评分标准 
+        // 1.正确使用随机数，将获取到的值放入新数组(10分)
+        // 2.正确实现去重和排序（10分）
+        // 3.不允许使用数组内置的indexOf方法，自己封装一个（10分）
+        var arr = [2, 12, 4, 13, 95, 96, 19, 33];
+        function noRepeat(arr) {
+            var arr1 = [];
+            while (arr1.length < 3) {
+                var n = Math.floor(Math.random() * arr.length); //随机下标
+                if (indexOf(arr1, arr[n]) == -1) { //新数组不存在则放入
+                    arr1.push(arr[n]);
+                }
+            }
+            return arr1.sort(function(a, b) {
+                return a - b;
+            });
+        }
+
+        function indexOf(arr, val) {
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] === val) { //找到返回下标
+                    return i;
+                }
+            }
+            return -1; //没找到返回 -1
+        }
+
+
+
+
+        console.log(noRepeat(arr));
+    </script>
+    </script>
+</body>
+
+</html>

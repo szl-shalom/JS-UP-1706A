@@ -1,0 +1,330 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK"> <title>测试题</title><style>
+*{ margin:0; padding:0;}img{ border:0;}
+body{ font-family:微软雅黑; font-size:14px; color:#333; padding-left:10px;}
+li{ list-style:none;}
+input{ vertical-align:middle;}
+.title{ line-height:60px; height:60px; color:#000;}
+.item h3{ line-height:40px; font-size:16px; font-weight:normal;}
+.item ul{ line-height:30px; padding-left:26px; font-size:13px;}
+.item ul input{ margin:0 10px 0 0;}
+.submit{ display:block; position:fixed; right:50px; top:50; margin-top:170px; width:100px; height:30px; font-family:微软雅黑; cursor:pointer; font-size:16px;}
+.hz{width:140px;line-height:30px; height:150px; position:fixed;right:10px; top:50;margin-top:15px;color:#cd0000; font-size:16px;}.hz input{border:0;}
+</style><script type="text/javascript" language="javascript"> 
+ 	var allerrornum = 0;
+ 	var totalnum = 0;  
+    var postData = ''; 
+ 	function stop(){ 
+ 		return false; 
+ 	} 
+ 	document.oncontextmenu=stop; 
+ 	function createXmlHttp() { 
+ 	  var xmlHttp = null; 
+ 		 
+ 	  try { 
+ 		//Firefox, Opera 8.0+, Safari 
+ 		xmlHttp = new XMLHttpRequest(); 
+ 	  } catch (e) { 
+ 		//IE 
+ 		try { 
+ 		  xmlHttp = new ActiveXObject('Msxml2.XMLHTTP'); 
+ 		} catch (e) { 
+ 		  xmlHttp = new ActiveXObject('Microsoft.XMLHTTP'); 
+ 		} 
+ 	  } 
+ 		 
+ 	  return xmlHttp; 
+ 	} 
+ 	   
+ 	function submitForm() { 
+ 	  var xmlHttp = createXmlHttp(); 
+ 	  if(!xmlHttp) { 
+ 		alert('您的浏览器不支持AJAX！'); 
+ 		return 0; 
+ 	  } 
+ 	    
+ 	  var url = 'score.cgi'; 
+ 	    
+ 	  xmlHttp.open('POST', url, true); 
+ 	  xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
+ 	  xmlHttp.onreadystatechange = function() { 
+ 		if(xmlHttp.readyState == 4 && xmlHttp.status == 200) { 
+ 		  if(xmlHttp.responseText == '1') { 
+ 			alert('post successed'); 
+ 		  } 
+ 		} 
+ 	  } 
+ 	  xmlHttp.send(postData); 
+ 	} 
+ 	function init(){ 
+ 		var spanid; 
+		forms = document.getElementById('form1');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form2');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form3');  totalnum+=forms.length/2; 
+ 		spanid = document.getElementById('totalnum');
+ 		spanid.innerHTML = totalnum; 
+ 		spanid = document.getElementById('studentname'); 
+ 		spanid.innerHTML = decodeURI('JS'); 
+ 	} 
+ 	function commit() {  
+ 		var i;  
+ 		var rid;  
+ 		var radios; 
+ 		var checkrightflag;
+ 		var forms = document.getElementById('form1');  
+ 		var errornum = forms.length/4;
+ 		allerrornum = 0;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					rid.style.color = 'black';  
+ 					errornum--;
+ 				}
+ 			}  
+ 		}  
+ 		allerrornum = errornum;
+ 		
+ 		forms = document.getElementById('form2');  
+ 		errornum = forms.length/4;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i * 4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 0;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if( (radios[x].value == 'true' && radios[x].checked == false) || (radios[x].value == 'false' && radios[x].checked == true) ){  
+ 					checkrightflag = 1;
+ 				}
+ 			}  
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		allerrornum = allerrornum + errornum;
+ 
+ 		forms = document.getElementById('form3');  
+ 		errornum = forms.length/2;
+ 		for (i=0; i<forms.length/2; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*2].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 1;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					checkrightflag = 0;
+ 				}
+ 			} 
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		rid = document.getElementById('errornum');
+ 		allerrornum = allerrornum + errornum;
+ 		rid.innerHTML = allerrornum;
+ 		rid = document.getElementById('errorrate');
+ 		var errrate = 100.0 - (allerrornum * 1.0) / totalnum * 100; 
+		rid.innerHTML = errrate.toFixed(2); 
+ 		document.getElementById('ierrorrate').value = errrate.toFixed(2); 
+ 	  postData = 'studentname=JS'; 
+ 	  postData += '&errorrate='; 
+ 	  postData += errrate.toFixed(2); 
+ 	  postData += '&examunit=1'; 
+ 	  document.getElementById('commitButton').disabled=true; 
+     submitForm();	}   
+ 	window.onload=init;</script></head> 
+ 
+ 
+ <body><noscript><iframe src='*.htm'></noscript><form id="form1" action="" method=""><h2 class="title">单选题:</h2><div class="item"><h3 id="textradio1">1、 （网站)以下代码的返回值是？<br>Number(true); 
+</h3><ul><li id="radio10"><input name="radio1" value="true" type="radio">A  1
+</li><li id="radio11"><input name="radio1" value="false" type="radio">B  0
+</li><li id="radio12"><input name="radio1" value="false" type="radio">C 'true'
+</li><li id="radio13"><input name="radio1" value="false" type="radio">D  'false'
+</li></ul></div><div class="item"><h3 id="textradio2">2、  （网站)parseInt(undefined)转换后的结果是？
+</h3><ul><li id="radio20"><input name="radio2" value="false" type="radio">A	0
+</li><li id="radio21"><input name="radio2" value="false" type="radio">B false
+</li><li id="radio22"><input name="radio2" value="false" type="radio">C 报错
+</li><li id="radio23"><input name="radio2" value="true" type="radio">D	NaN
+</li></ul></div><div class="item"><h3 id="textradio3">3、  （网站)以下代码中，运行结果为true的是
+</h3><ul><li id="radio30"><input name="radio3" value="true" type="radio">A Boolean('0') 
+</li><li id="radio31"><input name="radio3" value="false" type="radio">B Boolean(0) 
+</li><li id="radio32"><input name="radio3" value="false" type="radio">C Boolean(null) 
+</li><li id="radio33"><input name="radio3" value="false" type="radio">D Boolean(undefined) 
+</li></ul></div><div class="item"><h3 id="textradio4">4、  （网站)以下哪个转型函数和于转换为数值？
+</h3><ul><li id="radio40"><input name="radio4" value="false" type="radio">A String() 
+</li><li id="radio41"><input name="radio4" value="false" type="radio">B Boolean() 
+</li><li id="radio42"><input name="radio4" value="true" type="radio">C Number() 
+</li><li id="radio43"><input name="radio4" value="false" type="radio">D Undefined() 
+</li></ul></div><div class="item"><h3 id="textradio5">5、   （网站)console.log(typeof(isSure)) <br>var isSure="true";的打印结果是？
+</h3><ul><li id="radio50"><input name="radio5" value="false" type="radio">A boolean 
+</li><li id="radio51"><input name="radio5" value="false" type="radio">B number 
+</li><li id="radio52"><input name="radio5" value="false" type="radio">C string 
+</li><li id="radio53"><input name="radio5" value="true" type="radio">D undefined 
+</li></ul></div><div class="item"><h3 id="textradio6">6、（网站)var a=3;console.log(a%4);的打印结果是？
+</h3><ul><li id="radio60"><input name="radio6" value="false" type="radio">A 0
+</li><li id="radio61"><input name="radio6" value="false" type="radio">B 2
+</li><li id="radio62"><input name="radio6" value="true" type="radio">C 3
+</li><li id="radio63"><input name="radio6" value="false" type="radio">D 1
+</li></ul></div><div class="item"><h3 id="textradio7">7、 （网站)var a=1,<br>b=2,<br>c=0;<br>c=a++ + b--;<br>console.log(c);打印结果是？
+</h3><ul><li id="radio70"><input name="radio7" value="false" type="radio">A 4
+</li><li id="radio71"><input name="radio7" value="true" type="radio">B 3
+</li><li id="radio72"><input name="radio7" value="false" type="radio">C 5
+</li><li id="radio73"><input name="radio7" value="false" type="radio">D 2
+</li></ul></div><div class="item"><h3 id="textradio8">8、  (网站)请选择输出内容：<br>console.log(123 + 'a' + 1);<br>console.log(123 + 1 + 'a');
+</h3><ul><li id="radio80"><input name="radio8" value="true" type="radio">A 123a1 124a
+</li><li id="radio81"><input name="radio8" value="false" type="radio">B 123a1 1231a
+</li><li id="radio82"><input name="radio8" value="false" type="radio">C 报错 124a
+</li><li id="radio83"><input name="radio8" value="false" type="radio">D 报错 报错
+</li></ul></div><div class="item"><h3 id="textradio9">9、 （网站)alert(!12345)的输出结果是？
+</h3><ul><li id="radio90"><input name="radio9" value="true" type="radio">A false
+</li><li id="radio91"><input name="radio9" value="false" type="radio">B true
+</li><li id="radio92"><input name="radio9" value="false" type="radio">C NaN
+</li><li id="radio93"><input name="radio9" value="false" type="radio">D 12345
+</li></ul></div><div class="item"><h3 id="textradio10">10、  （网站)var found = false，sv = true; <br>
+var result = (found && sv); <br>alert(result);输出结果是？
+</h3><ul><li id="radio100"><input name="radio10" value="true" type="radio">A false
+</li><li id="radio101"><input name="radio10" value="false" type="radio">B  true
+</li><li id="radio102"><input name="radio10" value="false" type="radio">C 0
+</li><li id="radio103"><input name="radio10" value="false" type="radio">D 1
+</li></ul></div><div class="item"><h3 id="textradio11">11、（网站)console.log("hello" > 9)输出结果是？
+</h3><ul><li id="radio110"><input name="radio11" value="false" type="radio">A  true
+</li><li id="radio111"><input name="radio11" value="true" type="radio">B false
+</li><li id="radio112"><input name="radio11" value="false" type="radio">C yes
+</li><li id="radio113"><input name="radio11" value="false" type="radio">D no
+</li></ul></div><div class="item"><h3 id="textradio12">12、 （网站)alert(null == undefined)输出结果是？
+</h3><ul><li id="radio120"><input name="radio12" value="false" type="radio">A  1
+</li><li id="radio121"><input name="radio12" value="false" type="radio">B  0
+</li><li id="radio122"><input name="radio12" value="true" type="radio">C true
+</li><li id="radio123"><input name="radio12" value="false" type="radio">D false
+</li></ul></div><div class="item"><h3 id="textradio13">13、 （网站)对象初始化表达是？
+</h3><ul><li id="radio130"><input name="radio13" value="true" type="radio">A  {1,2,3}
+</li><li id="radio131"><input name="radio13" value="false" type="radio">B [1,2,3]
+</li><li id="radio132"><input name="radio13" value="false" type="radio">C (1,2,3)
+</li><li id="radio133"><input name="radio13" value="false" type="radio">D < 1,2,3>
+</li></ul></div><div class="item"><h3 id="textradio14">14、 console.log([] == false),的结果是___
+</h3><ul><li id="radio140"><input name="radio14" value="true" type="radio">A true
+</li><li id="radio141"><input name="radio14" value="false" type="radio">B false
+</li><li id="radio142"><input name="radio14" value="false" type="radio">C  null
+</li><li id="radio143"><input name="radio14" value="false" type="radio">D  NaN
+</li></ul></div><div class="item"><h3 id="textradio15">15、 （网站)下面哪一种不属于 js 的六种基本数据类型？（）
+</h3><ul><li id="radio150"><input name="radio15" value="false" type="radio">A  undefined
+</li><li id="radio151"><input name="radio15" value="false" type="radio">B  string
+</li><li id="radio152"><input name="radio15" value="false" type="radio">C null
+</li><li id="radio153"><input name="radio15" value="true" type="radio">D object
+</li></ul></div><div class="item"><h3 id="textradio16">16、（网站)表达式 13 +'14' 的值为？
+</h3><ul><li id="radio160"><input name="radio16" value="false" type="radio">A "27"
+</li><li id="radio161"><input name="radio16" value="true" type="radio">B "1314"
+</li><li id="radio162"><input name="radio16" value="false" type="radio">C 27
+</li><li id="radio163"><input name="radio16" value="false" type="radio">D  NaN
+</li></ul></div><div class="item"><h3 id="textradio17">17、 （网站)var i = 12;<br>if (i > 25) <br> alert("Greater than 25."); <br>else { <br>alert("Less than or equal to 25."); 块中的语句<br>} 以上程序输出结果是？
+</h3><ul><li id="radio160"><input name="radio17" value="false" type="radio">A "Greater than 25." 
+</li><li id="radio171"><input name="radio17" value="true" type="radio">B "Less than or equal to 25." 
+</li><li id="radio172"><input name="radio17" value="false" type="radio">C 报错 
+</li><li id="radio173"><input name="radio17" value="false" type="radio">D  undefined 
+</li></ul></div><div class="item"><h3 id="textradio18">18、（网站)var x = "hello",y = 30,z = "30";console.log(x && (y===z));
+</h3><ul><li id="radio180"><input name="radio18" value="false" type="radio">A  "hello"
+</li><li id="radio181"><input name="radio18" value="true" type="radio">B 小写的false
+</li><li id="radio182"><input name="radio18" value="false" type="radio">C 小写的true
+</li><li id="radio183"><input name="radio18" value="false" type="radio">D  "30"
+</li></ul></div><div class="item"><h3 id="textradio19">19、 (网站)var width = "102.6px",height = "h102.5px",result = "占位";<br>if(parseInt(width)>100 && parseInt(height)>100){<br> result = "广告";<br>}else{<br> result = "导航";<br>} <br>console.log(result);打印结果是?
+</h3><ul><li id="radio190"><input name="radio19" value="false" type="radio">A 占位
+</li><li id="radio191"><input name="radio19" value="false" type="radio">B 广告
+</li><li id="radio192"><input name="radio19" value="true" type="radio">C 导航
+</li><li id="radio193"><input name="radio19" value="false" type="radio">D  undefined
+</li></ul></div><div class="item"><h3 id="textradio20">20、(网站)var msg = "hello",result;if(msg){result="yes"}else{rsult="no"};console.log(result)打印结果是______________。 
+</h3><ul><li id="radio200"><input name="radio20" value="true" type="radio">A yes
+</li><li id="radio201"><input name="radio20" value="false" type="radio">B no
+</li><li id="radio202"><input name="radio20" value="false" type="radio">C hello
+</li><li id="radio203"><input name="radio20" value="false" type="radio">D  undefined
+</li></ul></div></form><form id="form2" action="" method=""><h2 class="title">多选题:</h2>
+<div class="item"><h3 id="textradio21">21、  （网站)下列语句返回值是正确的有？
+</h3><ul><li id="radio210"><input name="radio21" value="true" type="checkbox">A parseInt(true) //返回NaN  
+</li><li id="radio211"><input name="radio21" value="false" type="checkbox">B  parseInt(true) //返回1 
+</li><li id="radio212"><input name="radio21" value="true" type="checkbox">C  Number(true) //返回1 
+</li><li id="radio213"><input name="radio21" value="false" type="checkbox">D  Number(true) //返回NaN
+</li></ul></div><div class="item"><h3 id="textradio22">22、 （网站)下列关于Boolean()转换规则说法正确的有？
+</h3><ul><li id="radio220"><input name="radio22" value="true" type="checkbox">A ""（空字符串）转为false 
+</li><li id="radio221"><input name="radio22" value="true" type="checkbox">B 任何非零数字值（包括无穷大）转为true 
+</li><li id="radio222"><input name="radio22" value="true" type="checkbox">C null及undefined转为false 
+</li><li id="radio223"><input name="radio22" value="true" type="checkbox">D 任何对象转为true 
+</li></ul></div><div class="item"><h3 id="textradio23">23、  （网站)var x = 10,<br>y = "33";<br>console.log(x+y);打印结果不是?
+</h3><ul><li id="radio230"><input name="radio23" value="false" type="checkbox">A 1033
+</li><li id="radio231"><input name="radio23" value="true" type="checkbox">B 43
+</li><li id="radio232"><input name="radio23" value="true" type="checkbox">C 10
+</li><li id="radio233"><input name="radio23" value="true" type="checkbox">D 33
+</li></ul></div><div class="item"><h3 id="textradio24">24、  （网站)JS中的一元运算符包括？
+</h3><ul><li id="radio240"><input name="radio24" value="true" type="checkbox">A   递增运算符 ++
+</li><li id="radio241"><input name="radio24" value="true" type="checkbox">B  递减运算符 --
+</li><li id="radio242"><input name="radio24" value="tfalse" type="checkbox">C 加法运算符 + 
+</li><li id="radio243"><input name="radio24" value="false" type="checkbox">D 减法运算符 - 
+</li></ul></div><div class="item"><h3 id="textradio25">25、 (网站)以下结果为true的表达式有哪些？
+</h3><ul><li id="radio250"><input name="radio25" value="true" type="checkbox">A "5"==5 
+</li><li id="radio251"><input name="radio25" value="false" type="checkbox">B ""==null 
+</li><li id="radio252"><input name="radio25" value="true" type="checkbox">C 0==false 
+</li><li id="radio253"><input name="radio25" value="false" type="checkbox">D NaN==0 
+</li></ul></div><div class="item"><h3 id="textradio26">26、  （网站)以下哪些运算符属于逻辑运算符？
+</h3><ul><li id="radio260"><input name="radio26" value="true" type="checkbox">A  && 
+</li><li id="radio261"><input name="radio26" value="true" type="checkbox">B ！
+</li><li id="radio262"><input name="radio26" value="true" type="checkbox">C ||
+</li><li id="radio263"><input name="radio26" value="false" type="checkbox">D |
+</li></ul></div><div class="item"><h3 id="textradio27">27、  （网站)以下哪些属于原始表达式？
+</h3><ul><li id="radio270"><input name="radio27" value="true" type="checkbox">A  直接量
+</li><li id="radio271"><input name="radio27" value="true" type="checkbox">B 关键字
+</li><li id="radio272"><input name="radio27" value="true" type="checkbox">C 变量
+</li><li id="radio273"><input name="radio27" value="false" type="checkbox">D 数组
+</li></ul></div><div class="item"><h3 id="textradio28">28、 （网站)下面属于javascript基本数据类型的有？
+</h3><ul><li id="radio280"><input name="radio28" value="true" type="checkbox">A 字符串
+</li><li id="radio281"><input name="radio28" value="true" type="checkbox">B 数字
+</li><li id="radio282"><input name="radio28" value="false" type="checkbox">C object
+</li><li id="radio283"><input name="radio28" value="false" type="checkbox">D []
+</li></ul></div><div class="item"><h3 id="textradio29">29、 (网站)以下选项中返回为结果是boolean类型的是?
+</h3><ul><li id="radio290"><input name="radio29" value="true" type="checkbox">A Boolean() 
+</li><li id="radio291"><input name="radio29" value="false" type="checkbox">B typeof 
+</li><li id="radio292"><input name="radio29" value="true" type="checkbox">C isNaN() 
+</li><li id="radio293"><input name="radio29" value="false" type="checkbox">D parseInt() 
+</li></ul></div><div class="item"><h3 id="textradio30">30、 （网站)isNaN的返回结果不是什么类型?
+</h3><ul><li id="radio300"><input name="radio30" value="true" type="checkbox">A number
+</li><li id="radio301"><input name="radio30" value="false" type="checkbox">B boolean
+</li><li id="radio302"><input name="radio30" value="true" type="checkbox">C String
+</li><li id="radio303"><input name="radio30" value="true" type="checkbox">D undefined
+</li></ul></div></form><form id="form3" action="" method=""><h2 class="title">判断题:</h2>
+<div class="item"><h3 id="textradio31">31、  （网站)parseFloat("今年是2019年")返回值是NaN
+</h3>
+<ul><li id="panradio311"><input name="radio31" value="true" type="radio">√</li><li id="panradio312"><input name="radio31" value="false" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio32">32、 （网站)Boolean(null)返回值是false
+</h3>
+<ul><li id="panradio321"><input name="radio32" value="true" type="radio">√</li><li id="panradio322"><input name="radio32" value="false" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio33">33、  （网站)null是一种特殊的object类型
+</h3>
+<ul><li id="panradio331"><input name="radio33" value="true" type="radio">√</li><li id="panradio332"><input name="radio33" value="false" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio34">34、 （网站)var i = 8;<br>console.log( i++ );控制台打印的结果为9。
+<ul><li id="panradio341"><input name="radio34" value="false" type="radio">√</li><li id="panradio342"><input name="radio34" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio35">35、（网站)当*乘法运算中一个操作数不是数值，则在后台调用 Number()将其转换为数值再进行运算
+</h3>
+<ul><li id="panradio351"><input name="radio35" value="true" type="radio">√</li><li id="panradio352"><input name="radio35" value="false" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio36">36、 （网站)!!与Boolean()转型函数功能一致,比如!!0与Boolean(0)返回值都是false;
+</h3>
+<ul><li id="panradio361"><input name="radio36" value="true" type="radio">√</li><li id="panradio362"><input name="radio36" value="false" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio37">37、（网站)alert(a);var a = 90;以上代码运行结果是：报错
+<ul><li id="panradio371"><input name="radio37" value="false" type="radio">√</li><li id="panradio372"><input name="radio37" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio38">38、（网站)使用script标签，将javascript代码写到< script>< /script>之间，这是一种将js脚本添加到HTML页面的方式。
+<ul><li id="panradio381"><input name="radio38" value="true" type="radio">√</li><li id="panradio382"><input name="radio38" value="false" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio39">39、（网站)if条件块中有多条语句，if后面的{ }括号也可以省略。
+<ul><li id="panradio391"><input name="radio39" value="false" type="radio">√</li><li id="panradio392"><input name="radio39" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio40">40、(网站)var sex="男",str="";<br>
+if(sex=="女"){str="hello女士"}else{str="hello先生"}与str=(sex=="女")?"hello女士":"hello先生"的作用与执行结果一样。
+<ul><li id="panradio401"><input name="radio40" value="true" type="radio">√</li><li id="panradio402"><input name="radio40" value="false" type="radio">×</li></ul></div>
+
+
+</form><form id="formsubmit" action="" method="post" accept-charset="utf-8"><input id="commitButton" value="提交试卷" class="submit" onclick="commit()" type="button"> 
+<div class="hz"><h2>周考二</h2><p>姓名<span id="studentname"></span></p> 
+<p>总题数：<span id="totalnum">30</span></p> 
+ <p>错题数：<span id="errornum">0</span></p> 
+ <p>正确率：<span id="errorrate">0</span>％</p> 
+ <input id="istudentname" name="studentname" type="hidden">
+<input id="ierrorrate" name="errorrate" type="hidden">
+<input id="iexamunit" name="examunit" type="hidden">
+</div> </form></body></html>

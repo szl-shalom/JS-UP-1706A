@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  
+    <script>
+        // 将imgages文件夹下面 1文件中的所有图片在页面中显示  设置宽度1200px    设置宽度600px  
+        var html = "";
+        for (var i = 1; i <= 9; i++) {
+            html += `<img src="./images/1/${i}" alt="" width="1200px" height="600px">`
+        }
+
+        document.body.innerHTML = html
+    </script>
+</body>
+
+</html>

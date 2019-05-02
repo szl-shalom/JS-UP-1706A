@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第6单元日考测试</title>
+    <style>
+        #price {
+            color: red;
+            font-size: 30px;
+        }
+        
+        #sale {
+            display: inline-block;
+            background: yellow;
+            width: 120px;
+            height: 60px;
+            text-align: center;
+            color: red;
+            line-height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>促销商品</h2>
+    <p>苹果，原价<del id="price">8.9/斤</del></p>
+    <p>苹果，现价<span id="sale"></span></p>
+    <script>
+        var a = prompt('请输入内容：'); //弹出一个输入框要求输入第一个数字，将用户输入的数存入变量
+        if (a) { //判断是否填入内容
+            if (isNaN(a)) { //判断输入内容是否是数字
+                alert('只允许输入数字！'); //弹出提示语
+            } else {
+                var b = prompt('请输入内容'); //弹出第二个输入框要求运算符，如+ - * / 等，将运算符存入变量
+                switch (b) {
+                    case '+': //判断是输入是否为 加号运算符
+                        var c = prompt('请输入内容'); //弹出第三个输入框要求输入第二个数字，将用户输入的数存入变
+                        if (c) { //判断是否输入内容
+                            if (isNaN(c)) { //判断输入内容是否为数字
+                                alert('只允许输入数字'); //弹出提示语
+                            } else {
+                                var d = Number(a) + Number(c);
+                                alert('' + a + ' +' + c + '=' + d + ''); //根据以上的数与运算符，计算后将运算结果显示到弹框中
+                            }
+                        } else {
+                            alert('未输入内容，请刷新页面重新输入！'); //弹出提示语
+                        }
+                        break;
+                    case '-': //判断输入内容是否是减号运算符
+                        var c = prompt('请输入内容');
+                        if (c) { //判断是否输入内容
+                            if (isNaN(c)) { //判断输入内容是否是数字
+                                alert('只允许输入数字'); //弹出提示语
+                            } else {
+                                var d = Number(a) - Number(c);
+                                alert('' + a + ' -' + c + '=' + d + ''); //根据以上的数与运算符，计算后将运算结果显示到弹框中
+                            }
+                        } else {
+                            alert('未输入内容，请刷新页面重新输入！'); //弹出提示语
+                        }
+                        break;
+                    case '*': //判断输入内容是否是乘号运算符
+                        var c = prompt('请输入内容');
+                        if (c) { //判断是否输入内容
+                            if (isNaN(c)) { //判断输入内容是否为数字
+                                alert('只允许输入数字'); //弹出提示语
+                            } else {
+                                var d = Number(a) * Number(c);
+                                alert('' + a + ' *' + c + '=' + d + ''); //根据以上的数与运算符，计算后将运算结果显示到弹框中
+                            }
+                        } else {
+                            alert('未输入内容，请刷新页面重新输入！'); //弹出提示语
+                        }
+                        break;
+                    case '/': //判断输入内容是否是除号运算符
+                        var c = prompt('请输入内容');
+                        if (c) { //判断是否输入内容
+                            if (isNaN(c)) { //判断输入内容是否为数字
+                                alert('只允许输入数字'); //弹出提示语
+                            } else {
+                                var d = Number(a) / Number(c);
+                                alert('' + a + ' /' + c + '=' + d + ''); //根据以上的数与运算符，计算后将运算结果显示到弹框中
+                            }
+                        } else {
+                            alert('未输入内容，请刷新页面重新输入！'); //弹出提示语
+                        }
+                        break;
+                    default:
+                        alert('输入有误，请刷新页面重新输入!'); //弹出提示语
+                }
+            }
+        } else {
+            alert('未输入内容，请刷新页面重新输入！'); //弹出提示语
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var a = undefined
+
+        // function fn() {
+        //     console.log(a)
+        //     var a = 2
+        //     console.log(a)
+
+        // }
+
+        // a = 1
+
+        // fn()
+        // function fn() {
+        //     var a = 1;
+        //     // return a
+        // }
+        // console.log(window)
+        // console.log(a)
+        // var b = fn()
+        // console.log(b)
+
+        // 案例1: 
+        // console.log(num); // ? undefined
+        // var num = 2; 
+        // console.log(num); // ?    2
+
+        //案例2:
+        // var num = 2;
+        // var num;
+        // console.log(num); // 
+
+        // 案例3:
+        // var f;
+        // function f() {}
+
+
+
+
+
+        // console.log(f); // ?
+
+
+        // 案例4:  
+        // 函数表达式
+        // var f = function() {
+        //     console.log(1);
+        // }
+        // // 函数声明
+        // function f() {
+        //     console.log(2);
+        // }
+
+
+        // f(); // ?
+
+
+        // // 案例5:
+        // f(); // ?
+        // var f = function() {
+        //     console.log(1)
+        // }
+
+        // function f() {
+        //     console.log(2)
+        // }
+
+
+        // 案例6:
+        // var f  = undefined
+        // f(); //? 
+
+        // f = function() {
+        //     console.log('k')
+        // }
+
+
+
+
+
+
+
+        // 案例7:
+
+        // console.log(num); // ? 
+        // num = 2;
+
+        // 案例8:
+
+        // function f() {
+        //     var num = 3;
+        // }
+
+        // f();
+
+        // console.log(num); // ?
+
+
+        // 案例9: 
+
+        // function f() {
+        //     num = 3;
+        // }
+        // // f();
+
+        // console.log(num); // ?  
+
+
+        // // 案例10:
+        // var num = undefined
+        // function f() {
+        //     num = 1;
+        //     console.log(num); // ？ 
+        //     return;
+        // }
+
+
+
+
+
+        // num = 2
+
+        // f();
+        // console.log(num); // ？ 
+
+        // 案例11:
+        // var b = undefined;
+        // function fn() {
+        //     var a;
+        //     function fn1() {
+        //         console.log(a, b);
+        //     }
+
+        //     fn1();
+        //     a = 3;
+        // }
+
+        // b = 5
+        // fn();
+        //案例12:
+        var a;
+
+        function fn(a, b) {
+            var a = 3
+            var b = 10
+
+            function fn1(c) {
+                var b = undefined
+                c = 13
+                b = 8;      3    8  13   24
+                console.log(a + b + c); // ? 
+            }
+
+
+            fn1(13);
+        }
+
+
+        function a() {
+
+        }
+
+
+        console.log(fn(3, 10)); // ? 
+
+
+
+        // console.log(a)
+        // 举个栗子 1
+        // var a = 10;
+        // function test() {
+        //     a = 100;
+        //     console.log(a);
+        //     console.log(this.a);
+        //     var a;
+        //     console.log(a);
+        // }
+        // test();
+        // 举个栗子 2
+        // var a = 100;
+        // function test() {
+        //     console.log(a);
+        //     var a = 10;
+        //     console.log(a);
+        // }
+        // test();
+        // 举个栗子 3
+
+        // var a = 100;
+        // function test() {
+        //     console.log(a);
+        //     a = 10;
+        //     console.log(a);
+        // }
+        // test();
+        // console.log(a);
+
+    </script>
+</body>
+
+</html>

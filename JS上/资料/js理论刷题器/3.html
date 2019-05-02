@@ -1,0 +1,324 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK"> <title>测试题</title><style>
+*{ margin:0; padding:0;}img{ border:0;}
+body{ font-family:微软雅黑; font-size:14px; color:#333; padding-left:10px;}
+li{ list-style:none;}
+input{ vertical-align:middle;}
+.title{ line-height:60px; height:60px; color:#000;}
+.item h3{ line-height:40px; font-size:16px; font-weight:normal;}
+.item ul{ line-height:30px; padding-left:26px; font-size:13px;}
+.item ul input{ margin:0 10px 0 0;}
+.submit{ display:block; position:fixed; right:50px; top:50; margin-top:170px; width:100px; height:30px; font-family:微软雅黑; cursor:pointer; font-size:16px;}
+.hz{width:140px;line-height:30px; height:150px; position:fixed;right:10px; top:50;margin-top:15px;color:#cd0000; font-size:16px;}.hz input{border:0;}
+</style><script type="text/javascript" language="javascript"> 
+ 	var allerrornum = 0;
+ 	var totalnum = 0;  
+    var postData = ''; 
+ 	function stop(){ 
+ 		return false; 
+ 	} 
+ 	document.oncontextmenu=stop; 
+ 	function createXmlHttp() { 
+ 	  var xmlHttp = null; 
+ 		 
+ 	  try { 
+ 		//Firefox, Opera 8.0+, Safari 
+ 		xmlHttp = new XMLHttpRequest(); 
+ 	  } catch (e) { 
+ 		//IE 
+ 		try { 
+ 		  xmlHttp = new ActiveXObject('Msxml2.XMLHTTP'); 
+ 		} catch (e) { 
+ 		  xmlHttp = new ActiveXObject('Microsoft.XMLHTTP'); 
+ 		} 
+ 	  } 
+ 		 
+ 	  return xmlHttp; 
+ 	} 
+ 	   
+ 	function submitForm() { 
+ 	  var xmlHttp = createXmlHttp(); 
+ 	  if(!xmlHttp) { 
+ 		alert('您的浏览器不支持AJAX！'); 
+ 		return 0; 
+ 	  } 
+ 	    
+ 	  var url = 'score.cgi'; 
+ 	    
+ 	  xmlHttp.open('POST', url, true); 
+ 	  xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
+ 	  xmlHttp.onreadystatechange = function() { 
+ 		if(xmlHttp.readyState == 4 && xmlHttp.status == 200) { 
+ 		  if(xmlHttp.responseText == '1') { 
+ 			alert('post successed'); 
+ 		  } 
+ 		} 
+ 	  } 
+ 	  xmlHttp.send(postData); 
+ 	} 
+ 	function init(){ 
+ 		var spanid; 
+		forms = document.getElementById('form1');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form2');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form3');  totalnum+=forms.length/2; 
+ 		spanid = document.getElementById('totalnum');
+ 		spanid.innerHTML = totalnum; 
+ 		spanid = document.getElementById('studentname'); 
+ 		spanid.innerHTML = decodeURI('JS'); 
+ 	} 
+ 	function commit() {  
+ 		var i;  
+ 		var rid;  
+ 		var radios; 
+ 		var checkrightflag;
+ 		var forms = document.getElementById('form1');  
+ 		var errornum = forms.length/4;
+ 		allerrornum = 0;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					rid.style.color = 'black';  
+ 					errornum--;
+ 				}
+ 			}  
+ 		}  
+ 		allerrornum = errornum;
+ 		
+ 		forms = document.getElementById('form2');  
+ 		errornum = forms.length/4;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i * 4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 0;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if( (radios[x].value == 'true' && radios[x].checked == false) || (radios[x].value == 'false' && radios[x].checked == true) ){  
+ 					checkrightflag = 1;
+ 				}
+ 			}  
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		allerrornum = allerrornum + errornum;
+ 
+ 		forms = document.getElementById('form3');  
+ 		errornum = forms.length/2;
+ 		for (i=0; i<forms.length/2; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*2].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 1;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					checkrightflag = 0;
+ 				}
+ 			} 
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		rid = document.getElementById('errornum');
+ 		allerrornum = allerrornum + errornum;
+ 		rid.innerHTML = allerrornum;
+ 		rid = document.getElementById('errorrate');
+ 		var errrate = 100.0 - (allerrornum * 1.0) / totalnum * 100; 
+		rid.innerHTML = errrate.toFixed(2); 
+ 		document.getElementById('ierrorrate').value = errrate.toFixed(2); 
+ 	  postData = 'studentname=JS'; 
+ 	  postData += '&errorrate='; 
+ 	  postData += errrate.toFixed(2); 
+ 	  postData += '&examunit=1'; 
+ 	  document.getElementById('commitButton').disabled=true; 
+     submitForm();	}   
+ 	window.onload=init;</script></head> 
+ 
+ 
+ <body><noscript><iframe src='*.htm'></noscript><form id="form1" action="" method=""><h2 class="title">单选题:</h2><div class="item"><h3 id="textradio1">1、在页面中直接写入< script type="text/javascript">js代码< /script>这种属于哪种引用JS方式？ 
+</h3><ul><li id="radio10"><input name="radio1" value="false" type="radio">A 行内 
+</li><li id="radio11"><input name="radio1" value="false" type="radio">B  外部
+</li><li id="radio12"><input name="radio1" value="true" type="radio">C 内部
+</li><li id="radio13"><input name="radio1" value="false" type="radio">D  都不属于
+</li></ul></div><div class="item"><h3 id="textradio2">2、< script language="JavaScript" src="MyJS.js">< /script>属于哪种引入方式？  
+</h3><ul><li id="radio20"><input name="radio2" value="false" type="radio">A行内
+</li><li id="radio21"><input name="radio2" value="true" type="radio">B 外部
+</li><li id="radio22"><input name="radio2" value="false" type="radio">C 内部
+</li><li id="radio23"><input name="radio2" value="false" type="radio">D  都不属于
+</li></ul></div><div class="item"><h3 id="textradio3">3、以下哪个属于小驼峰式命名法？  
+</h3><ul><li id="radio30"><input name="radio3" value="false" type="radio">A StudentInfo
+</li><li id="radio31"><input name="radio3" value="true" type="radio">B studentInfo
+</li><li id="radio32"><input name="radio3" value="false" type="radio">C studentinfo
+</li><li id="radio33"><input name="radio3" value="false" type="radio">D student-info 
+</li></ul></div><div class="item"><h3 id="textradio4">4、S标识符命名规则中,以下哪个不可以做为标识符第一个字符(  )？  
+</h3><ul><li id="radio40"><input name="radio4" value="false" type="radio">A _(下划线)	
+</li><li id="radio41"><input name="radio4" value="false" type="radio">B $(美元符号)
+</li><li id="radio42"><input name="radio4" value="false" type="radio">C 字母
+</li><li id="radio43"><input name="radio4" value="true" type="radio">D 数字
+</li></ul></div><div class="item"><h3 id="textradio5">5、才下哪项是用于一次声明两个变量x和y且值分别是1和2？   
+</h3><ul><li id="radio50"><input name="radio5" value="false" type="radio">A var x,y;
+</li><li id="radio51"><input name="radio5" value="false" type="radio">B var x=1; y=2;
+</li><li id="radio52"><input name="radio5" value="true" type="radio">C var x=1, y=2;
+</li><li id="radio53"><input name="radio5" value="false" type="radio">D var x; y;
+</li></ul></div><div class="item"><h3 id="textradio6">6、以下代码执行的结果是？
+var p= 90;
+var p=900;
+alert(p);
+</h3><ul><li id="radio60"><input name="radio6" value="false" type="radio">A 90
+</li><li id="radio61"><input name="radio6" value="true" type="radio">B 900
+</li><li id="radio62"><input name="radio6" value="false" type="radio">C 报错
+</li><li id="radio63"><input name="radio6" value="false" type="radio">D 都不对
+</li></ul></div><div class="item"><h3 id="textradio7">7、有关变量的语法下列选项说法正确的是？ 
+</h3><ul><li id="radio70"><input name="radio7" value="true" type="radio">A 变量要先声明后使用
+</li><li id="radio71"><input name="radio7" value="false" type="radio">B 变量要先使用后声明
+</li><li id="radio72"><input name="radio7" value="false" type="radio">C 声明变量的同时必须要赋值
+</li><li id="radio73"><input name="radio7" value="false" type="radio">D 必须使用关键字var来声明变量，不可以省略
+</li></ul></div><div class="item"><h3 id="textradio8">8、关于变量使用说法正确的是？  
+</h3><ul><li id="radio80"><input name="radio8" value="false" type="radio">A 通过 const关键字来声明变量
+</li><li id="radio81"><input name="radio8" value="false" type="radio">B 可以在使用之后声明变量
+</li><li id="radio82"><input name="radio8" value="true" type="radio">C 必须先声明后使用
+</li><li id="radio83"><input name="radio8" value="false" type="radio">D以上说法都不对
+</li></ul></div><div class="item"><h3 id="textradio9">9、下列哪种类型是typeof运算符返回值的数据类型? 
+</h3><ul><li id="radio90"><input name="radio9" value="true" type="radio">A string
+</li><li id="radio91"><input name="radio9" value="false" type="radio">B number
+</li><li id="radio92"><input name="radio9" value="false" type="radio">C  boolean
+</li><li id="radio93"><input name="radio9" value="false" type="radio">D 不确定
+</li></ul></div><div class="item"><h3 id="textradio10">10、alert(typeof undefined)弹出结果是？  
+</h3><ul><li id="radio100"><input name="radio10" value="false" type="radio">A number
+</li><li id="radio101"><input name="radio10" value="true" type="radio">B undefined 
+</li><li id="radio102"><input name="radio10" value="false" type="radio">C 报错
+</li><li id="radio103"><input name="radio10" value="false" type="radio">D  NaN
+</li></ul></div><div class="item"><h3 id="textradio11">11、请选择输出内容：
+var a;
+console.log(a);
+console.log(b);
+</h3><ul><li id="radio110"><input name="radio11" value="true" type="radio">A  undefined 程序报错
+</li><li id="radio111"><input name="radio11" value="false" type="radio">B undefined undefined
+</li><li id="radio112"><input name="radio11" value="false" type="radio">C undefined null
+</li><li id="radio113"><input name="radio11" value="false" type="radio">D null undefined
+</li></ul></div><div class="item"><h3 id="textradio12">12、以下哪个数据不是number型？ 
+</h3><ul><li id="radio120"><input name="radio12" value="false" type="radio">A  5.89
+</li><li id="radio121"><input name="radio12" value="false" type="radio">B  199
+</li><li id="radio122"><input name="radio12" value="false" type="radio">C NaN
+</li><li id="radio123"><input name="radio12" value="true" type="radio">D "230.21"
+</li></ul></div><div class="item"><h3 id="textradio13">13、document.write(isNaN(-1.23));输出的结果是？ 
+</h3><ul><li id="radio130"><input name="radio13" value="false" type="radio">A  yes
+</li><li id="radio131"><input name="radio13" value="false" type="radio">B no
+</li><li id="radio132"><input name="radio13" value="false" type="radio">C true
+</li><li id="radio133"><input name="radio13" value="true" type="radio">D false
+</li></ul></div><div class="item"><h3 id="textradio14">14、以下哪个函数可以判断某些值是不是非数字？ 
+</h3><ul><li id="radio140"><input name="radio14" value="false" type="radio">A  isString() 
+</li><li id="radio141"><input name="radio14" value="false" type="radio">B NaN()
+</li><li id="radio142"><input name="radio14" value="true" type="radio">C  isNaN()
+</li><li id="radio143"><input name="radio14" value="false" type="radio">D isUndefined()
+</li></ul></div><div class="item"><h3 id="textradio15">15、假设HTML页面中有5个LI元素，那么以下代码输出的结果是？
+var len = document.getElementsByTagName('li').length;
+console.log(len); 
+</h3><ul><li id="radio150"><input name="radio15" value="false" type="radio">A  1
+</li><li id="radio151"><input name="radio15" value="false" type="radio">B  0
+</li><li id="radio152"><input name="radio15" value="true" type="radio">C 5
+</li><li id="radio153"><input name="radio15" value="false" type="radio">D null
+</li></ul></div><div class="item"><h3 id="textradio16">16、当一个变量未赋值时，它的值是？
+</h3><ul><li id="radio160"><input name="radio16" value="false" type="radio">A null
+</li><li id="radio161"><input name="radio16" value="false" type="radio">B 无
+</li><li id="radio162"><input name="radio16" value="true" type="radio">C undefined
+</li><li id="radio163"><input name="radio16" value="false" type="radio">D  任意型
+</li></ul></div><div class="item"><h3 id="textradio17">17、 以下哪种声明变量的方式有效但不推荐使用？
+</h3><ul><li id="radio160"><input name="radio17" value="false" type="radio">A var a = 8;
+</li><li id="radio171"><input name="radio17" value="false" type="radio">B var a;
+</li><li id="radio172"><input name="radio17" value="false" type="radio">C var a,b=9;
+</li><li id="radio173"><input name="radio17" value="true" type="radio">D  a = 8;
+</li></ul></div><div class="item"><h3 id="textradio18">18、使用 typeof 操作符返回结果是什么数据类型的？ 
+</h3><ul><li id="radio180"><input name="radio18" value="false" type="radio">A  undefined
+</li><li id="radio181"><input name="radio18" value="true" type="radio">B string
+</li><li id="radio182"><input name="radio18" value="false" type="radio">C null
+</li><li id="radio183"><input name="radio18" value="false" type="radio">D  number
+</li></ul></div><div class="item"><h3 id="textradio19">19、 ）数值用于表示一个本来要返回数值的，但执行某些操作后未返回数值的情况？
+</h3><ul><li id="radio190"><input name="radio19" value="false" type="radio">A number
+</li><li id="radio191"><input name="radio19" value="false" type="radio">B 浮点数
+</li><li id="radio192"><input name="radio19" value="false" type="radio">C 小数
+</li><li id="radio193"><input name="radio19" value="true" type="radio">D  NaN
+</li></ul></div><div class="item"><h3 id="textradio20">20、()函数可以检测变量不是一个数值？
+</h3><ul><li id="radio200"><input name="radio20" value="false" type="radio">A alert()
+</li><li id="radio201"><input name="radio20" value="false" type="radio">B console.log()
+</li><li id="radio202"><input name="radio20" value="false" type="radio">C innerHTML
+</li><li id="radio203"><input name="radio20" value="true" type="radio">D  isNaN()
+</li></ul></div></form><form id="form2" action="" method=""><h2 class="title">多选题:</h2>
+<div class="item"><h3 id="textradio21">21、JavaScript可以做什么？  
+</h3><ul><li id="radio210"><input name="radio21" value="true" type="checkbox">A   更好的组织我们页面的内容，让内容更加的有条理
+</li><li id="radio211"><input name="radio21" value="true" type="checkbox">B  提供用户体验（表单验证[js的初衷]，ajax）
+</li><li id="radio212"><input name="radio21" value="true" type="checkbox">C  游戏编程
+</li><li id="radio213"><input name="radio21" value="falsw" type="checkbox">D  操作系统文件
+</li></ul></div><div class="item"><h3 id="textradio22">22、 页面引入JavaScript的方式有？
+</h3><ul><li id="radio220"><input name="radio22" value="true" type="checkbox">A 行内
+</li><li id="radio221"><input name="radio22" value="true" type="checkbox">B 内部
+</li><li id="radio222"><input name="radio22" value="false" type="checkbox">C 通过link标签引入
+</li><li id="radio223"><input name="radio22" value="true" type="checkbox">D 外部
+</li></ul></div><div class="item"><h3 id="textradio23">23、以下哪些是正确的声明变量的方式?  
+</h3><ul><li id="radio230"><input name="radio23" value="true" type="checkbox">A var a;
+</li><li id="radio231"><input name="radio23" value="true" type="checkbox">B var a,b;
+</li><li id="radio232"><input name="radio23" value="true" type="checkbox">C :var a=100;
+</li><li id="radio233"><input name="radio23" value="true" type="checkbox">D var a=100, b=90;
+</li></ul></div><div class="item"><h3 id="textradio24">24、以下哪些方法可以获取元素？  
+</h3><ul><li id="radio240"><input name="radio24" value="true" type="checkbox">A  getElementById()
+</li><li id="radio241"><input name="radio24" value="true" type="checkbox">B getElementsByTagName()
+</li><li id="radio242"><input name="radio24" value="false" type="checkbox">C id
+</li><li id="radio243"><input name="radio24" value="false" type="checkbox">D style
+</li></ul></div><div class="item"><h3 id="textradio25">25、 通过一个var声明多个变量写法正确的是?
+</h3><ul><li id="radio250"><input name="radio25" value="true" type="checkbox">A var a, b=90;
+</li><li id="radio251"><input name="radio25" value="false" type="checkbox">B var a; b=90;
+</li><li id="radio252"><input name="radio25" value="true" type="checkbox">C var a=100, b=90;
+</li><li id="radio253"><input name="radio25" value="false" type="checkbox">D var a=100; b=90;
+</li></ul></div><div class="item"><h3 id="textradio26">26、<span id="tag"></span>以下哪个语句可以获取span元素的id名？  
+</h3><ul><li id="radio260"><input name="radio26" value="false" type="checkbox">A  document.getElementById('tag').style.id
+</li><li id="radio261"><input name="radio26" value="true" type="checkbox">B document.getElementById('tag').id
+</li><li id="radio262"><input name="radio26" value="false" type="checkbox">C document.getElementsByTagName('span').id
+</li><li id="radio263"><input name="radio26" value="true" type="checkbox">D document.getElementsByTagName('span')[0].id
+</li></ul></div><div class="item"><h3 id="textradio27">27、下列表达式为true的有 ？  
+</h3><ul><li id="radio270"><input name="radio27" value="false" type="checkbox">A  isNaN('123')
+</li><li id="radio271"><input name="radio27" value="true" type="checkbox">B isNaN('123a')
+</li><li id="radio272"><input name="radio27" value="true" type="checkbox">C isNaN('a123')
+</li><li id="radio273"><input name="radio27" value="true" type="checkbox">D isNaN('abc')
+</li></ul></div><div class="item"><h3 id="textradio28">28、 以下变量的命名不正确的是
+</h3><ul><li id="radio280"><input name="radio28" value="false" type="checkbox">A name1
+</li><li id="radio281"><input name="radio28" value="false" type="checkbox">B $abc
+</li><li id="radio282"><input name="radio28" value="true" type="checkbox">C 66age
+</li><li id="radio283"><input name="radio28" value="true" type="checkbox">D var
+</li></ul></div><div class="item"><h3 id="textradio29">29、 JavaScript 是一种专为与网页交互而设计的脚本语言，由下列哪三个不同的部分组成？
+</h3><ul><li id="radio290"><input name="radio29" value="false" type="checkbox">A 浏览器
+</li><li id="radio291"><input name="radio29" value="true" type="checkbox">B CMAScript，提供核心语言功能
+</li><li id="radio292"><input name="radio29" value="true" type="checkbox">C 文档对象模型（DOM），提供访问和操作网页内容的方法和接口；
+</li><li id="radio293"><input name="radio29" value="true" type="checkbox">D 浏览器对象模型（BOM），提供与浏览器交互的方法和接口。
+</li></ul></div><div class="item"><h3 id="textradio30">30、 ECMAScript 中有哪5 种基本数据类型？
+</h3><ul><li id="radio300"><input name="radio30" value="true" type="checkbox">A undefined null
+</li><li id="radio301"><input name="radio30" value="true" type="checkbox">B string  number
+</li><li id="radio302"><input name="radio30" value="true" type="checkbox">C boolean
+</li><li id="radio303"><input name="radio30" value="false" type="checkbox">D default
+</li></ul></div></form><form id="form3" action="" method=""><h2 class="title">判断题:</h2>
+<div class="item"><h3 id="textradio31">31、  JavaScript和HTML和css有相似之处，都是可以在浏览器中解析的。
+</h3>
+<ul><li id="panradio311"><input name="radio31" value="true" type="radio">√</li><li id="panradio312"><input name="radio31" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio32">32、 全局和局部是指变量的生效范围。
+</h3>
+<ul><li id="panradio321"><input name="radio32" value="true" type="radio">√</li><li id="panradio322"><input name="radio32" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio33">33、 js是一门弱语言，它在声明变量时无需确定变量的类型，js在运行时会自动判断 
+</h3>
+<ul><li id="panradio331"><input name="radio33" value="true" type="radio">√</li><li id="panradio332"><input name="radio33" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio34">34、 getElementsByTagName()方法只能通过document对象来使用。
+<ul><li id="panradio341"><input name="radio34" value="false" type="radio">√</li><li id="panradio342"><input name="radio34" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio35">35、JS 的所有数字，包括整数和小数都属于一种类型 - Number
+</h3>
+<ul><li id="panradio351"><input name="radio35" value="true" type="radio">√</li><li id="panradio352"><input name="radio35" value="true" type="radio">×</li></ul></div>
+
+</form><form id="formsubmit" action="" method="post" accept-charset="utf-8"><input id="commitButton" value="提交试卷" class="submit" onclick="commit()" type="button"> 
+<div class="hz"><h2>第3单元</h2><p>姓名：<span id="studentname">JS</span></p> 
+<p>总题数：<span id="totalnum">30</span></p> 
+ <p>错题数：<span id="errornum">0</span></p> 
+ <p>正确率：<span id="errorrate">0</span>％</p> 
+ <input id="istudentname" name="studentname" type="hidden">
+<input id="ierrorrate" name="errorrate" type="hidden">
+<input id="iexamunit" name="examunit" type="hidden">
+</div> </form></body></html>

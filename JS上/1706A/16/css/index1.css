@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+dl{
+    height: 300px;
+    width: 50%;    
+    border: 1px solid #ccc;
+}
+
+dl dd{
+    float: left;
+    width: 30%;
+    height: 300px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+dl dd img{
+    height: 100%;
+    width: 100%;
+}
+
+dl dt{
+    float: right;
+    width: 70%;
+    box-sizing: border-box;
+    height: 300px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+dl dt h4{
+
+}
+
+dl dt span{
+
+}
+

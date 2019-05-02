@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**案例4:
+         * 封装一个16进制随机颜色的方法
+         * 16进制取值范围‘0123456789abcdef’
+         * 颜色值即 '#'后面拼接上6位随机的16进制数
+         * 需要6个数即循环6次，每次得到16进制数中的随机一个，
+         * 再利用 字符串[下标]取值 拼接到'#'后
+         */
+
+        function randomColor() {
+            var str = '0123456789abcdef';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                var index = Math.floor(Math.random() * str.length);
+                color += str[index];
+            }
+            return color;
+        }
+
+        document.body.style.background = randomColor();
+
+
+
+
+
+
+
+
+
+
+        function randomColor() {
+            var color = '#';
+            var str = '0123456789abcdef';
+            for (var i = 0; i < 6; i++) {
+                var index = Math.floor(Math.random() * str.length);
+                color += str[index];
+            }
+            return color;
+        }
+        var res = randomColor();
+        console.log(res);
+    </script>
+</body>
+
+</html>

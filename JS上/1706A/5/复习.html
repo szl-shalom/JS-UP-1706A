@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var a = 3.55;
+        // var b = true;
+        // var c = '1.o1';
+        // var d = null;
+        // var e;
+
+        //                                                             "undefined"
+        // var res = +d + Boolean(Number(d)) * parseInt(a) + Boolean(String(e));
+        //         //   0     +  false     *   3  +  true
+        //         //   0     +     0      + 1
+        // console.log(res);
+
+        // var res = Boolean(parseInt(b)) - d - +'12' + parseInt(a).toString();
+        // //                 // false  -  0 - 12   +  "3"
+
+
+        //                 //  "-12" + "3" ="-123"
+
+        //                 // "-12" +  "3" ="-123"
+        // console.log(res);
+        // console.log(typeof res)
+
+        // var res = +Boolean(parseFloat(c)) - isNaN(d) + typeof(e);
+        // //                      1            -   false  +  "undefined"
+        // //                                         0
+        // //                                         1 + "undefined" = "1undefined"
+
+
+        //   题1: 检测变量a的类型，是字符串返回true，不是返回false;
+        // var a = 123
+        // var b = typeof a
+        // console.log(b)
+        // var c = b == "string"
+        // console.log(c)
+        // var d = c ? true : false
+        // console.log(d)
+
+
+        /* 题2:
+                检测变量a的类型
+        *      是数字: 判断是否小于10,小于10在前面补0,大于10原样输出
+        *      不是数字:返回false;
+        */
+        // var a = "1231231";
+        // var b = typeof a == "number" ? a < 10 ? "0" + a : a : false
+        // console.log(b)
+
+        // 表达式1  ||  表达式2
+        // 表达式1 结果为真  返回表达式1的结果
+
+        // 一真则真  （条件判断） 
+
+        //  &&  
+
+        // 一假为假  全真为真  (条件判断)
+        //  变道时1结果为假  返回表达式1  （表达式）
+        // 表达时1结果为真  返回表达式2  （表达式）
+        // 题3: 如果 a 小于 b 和 c ，res则为true，否则为false
+        // var a = 1
+        // var b = 2
+        // var c = 3
+        // var res;
+        // // false    true
+        // var flag = a < b && a < c
+        // console.log(flag)
+        // res = flag ? true : false
+        // console.log(res)
+        //     //         console.log(res);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #list {
+            width: 100px;
+            height: 100px;
+            background: pink;
+        }
+        
+        .a1 {
+            color: red;
+            font-size: 20px;
+        }
+        
+        .a2 {
+            color: blue;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="list" class="a1">
+        <p>111</p>
+        <p>222</p>
+        <p>333</p>
+    </div>
+
+    <script>
+        // 1. 通过ID名获取元素  document.getElementById('id名')  
+        var list = document.getElementById('list');
+        console.log(list);
+
+        // 2. 通过标签名获取元素 document.getElementsByTagName('标签名')
+        //    返回类数组   必须用下标取值才能使用
+        var p = document.getElementsByTagName('p');
+        console.log(p[1]);
+
+        //3. 获取或设置内容 innerHTML
+        console.log(p[0].innerHTML);
+        p[0].innerHTML = 444;
+
+        //4. 获取或设置行内样式 style
+        //   样式名写成小驼峰
+        console.log(list.style.background);
+        list.style.background = '#2bb8aa';
+        p[2].style.fontSize = '30px';
+
+        //5. 获取id名
+        console.log(list.id);
+
+        //6. 获取或设置类名 className
+        console.log(list.className);
+        list.className = 'a2';
+    </script>
+</body>
+
+</html>

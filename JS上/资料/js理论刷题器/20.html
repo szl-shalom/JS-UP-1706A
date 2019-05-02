@@ -1,0 +1,318 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK"> <title>测试题</title><style>
+*{ margin:0; padding:0;}img{ border:0;}
+body{ font-family:微软雅黑; font-size:14px; color:#333; padding-left:10px;}
+li{ list-style:none;}
+input{ vertical-align:middle;}
+.title{ line-height:60px; height:60px; color:#000;}
+.item h3{ line-height:40px; font-size:16px; font-weight:normal;}
+.item ul{ line-height:30px; padding-left:26px; font-size:13px;}
+.item ul input{ margin:0 10px 0 0;}
+.submit{ display:block; position:fixed; right:50px; top:50; margin-top:170px; width:100px; height:30px; font-family:微软雅黑; cursor:pointer; font-size:16px;}
+.hz{width:140px;line-height:30px; height:150px; position:fixed;right:10px; top:50;margin-top:15px;color:#cd0000; font-size:16px;}.hz input{border:0;}
+</style><script type="text/javascript" language="javascript"> 
+ 	var allerrornum = 0;
+ 	var totalnum = 0;  
+    var postData = ''; 
+ 	function stop(){ 
+ 		return false; 
+ 	} 
+ 	document.oncontextmenu=stop; 
+ 	function createXmlHttp() { 
+ 	  var xmlHttp = null; 
+ 		 
+ 	  try { 
+ 		//Firefox, Opera 8.0+, Safari 
+ 		xmlHttp = new XMLHttpRequest(); 
+ 	  } catch (e) { 
+ 		//IE 
+ 		try { 
+ 		  xmlHttp = new ActiveXObject('Msxml2.XMLHTTP'); 
+ 		} catch (e) { 
+ 		  xmlHttp = new ActiveXObject('Microsoft.XMLHTTP'); 
+ 		} 
+ 	  } 
+ 		 
+ 	  return xmlHttp; 
+ 	} 
+ 	   
+ 	function submitForm() { 
+ 	  var xmlHttp = createXmlHttp(); 
+ 	  if(!xmlHttp) { 
+ 		alert('您的浏览器不支持AJAX！'); 
+ 		return 0; 
+ 	  } 
+ 	    
+ 	  var url = 'score.cgi'; 
+ 	    
+ 	  xmlHttp.open('POST', url, true); 
+ 	  xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
+ 	  xmlHttp.onreadystatechange = function() { 
+ 		if(xmlHttp.readyState == 4 && xmlHttp.status == 200) { 
+ 		  if(xmlHttp.responseText == '1') { 
+ 			alert('post successed'); 
+ 		  } 
+ 		} 
+ 	  } 
+ 	  xmlHttp.send(postData); 
+ 	} 
+ 	function init(){ 
+ 		var spanid; 
+		forms = document.getElementById('form1');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form2');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form3');  totalnum+=forms.length/2; 
+ 		spanid = document.getElementById('totalnum');
+ 		spanid.innerHTML = totalnum; 
+ 		spanid = document.getElementById('studentname'); 
+ 		spanid.innerHTML = decodeURI('JS'); 
+ 	} 
+ 	function commit() {  
+ 		var i;  
+ 		var rid;  
+ 		var radios; 
+ 		var checkrightflag;
+ 		var forms = document.getElementById('form1');  
+ 		var errornum = forms.length/4;
+ 		allerrornum = 0;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					rid.style.color = 'black';  
+ 					errornum--;
+ 				}
+ 			}  
+ 		}  
+ 		allerrornum = errornum;
+ 		
+ 		forms = document.getElementById('form2');  
+ 		errornum = forms.length/4;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i * 4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 0;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if( (radios[x].value == 'true' && radios[x].checked == false) || (radios[x].value == 'false' && radios[x].checked == true) ){  
+ 					checkrightflag = 1;
+ 				}
+ 			}  
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		allerrornum = allerrornum + errornum;
+ 
+ 		forms = document.getElementById('form3');  
+ 		errornum = forms.length/2;
+ 		for (i=0; i<forms.length/2; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*2].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 1;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					checkrightflag = 0;
+ 				}
+ 			} 
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		rid = document.getElementById('errornum');
+ 		allerrornum = allerrornum + errornum;
+ 		rid.innerHTML = allerrornum;
+ 		rid = document.getElementById('errorrate');
+ 		var errrate = 100.0 - (allerrornum * 1.0) / totalnum * 100; 
+		rid.innerHTML = errrate.toFixed(2); 
+ 		document.getElementById('ierrorrate').value = errrate.toFixed(2); 
+ 	  postData = 'studentname=JS'; 
+ 	  postData += '&errorrate='; 
+ 	  postData += errrate.toFixed(2); 
+ 	  postData += '&examunit=1'; 
+ 	  document.getElementById('commitButton').disabled=true; 
+     submitForm();	}   
+ 	window.onload=init;</script></head> 
+ 
+ 
+ <body><noscript><iframe src='*.htm'></noscript><form id="form1" action="" method=""><h2 class="title">单选题:</h2><div class="item"><h3 id="textradio1">1、(网站)var url = "baidu.com?id=5", url2 = 'list';console.log(url.length-url2)打印结果是？
+</h3><ul><li id="radio10"><input name="radio1" value="true" type="radio">A  NaN
+</li><li id="radio11"><input name="radio1" value="false" type="radio">B 10
+</li><li id="radio12"><input name="radio1" value="false" type="radio">C 报错
+</li><li id="radio13"><input name="radio1" value="false" type="radio">D 0
+</li></ul></div><div class="item"><h3 id="textradio2">2、 (网站)字符串的索引说法正确的是
+</h3><ul><li id="radio20"><input name="radio2" value="false" type="radio">A	字符串没有索引 
+</li><li id="radio21"><input name="radio2" value="false" type="radio">B 字符串索引从1开始 
+</li><li id="radio22"><input name="radio2" value="true" type="radio">C 字符串索引从0开始
+</li><li id="radio23"><input name="radio2" value="false" type="radio">D	以上都不对
+</li></ul></div><div class="item"><h3 id="textradio3">3、  (网站)'st,sdf'.toLocaleUpperCase()转换后的结果是？
+</h3><ul><li id="radio30"><input name="radio3" value="false" type="radio">A  ST
+</li><li id="radio31"><input name="radio3" value="false" type="radio">B  SDF
+</li><li id="radio32"><input name="radio3" value="true" type="radio">C  ST,SDF
+</li><li id="radio33"><input name="radio3" value="false" type="radio">D  以上多不对
+</li></ul></div><div class="item"><h3 id="textradio4">4、  (网站)关于字符串定义错误的是
+</h3><ul><li id="radio40"><input name="radio4" value="false" type="radio">A var str = '{}' 	
+</li><li id="radio41"><input name="radio4" value="false" type="radio">B var str = "[1,2]" 
+</li><li id="radio42"><input name="radio4" value="true" type="radio">C var str = 'str"
+</li><li id="radio43"><input name="radio4" value="false" type="radio">D var str = "{a:1}"
+</li></ul></div><div class="item"><h3 id="textradio5">5、 (网站)sustr(参数1,参数2)方法中,参数2指的是?  
+</h3><ul><li id="radio50"><input name="radio5" value="false" type="radio">A 起始下标
+</li><li id="radio51"><input name="radio5" value="false" type="radio">B 结束下标
+</li><li id="radio52"><input name="radio5" value="true" type="radio">C 截取个数 
+</li><li id="radio53"><input name="radio5" value="false" type="radio">D 以上都不对 
+</li></ul></div><div class="item"><h3 id="textradio6">6、(网站)下列程序的输出是：<br>var s = 'helloworld';<br>console.log(s.slice(0));
+</h3><ul><li id="radio60"><input name="radio6" value="false" type="radio">A 空字符串
+</li><li id="radio61"><input name="radio6" value="true" type="radio">B helloworld
+</li><li id="radio62"><input name="radio6" value="false" type="radio">C h
+</li><li id="radio63"><input name="radio6" value="false" type="radio">D d
+</li></ul></div><div class="item"><h3 id="textradio7">7、 (网站)下列程序的输出是：<br>var s = 'helloworld';<br>console.log(s.slice(-4, -1));
+</h3><ul><li id="radio70"><input name="radio7" value="false" type="radio">A ell
+</li><li id="radio71"><input name="radio7" value="false" type="radio">B ello
+</li><li id="radio72"><input name="radio7" value="false" type="radio">C worl
+</li><li id="radio73"><input name="radio7" value="true" type="radio">D orl
+</li></ul></div><div class="item"><h3 id="textradio8">8、  (网站)下列程序的输出是：<br>console.log(Math.floor(3.1));<br>console.log(Math.floor(3.9));<br>console.log(Math.floor(-3.1));<br>console.log(Math.floor(-3.9));
+</h3><ul><li id="radio80"><input name="radio8" value="false" type="radio">A 4 4 -3 -3
+</li><li id="radio81"><input name="radio8" value="true" type="radio">B 3 3 -4 -4
+</li><li id="radio82"><input name="radio8" value="false" type="radio">C 3 4 -3 -3
+</li><li id="radio83"><input name="radio8" value="false" type="radio">D 3 4 -3 -4
+</li></ul></div><div class="item"><h3 id="textradio9">9、 history.go(-1)与以下history的哪个方法等价（   ）
+</h3><ul><li id="radio90"><input name="radio9" value="false" type="radio">A forward() 
+</li><li id="radio91"><input name="radio9" value="false" type="radio">B go(0)
+</li><li id="radio92"><input name="radio9" value="true" type="radio">C back() 
+</li><li id="radio93"><input name="radio9" value="false" type="radio">D 以上都不对
+</li></ul></div><div class="item"><h3 id="textradio10">10、  [123,456] ==[123,456]结果为
+</h3><ul><li id="radio100"><input name="radio10" value="false" type="radio">A TRUE
+</li><li id="radio101"><input name="radio10" value="true" type="radio">B  FALSE
+</li><li id="radio102"><input name="radio10" value="false" type="radio">C 报错
+</li><li id="radio103"><input name="radio10" value="false" type="radio">D  以上都不对
+</li></ul></div><div class="item"><h3 id="textradio11">11、var a = [1,2,3],<br>            b;<br>        b.concat([]);<br>        console.log(typeof(b));的打印结果是（    ）
+</h3><ul><li id="radio110"><input name="radio11" value="false" type="radio">A  undefined 
+</li><li id="radio111"><input name="radio11" value="true" type="radio">B 程序报错Cannot read property 'concat' of undefined 
+</li><li id="radio112"><input name="radio11" value="false" type="radio">C Array
+</li><li id="radio113"><input name="radio11" value="false" type="radio">D Object 
+</li></ul></div><div class="item"><h3 id="textradio12">12、 获取当前月份，下面写法正确的是？（   ）
+</h3><ul><li id="radio120"><input name="radio12" value="false" type="radio">A  (new Date()).getMonth() 
+</li><li id="radio121"><input name="radio12" value="false" type="radio">B  document.getMonth() 
+</li><li id="radio122"><input name="radio12" value="false" type="radio">C Date.getMonth() 
+</li><li id="radio123"><input name="radio12" value="true" type="radio">D (new Date()).getMonth()+1 
+</li></ul></div><div class="item"><h3 id="textradio13">13、 以下哪项为正确定义函数
+</h3><ul><li id="radio130"><input name="radio13" value="false" type="radio">A  fun (){}
+</li><li id="radio131"><input name="radio13" value="true" type="radio">B function fun(){} 
+</li><li id="radio132"><input name="radio13" value="false" type="radio">C fun function (){}
+</li><li id="radio133"><input name="radio13" value="false" type="radio">D var 8 = function(){} 
+</li></ul></div><div class="item"><h3 id="textradio14">14、以下那项是为数字类型 
+</h3><ul><li id="radio140"><input name="radio14" value="true" type="radio">A var str = '123';str = +str 
+</li><li id="radio141"><input name="radio14" value="false" type="radio">B var str = '123';str = 0+str 
+</li><li id="radio142"><input name="radio14" value="false" type="radio">C var str = '123';str = '123'+0 
+</li><li id="radio143"><input name="radio14" value="false" type="radio">D var str = '123';str = str 
+</li></ul></div><div class="item"><h3 id="textradio15">15、 (网站)var time=new Date(2018,3,8);console.log(time.getMonth())的值为
+</h3><ul><li id="radio150"><input name="radio15" value="false" type="radio">A  1
+</li><li id="radio151"><input name="radio15" value="true" type="radio">B 2
+</li><li id="radio152"><input name="radio15" value="false" type="radio">C 3
+</li><li id="radio153"><input name="radio15" value="false" type="radio">D 4
+</li></ul></div><div class="item"><h3 id="textradio16">16、(网站)Math.(   )用于向下取整
+</h3><ul><li id="radio160"><input name="radio16" value="false" type="radio">A ceil
+</li><li id="radio161"><input name="radio16" value="false" type="radio">B round
+</li><li id="radio162"><input name="radio16" value="true" type="radio">C floor
+</li><li id="radio163"><input name="radio16" value="false" type="radio">D random
+</li></ul></div><div class="item"><h3 id="textradio17">17、 （网站）如下程序执行结果是什么？<br>
+var arr = ["word","excel","ppt"];<br>console.log(arr[9]);
+</h3><ul><li id="radio160"><input name="radio17" value="false" type="radio">A 报错
+</li><li id="radio171"><input name="radio17" value="true" type="radio">B undefined
+</li><li id="radio172"><input name="radio17" value="false" type="radio">C null
+</li><li id="radio173"><input name="radio17" value="false" type="radio">D 什么也不输出
+</li></ul></div><div class="item"><h3 id="textradio18">18、 (网站)var str = "1234"; console.log(str.split("").reverse().join());
+</h3><ul><li id="radio180"><input name="radio18" value="false" type="radio">A  1,2,3,4
+</li><li id="radio181"><input name="radio18" value="true" type="radio">B 4,3,2,1
+</li><li id="radio182"><input name="radio18" value="false" type="radio">C 4321 
+</li><li id="radio183"><input name="radio18" value="false" type="radio">D  ["4321"]
+</li></ul></div><div class="item"><h3 id="textradio19">19、 (网站)var arr = [admin,'<div id="btn" index="1">机选</div>',1];console.log(arr[15])打印结果是（）
+</h3><ul><li id="radio190"><input name="radio19" value="true" type="radio">A admin
+</li><li id="radio191"><input name="radio19" value="false" type="radio">B < div id="btn" index="1">机选< /div>
+</li><li id="radio192"><input name="radio19" value="false" type="radio">C 1
+</li><li id="radio193"><input name="radio19" value="false" type="radio">D  undefined
+</li></ul></div><div class="item"><h3 id="textradio20">20、 (网站)var arr = new Array(new Array(9,0,3,4,5) , ['a' , 'b' , 'c']  ,  new  Array(2,9,0,6));<br>则arr[1][3]=()
+</h3><ul><li id="radio200"><input name="radio20" value="false" type="radio">A c
+</li><li id="radio201"><input name="radio20" value="false" type="radio">B 4
+</li><li id="radio202"><input name="radio20" value="false" type="radio">C 6
+</li><li id="radio203"><input name="radio20" value="true" type="radio">D  undefined
+</li></ul></div></form><form id="form2" action="" method=""><h2 class="title">多选题:</h2>
+<div class="item"><h3 id="textradio21">21、  (网站)下列哪些方法是数组的方法？
+</h3><ul><li id="radio210"><input name="radio21" value="true" type="checkbox">A   sort
+</li><li id="radio211"><input name="radio21" value="true" type="checkbox">B  indexOf
+</li><li id="radio212"><input name="radio21" value="true" type="checkbox">C  unshift
+</li><li id="radio213"><input name="radio21" value="true" type="checkbox">D  slice
+</li></ul></div><div class="item"><h3 id="textradio22">22、 (网站)下面那些是字符串
+</h3><ul><li id="radio220"><input name="radio22" value="false" type="checkbox">A  var a =+‘123’ 
+</li><li id="radio221"><input name="radio22" value="true" type="checkbox">B  var a = 123 +''
+</li><li id="radio222"><input name="radio22" value="true" type="checkbox">C  var a = '' 
+</li><li id="radio223"><input name="radio22" value="false" type="checkbox">D  var a = '123'-0
+</li></ul></div><div class="item"><h3 id="textradio23">23、  (网站)以下那些方法可以使字符串大小写改变
+</h3><ul><li id="radio230"><input name="radio23" value="true" type="checkbox">A toUpperCase() 
+</li><li id="radio231"><input name="radio23" value="true" type="checkbox">B toLowerCase()
+</li><li id="radio232"><input name="radio23" value="false" type="checkbox">C charAt()
+</li><li id="radio233"><input name="radio23" value="false" type="checkbox">D charCodeAt() 
+</li></ul></div><div class="item"><h3 id="textradio24">24、  (网站)以下字符串中,长度相同的是
+</h3><ul><li id="radio240"><input name="radio24" value="true" type="checkbox">A  "hello"
+</li><li id="radio241"><input name="radio24" value="true" type="checkbox">B "12345" 
+</li><li id="radio242"><input name="radio24" value="false" type="checkbox">C "get"
+</li><li id="radio243"><input name="radio24" value="false" type="checkbox">D "innerHTML"
+</li></ul></div><div class="item"><h3 id="textradio25">25、 (网站)以下字符串中,长度为2的倍数的有哪些?
+</h3><ul><li id="radio250"><input name="radio25" value="false" type="checkbox">A  "hello"
+</li><li id="radio251"><input name="radio25" value="true" type="checkbox">B "wangzhan"
+</li><li id="radio252"><input name="radio25" value="true" type="checkbox">C "getElement" 
+</li><li id="radio253"><input name="radio25" value="false" type="checkbox">D "innerHTML"
+</li></ul></div><div class="item"><h3 id="textradio26">26、  (网站)以下哪些方法可以对字符串进行大小写转换?
+</h3><ul><li id="radio260"><input name="radio26" value="true" type="checkbox">A  toUpperCase() 
+</li><li id="radio261"><input name="radio26" value="true" type="checkbox">B toLowerCase() 
+</li><li id="radio262"><input name="radio26" value="false" type="checkbox">C charAt()
+</li><li id="radio263"><input name="radio26" value="false" type="checkbox">D charCodeAt() 
+</li></ul></div><div class="item"><h3 id="textradio27">27、  (网站)字符串截取三种方法是(    )
+</h3><ul><li id="radio270"><input name="radio27" value="false" type="checkbox">A  indexOf()
+</li><li id="radio271"><input name="radio27" value="true" type="checkbox">B substr() 
+</li><li id="radio272"><input name="radio27" value="true" type="checkbox">C substring() 
+</li><li id="radio273"><input name="radio27" value="true" type="checkbox">D slice() 
+</li></ul></div><div class="item"><h3 id="textradio28">28、 (网站)var email = "myId@yahoo.com.cn";可以将yahoo取出来的有（   ）
+</h3><ul><li id="radio280"><input name="radio28" value="true" type="checkbox">A email.substr(5,5) 
+</li><li id="radio281"><input name="radio28" value="false" type="checkbox">B email.substring(5,5) 
+</li><li id="radio282"><input name="radio28" value="true" type="checkbox">C email.substring(5,10)
+</li><li id="radio283"><input name="radio28" value="false" type="checkbox">D email.slice(5,5) 
+</li></ul></div><div class="item"><h3 id="textradio29">29、 (网站工程)以下函数的定义方法正确的有哪些（   ）：
+</h3><ul><li id="radio290"><input name="radio29" value="true" type="checkbox">A function (){} 
+</li><li id="radio291"><input name="radio29" value="true" type="checkbox">B var getSum = function(){} 
+</li><li id="radio292"><input name="radio29" value="false" type="checkbox">C function(x,y){} 
+</li><li id="radio293"><input name="radio29" value="false" type="checkbox">D var fun() = function{}; 
+</li></ul></div><div class="item"><h3 id="textradio30">30、 (网站)以下关于对象正确第是
+</h3><ul><li id="radio300"><input name="radio30" value="true" type="checkbox">A var arr= {} 
+</li><li id="radio301"><input name="radio30" value="true" type="checkbox">B var obj = {} 
+</li><li id="radio302"><input name="radio30" value="true" type="checkbox">C var str = {}
+</li><li id="radio303"><input name="radio30" value="false" type="checkbox">D var list = []
+</li></ul></div></form><form id="form3" action="" method=""><h2 class="title">判断题:</h2>
+<div class="item"><h3 id="textradio31">31、  字符串不可以数字开头
+</h3>
+<ul><li id="panradio311"><input name="radio31" value="false" type="radio">√</li><li id="panradio312"><input name="radio31" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio32">32、 (网站)lastIndexOf()方法可以获取某个字符在字符串中首次出现的位置
+</h3>
+<ul><li id="panradio321"><input name="radio32" value="false" type="radio">√</li><li id="panradio322"><input name="radio32" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio33">33、  (网站工程)console.log("6"==6);打印结果是false
+</h3>
+<ul><li id="panradio331"><input name="radio33" value="false" type="radio">√</li><li id="panradio332"><input name="radio33" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio34">34、(网站工程)var arr = [];arr[20]=55;console.log(arr.length)值为20 
+<ul><li id="panradio341"><input name="radio34" value="false" type="radio">√</li><li id="panradio342"><input name="radio34" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio35">35、（网站工程）var arr = ["a","b","c"],arr.push(9)可以将arr变为[9,"a","b","c"]
+</h3>
+<ul><li id="panradio351"><input name="radio35" value="false" type="radio">√</li><li id="panradio352"><input name="radio35" value="true" type="radio">×</li></ul></div>
+
+
+</form><form id="formsubmit" action="" method="post" accept-charset="utf-8"><input id="commitButton" value="提交试卷" class="submit" onclick="commit()" type="button"> 
+<div class="hz"><h2>20单元</h2><p>姓名：狗旺财<span id="studentname"></span></p> 
+<p>总题数：<span id="totalnum">30</span></p> 
+ <p>错题数：<span id="errornum">0</span></p> 
+ <p>正确率：<span id="errorrate">0</span>％</p> 
+ <input id="istudentname" name="studentname" type="hidden">
+<input id="ierrorrate" name="errorrate" type="hidden">
+<input id="iexamunit" name="examunit" type="hidden">
+</div> </form></body></html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <style>
+        body {
+            color: red;
+        }
+    </style> -->
+</head>
+
+<body>
+    <script>
+        // while >   当型循环 >  先判断后执行
+        // 循环三要素:  初始值( while外面 )   循环条件(小括号)  步长(大括号内)
+        /*
+         *  初始值;
+           while(循环条件){
+               循环体;
+               步长;
+           }
+         */
+        // 死循环: 不是报错，无法退出导致浏览器崩溃
+
+        // 案例1:while中的死循环
+        // var i = 1;
+        // while (i > 0) {
+
+        // }
+        // var i = 1;
+        // while (i > 0) {
+        //     i++;
+        // }
+
+        // 案例2: while中的i
+        // var i = 0;
+        // while (i < 10) {
+        //     i++;
+        //     console.log(i);
+        // }
+
+
+        // 案例3: 计算1-20的累加和
+        // var i = 1;
+        // var sum = 0;
+        // while (i <= 20) {
+        //     // sum = sum + i;
+        //     sum += i;
+        //     i++;
+        // }
+        // console.log(sum);
+
+        // 案例4: 找出30以内除了16和20,能被4整除的数
+        // var i = 4;
+        // while (i <= 30) {
+        //     if (i != 16 && i != 20 && i % 4 == 0) {
+        //         console.log(i);
+        //     }
+        //     // i++;
+        // }
+
+
+        // 案例5: 控制台输出100以内的奇数(偶数) : 两种方法
+        // var i = 0;
+        // while (i <= 100) {
+        //     console.log(i);
+        //     i += 2;
+        // }
+        // while (i <= 100) {
+        //     if (i % 2 == 1) {
+        //         console.log(i);
+        //     }
+        //     i++;
+        // }
+
+        // 案例6: 在控制台输出所有的"水仙花数"; 
+        // 水仙花是什么:
+        // 水仙花:指的是三位数
+        // 水仙花的特点:三位数中个位的立方和加上十位上数据的立方和加上百位上的数据的立方和=该数据本身
+        // 如：153 = 3*3*3+5*5*5+1*1*1
+
+        // var i = 100;
+        // while (i < 1000) {
+        //     var a = i % 10; //个位数
+        //     var b = parseInt(i / 10) % 10; // 十位数
+        //     var c = parseInt(i / 100); // 百位数
+        //     if (i == a * a * a + b * b * b + c * c * c) {
+        //         console.log(i);
+        //     }
+        //     i++;
+        // }
+
+        // 案例7: 操场有5个障碍物，围着操场跑5圈，总共跨过了多少个障碍物？
+        // var i = 1;
+        // var sum = 0;
+        // while (i <= 5) { //外层循环代表圈数
+        //     var j = 1;
+        //     while (j <= 5) { //内层循环代表每圈跨过多少个障碍物
+        //         sum++;
+        //         j++;
+        //     }
+        //     i++;
+        // }
+        // console.log(sum);
+
+        // 案例8: 在页面上用红色的❤打印7*7的正方形
+        document.body.style.color = 'lime'
+        var i = 1;
+        while (i <= 7) { //外层循环代表行数
+            var j = 1;
+            while (j <= 7) { //内层循环代表每行打印星星个数
+                document.write('❤');
+                j++;
+            }
+            document.write('<br>');
+            i++;
+        }
+
+        // 案例9: 在页面上用红色的❤打印正三角
+        var i = 1;
+        while (i <= 7) { //外层循环代表行数
+            var j = 1;
+            while (j <= i) { //内层循环代表每行打印星星个数
+                document.write('❤');
+                j++;
+            }
+            document.write('<br>');
+            i++;
+        }
+
+
+        // 案例10: 在页面上用红色的❤打印倒三角
+        // var i = 1;
+        // while (i <= 7) { //外层循环代表行数
+        //     var j = 7;
+        //     while (j >= i) { //内层循环代表每行打印星星个数
+        //         document.write('❤');
+        //         j--;
+        //     }
+        //     document.write('<br>');
+        //     i++;
+        // }
+
+        // 案例11: 打印九九乘法表
+        // var i = 1;
+        // while (i <= 9) {
+        //     var j = 1;
+        //     while (j <= i) {
+        //         document.write(j + '*' + i + '=' + i * j + '  ');
+        //         j++;
+        //     }
+        //     document.write('<br>');
+        //     i++;
+        // }
+    </script>
+</body>
+
+</html>

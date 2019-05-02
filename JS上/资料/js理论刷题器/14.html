@@ -1,0 +1,402 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK"> <title>测试题</title><style>
+*{ margin:0; padding:0;}img{ border:0;}
+body{ font-family:微软雅黑; font-size:14px; color:#333; padding-left:10px;}
+li{ list-style:none;}
+input{ vertical-align:middle;}
+.title{ line-height:60px; height:60px; color:#000;}
+.item h3{ line-height:40px; font-size:16px; font-weight:normal;}
+.item ul{ line-height:30px; padding-left:26px; font-size:13px;}
+.item ul input{ margin:0 10px 0 0;}
+.submit{ display:block; position:fixed; right:50px; top:50; margin-top:170px; width:100px; height:30px; font-family:微软雅黑; cursor:pointer; font-size:16px;}
+.hz{width:140px;line-height:30px; height:150px; position:fixed;right:10px; top:50;margin-top:15px;color:#cd0000; font-size:16px;}.hz input{border:0;}
+</style><script type="text/javascript" language="javascript"> 
+ 	var allerrornum = 0;
+ 	var totalnum = 0;  
+    var postData = ''; 
+ 	function stop(){ 
+ 		return false; 
+ 	} 
+ 	document.oncontextmenu=stop; 
+ 	function createXmlHttp() { 
+ 	  var xmlHttp = null; 
+ 		 
+ 	  try { 
+ 		//Firefox, Opera 8.0+, Safari 
+ 		xmlHttp = new XMLHttpRequest(); 
+ 	  } catch (e) { 
+ 		//IE 
+ 		try { 
+ 		  xmlHttp = new ActiveXObject('Msxml2.XMLHTTP'); 
+ 		} catch (e) { 
+ 		  xmlHttp = new ActiveXObject('Microsoft.XMLHTTP'); 
+ 		} 
+ 	  } 
+ 		 
+ 	  return xmlHttp; 
+ 	} 
+ 	   
+ 	function submitForm() { 
+ 	  var xmlHttp = createXmlHttp(); 
+ 	  if(!xmlHttp) { 
+ 		alert('您的浏览器不支持AJAX！'); 
+ 		return 0; 
+ 	  } 
+ 	    
+ 	  var url = 'score.cgi'; 
+ 	    
+ 	  xmlHttp.open('POST', url, true); 
+ 	  xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
+ 	  xmlHttp.onreadystatechange = function() { 
+ 		if(xmlHttp.readyState == 4 && xmlHttp.status == 200) { 
+ 		  if(xmlHttp.responseText == '1') { 
+ 			alert('post successed'); 
+ 		  } 
+ 		} 
+ 	  } 
+ 	  xmlHttp.send(postData); 
+ 	} 
+ 	function init(){ 
+ 		var spanid; 
+		forms = document.getElementById('form1');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form2');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form3');  totalnum+=forms.length/2; 
+ 		spanid = document.getElementById('totalnum');
+ 		spanid.innerHTML = totalnum; 
+ 		spanid = document.getElementById('studentname'); 
+ 		spanid.innerHTML = decodeURI('JS'); 
+ 	} 
+ 	function commit() {  
+ 		var i;  
+ 		var rid;  
+ 		var radios; 
+ 		var checkrightflag;
+ 		var forms = document.getElementById('form1');  
+ 		var errornum = forms.length/4;
+ 		allerrornum = 0;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					rid.style.color = 'black';  
+ 					errornum--;
+ 				}
+ 			}  
+ 		}  
+ 		allerrornum = errornum;
+ 		
+ 		forms = document.getElementById('form2');  
+ 		errornum = forms.length/4;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i * 4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 0;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if( (radios[x].value == 'true' && radios[x].checked == false) || (radios[x].value == 'false' && radios[x].checked == true) ){  
+ 					checkrightflag = 1;
+ 				}
+ 			}  
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		allerrornum = allerrornum + errornum;
+ 
+ 		forms = document.getElementById('form3');  
+ 		errornum = forms.length/2;
+ 		for (i=0; i<forms.length/2; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*2].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 1;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					checkrightflag = 0;
+ 				}
+ 			} 
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		rid = document.getElementById('errornum');
+ 		allerrornum = allerrornum + errornum;
+ 		rid.innerHTML = allerrornum;
+ 		rid = document.getElementById('errorrate');
+ 		var errrate = 100.0 - (allerrornum * 1.0) / totalnum * 100; 
+		rid.innerHTML = errrate.toFixed(2); 
+ 		document.getElementById('ierrorrate').value = errrate.toFixed(2); 
+ 	  postData = 'studentname=JS'; 
+ 	  postData += '&errorrate='; 
+ 	  postData += errrate.toFixed(2); 
+ 	  postData += '&examunit=1'; 
+ 	  document.getElementById('commitButton').disabled=true; 
+     submitForm();	}   
+ 	window.onload=init;</script></head> 
+ 
+ 
+ <body><noscript><iframe src='*.htm'></noscript><form id="form1" action="" method=""><h2 class="title">单选题:</h2><div class="item"><h3 id="textradio1">1、for(var i=1;i<=12;i+=3){
+ console.log(i);
+}打印结果是? 
+</h3><ul><li id="radio10"><input name="radio1" value="true" type="radio">A 1,4,7,10
+</li><li id="radio11"><input name="radio1" value="false" type="radio">B  1,4,7,10，12
+</li><li id="radio12"><input name="radio1" value="false" type="radio">C 1，2，3，4，5，6，7，8，9，10，11，12
+</li><li id="radio13"><input name="radio1" value="false" type="radio">D 1,3,6,9,12
+</li></ul></div><div class="item"><h3 id="textradio2">2、for(var i=0;i<=4;i+=2){
+   console.log(i);
+}打印结果是？  
+</h3><ul><li id="radio20"><input name="radio2" value="true" type="radio">A 0 2 4
+</li><li id="radio21"><input name="radio2" value="false" type="radio">B 4 2 0
+</li><li id="radio22"><input name="radio2" value="false" type="radio">C 0 1 2 3 4
+</li><li id="radio23"><input name="radio2" value="false" type="radio">D 4 0 2
+</li></ul></div><div class="item"><h3 id="textradio3">3、以下语句，没有语法错误的是?  
+</h3><ul><li id="radio30"><input name="radio3" value="false" type="radio">A for(var i=0;j=1;i<10;i+=2){}
+</li><li id="radio31"><input name="radio3" value="false" type="radio">B for(var s=0;s<=10,s=s+3){}
+</li><li id="radio32"><input name="radio3" value="true" type="radio">C  for(var j=10,s=0;j>0;j-=2){}
+</li><li id="radio33"><input name="radio3" value="false" type="radio">D  for(var i=0,i<10;i++){}
+</li></ul></div><div class="item"><h3 id="textradio4">4、结束本次循环，并开始下一次的关键字是？  
+</h3><ul><li id="radio40"><input name="radio4" value="false" type="radio">A break	
+</li><li id="radio41"><input name="radio4" value="true" type="radio">B continue
+</li><li id="radio42"><input name="radio4" value="false" type="radio">C return
+</li><li id="radio43"><input name="radio4" value="false" type="radio">D switch
+</li></ul></div><div class="item"><h3 id="textradio5">5、var running = function(){console.log('eating')}
+running = 'run';
+running();   
+</h3><ul><li id="radio50"><input name="radio5" value="false" type="radio">A running
+</li><li id="radio51"><input name="radio5" value="false" type="radio">B run
+</li><li id="radio52"><input name="radio5" value="true" type="radio">C 报错
+</li><li id="radio53"><input name="radio5" value="false" type="radio">D undefind
+</li></ul></div><div class="item"><h3 id="textradio6">6、函数名下列正确的是
+</h3><ul><li id="radio60"><input name="radio6" value="true" type="radio">A function _$(){}
+</li><li id="radio61"><input name="radio6" value="false" type="radio">B function 34running(){}
+</li><li id="radio62"><input name="radio6" value="false" type="radio">C function !(){}
+</li><li id="radio63"><input name="radio6" value="false" type="radio">D function %(){}
+</li></ul></div><div class="item"><h3 id="textradio7">7、函数的创建，错误的是 
+</h3><ul><li id="radio70"><input name="radio7" value="false" type="radio">A function fun(){}
+</li><li id="radio71"><input name="radio7" value="true" type="radio">B fun function (){}
+</li><li id="radio72"><input name="radio7" value="false" type="radio">C var fun = function(){}
+</li><li id="radio73"><input name="radio7" value="false" type="radio">D function Fun(){} var fun = new Fun(){}
+</li></ul></div><div class="item"><h3 id="textradio8">8、function fun(){console.log('function is running')}运行结果  
+</h3><ul><li id="radio80"><input name="radio8" value="true" type="radio">A 无结果
+</li><li id="radio81"><input name="radio8" value="false" type="radio">B 报错
+</li><li id="radio82"><input name="radio8" value="false" type="radio">C function is running
+</li><li id="radio83"><input name="radio8" value="false" type="radio">D console.log('function is running')
+</li></ul></div><div class="item"><h3 id="textradio9">9、 function checkType(type) {
+    var msg = 0;
+    if (typeof(type) === "undefined") {
+        msg = 1;
+    } else {
+        if (type) {
+            msg = 2;
+        }
+    }
+    return msg;
+}
+console.log(checkType());打印的结果为(  )
+</h3><ul><li id="radio90"><input name="radio9" value="false" type="radio">A 0
+</li><li id="radio91"><input name="radio9" value="true" type="radio">B 1
+</li><li id="radio92"><input name="radio9" value="false" type="radio">C 2 
+</li><li id="radio93"><input name="radio9" value="false" type="radio">D undefined
+</li></ul></div><div class="item"><h3 id="textradio10">10、function getAttr(url, method) {
+    method = method ? method : "get";
+    console.log(method);
+}
+getAttr("http://localhot/live.php", "post");
+打印结果是(  )。  
+</h3><ul><li id="radio100"><input name="radio10" value="false" type="radio">A "get"
+</li><li id="radio101"><input name="radio10" value="false" type="radio">B  undefined
+</li><li id="radio102"><input name="radio10" value="false" type="radio">C 报错
+</li><li id="radio103"><input name="radio10" value="true" type="radio">D  "post"
+</li></ul></div><div class="item"><h3 id="textradio11">11、下列程序的输出是：
+var add = function (n1, n2, n3) {
+    console.log(arguments.length);
+}
+console.log(add.length);
+add(1, 2)
+</h3><ul><li id="radio110"><input name="radio11" value="true" type="radio">A  3 2
+</li><li id="radio111"><input name="radio11" value="false" type="radio">B 2 2
+</li><li id="radio112"><input name="radio11" value="false" type="radio">C 3 3
+</li><li id="radio113"><input name="radio11" value="false" type="radio">D 2 3
+</li></ul></div><div class="item"><h3 id="textradio12">12、function getSum(n) {
+    var index = 10;
+    if (typeof(n) === "number") {
+        index = n;
+    } else {
+        index = index + n * 1;
+    }
+    console.log(index);
+}
+getSum("+1");
+打印结果是(  )。 
+</h3><ul><li id="radio120"><input name="radio12" value="true" type="radio">A  11
+</li><li id="radio121"><input name="radio12" value="false" type="radio">B  10
+</li><li id="radio122"><input name="radio12" value="false" type="radio">C undefined
+</li><li id="radio123"><input name="radio12" value="false" type="radio">D NaN
+</li></ul></div><div class="item"><h3 id="textradio13">13、function myFun( a,b,c ){
+console.log( a );
+console.log( b );
+console.log( c );
+}
+myFun( 10,20 );
+以上代码执行的结果为(  ) 
+</h3><ul><li id="radio130"><input name="radio13" value="false" type="radio">A 10 20 30 
+</li><li id="radio131"><input name="radio13" value="false" type="radio">B 20 10 30
+</li><li id="radio132"><input name="radio13" value="true" type="radio">C 10 20 undefined
+</li><li id="radio133"><input name="radio13" value="false" type="radio">D 以上都不对
+</li></ul></div><div class="item"><h3 id="textradio14">14、var say = function(num){num++;}console.log(say(5))的打印结果是? 
+</h3><ul><li id="radio140"><input name="radio14" value="false" type="radio">A  5 
+</li><li id="radio141"><input name="radio14" value="false" type="radio">B 6
+</li><li id="radio142"><input name="radio14" value="true" type="radio">C undefined 
+</li><li id="radio143"><input name="radio14" value="false" type="radio">D 程序报错
+</li></ul></div><div class="item"><h3 id="textradio15">15、function getStr(p,q){
+ // 如果p小,q大，则返回q减p的值
+ // 如果p大,q小，则返回p减q的值
+ // 如果p与q相等，返回p加q的值 
+}
+getStr(5,10);注释处的代码正确的写法是（   ） 
+</h3><ul><li id="radio150"><input name="radio15" value="false" type="radio">A if(p <q){ q-p; }else{ p-q; }else{ p+q; }
+</li><li id="radio151"><input name="radio15" value="false" type="radio">B if(p<q){ q-p; }else if(p>q){ p-q; }else{ p+q; } 
+</li><li id="radio152"><input name="radio15" value="true" type="radio">C if(p<q){ return q-p; }else if(p>q){ return p-q; }else{ return p+q; }
+</li><li id="radio153"><input name="radio15" value="false" type="radio">D 以上都不对
+</li></ul></div><div class="item"><h3 id="textradio16">16、var str1 = '123', str2 = '321';console.log(str1+str2) 
+console.log(getNum("9F"));打印结果是(   )
+</h3><ul><li id="radio160"><input name="radio16" value="false" type="radio">A 123
+</li><li id="radio161"><input name="radio16" value="false" type="radio">B 444
+</li><li id="radio162"><input name="radio16" value="true" type="radio">C 123321
+</li><li id="radio163"><input name="radio16" value="false" type="radio">D  undefined
+</li></ul></div><div class="item"><h3 id="textradio17">17、下列程序的输出是：
+var add = function (n1, n2) {
+    return n1 + n2;
+}
+var add2 = add;
+add = function (n1, n2) {
+    return n2 - n1;
+};
+console.log(add(1, 2));
+console.log(add2(1, 2)); 
+</h3><ul><li id="radio160"><input name="radio17" value="false" type="radio">A 3 1
+</li><li id="radio171"><input name="radio17" value="true" type="radio">B 1 3
+</li><li id="radio172"><input name="radio17" value="false" type="radio">C 1 1
+</li><li id="radio173"><input name="radio17" value="false" type="radio">D  3 3
+</li></ul></div><div class="item"><h3 id="textradio18">18、下列程序的输出是：
+console.log(add(1, 2));
+var add = function (n1, n2) {
+    return n1 + n2;
+} 
+</h3><ul><li id="radio180"><input name="radio18" value="false" type="radio">A  undefined
+</li><li id="radio181"><input name="radio18" value="true" type="radio">B 报错: TypeError: add is not a function
+</li><li id="radio182"><input name="radio18" value="false" type="radio">C 什么也不输出
+</li><li id="radio183"><input name="radio18" value="false" type="radio">D  3
+</li></ul></div><div class="item"><h3 id="textradio19">19、下列程序的输出是：
+var a = 1;
+function foo() {
+    var a = 2;
+    console.log(a);
+}
+foo(); 
+</h3><ul><li id="radio190"><input name="radio19" value="false" type="radio">A 报错：a is not undefined
+</li><li id="radio191"><input name="radio19" value="false" type="radio">B 1
+</li><li id="radio192"><input name="radio19" value="false" type="radio">C undefined
+</li><li id="radio193"><input name="radio19" value="true" type="radio">D  2
+</li></ul></div><div class="item"><h3 id="textradio20">20、下列程序的输出是：
+var a = 1;
+function foo() {
+    console.log(a);
+}
+a = 2;
+foo(); 
+</h3><ul><li id="radio200"><input name="radio20" value="false" type="radio">A 报错：a is not undefined
+</li><li id="radio201"><input name="radio20" value="false" type="radio">B 1
+</li><li id="radio202"><input name="radio20" value="false" type="radio">C undefined
+</li><li id="radio203"><input name="radio20" value="true" type="radio">D 2 
+</li></ul></div></form><form id="form2" action="" method=""><h2 class="title">多选题:</h2>
+<div class="item"><h3 id="textradio21">21、以下哪些语句可以打印1-100之间所有的奇数?  
+</h3><ul><li id="radio210"><input name="radio21" value="false" type="checkbox">A for(var i=1;i<=100;i+=1){console.log(i);}  
+</li><li id="radio211"><input name="radio21" value="true" type="checkbox">B  for(var i=1;i<=100;i+=2){console.log(i);}
+</li><li id="radio212"><input name="radio21" value="true" type="checkbox">C for(var i=1;i<=100;i++){if(i%2==1){console.log(i);}} 
+</li><li id="radio213"><input name="radio21" value="false" type="checkbox">D for(var i=1;i<=100;i++){if(i%2==0){console.log(i);}} 
+</li></ul></div><div class="item"><h3 id="textradio22">22、在循环中能起到作用的语句有（   ） 
+</h3><ul><li id="radio220"><input name="radio22" value="false" type="checkbox">A default
+</li><li id="radio221"><input name="radio22" value="false" type="checkbox">B return
+</li><li id="radio222"><input name="radio22" value="true" type="checkbox">C break
+</li><li id="radio223"><input name="radio22" value="true" type="checkbox">D continue
+</li></ul></div><div class="item"><h3 id="textradio23">23、下面错误的函数定义是  
+</h3><ul><li id="radio230"><input name="radio23" value="true" type="checkbox">A speack(){}
+</li><li id="radio231"><input name="radio23" value="false" type="checkbox">B function running(){}
+</li><li id="radio232"><input name="radio23" value="true" type="checkbox">C var eat = new Fun()
+</li><li id="radio233"><input name="radio23" value="false" type="checkbox">D function Fun(){} var fun = new Fun(){}
+</li></ul></div><div class="item"><h3 id="textradio24">24、关于js函数的命名下列错误的是  
+</h3><ul><li id="radio240"><input name="radio24" value="false" type="checkbox">A  function _fun(){}
+</li><li id="radio241"><input name="radio24" value="true" type="checkbox">B function 2fun(){}
+</li><li id="radio242"><input name="radio24" value="false" type="checkbox">C function $(){}
+</li><li id="radio243"><input name="radio24" value="true" type="checkbox">D function 45(){}
+</li></ul></div><div class="item"><h3 id="textradio25">25、 下面关于函数定义的错误的是
+</h3><ul><li id="radio250"><input name="radio25" value="true" type="checkbox">A eat(){}
+</li><li id="radio251"><input name="radio25" value="false" type="checkbox">B function run(){}
+</li><li id="radio252"><input name="radio25" value="true" type="checkbox">C var eat = new Fun()
+</li><li id="radio253"><input name="radio25" value="false" type="checkbox">D function Fun(){} var fun = new Fun(){}	
+</li></ul></div><div class="item"><h3 id="textradio26">26、function test(){};var run = funtion(){};以下正确的调用为  
+</h3><ul><li id="radio260"><input name="radio26" value="false" type="checkbox">A  test;run
+</li><li id="radio261"><input name="radio26" value="false" type="checkbox">B test();run
+</li><li id="radio262"><input name="radio26" value="true" type="checkbox">C run();test()
+</li><li id="radio263"><input name="radio26" value="true" type="checkbox">D test();run()
+</li></ul></div><div class="item"><h3 id="textradio27">27、关于函数写法正确的是：  
+</h3><ul><li id="radio270"><input name="radio27" value="true" type="checkbox">A function test(){} 
+</li><li id="radio271"><input name="radio27" value="true" type="checkbox">B var getSum = function(){}
+</li><li id="radio272"><input name="radio27" value="false" type="checkbox">C function(x1,x2){}
+</li><li id="radio273"><input name="radio27" value="false" type="checkbox">D var () = function{};
+</li></ul></div><div class="item"><h3 id="textradio28">28、function addZero(num){
+ ______________;
+}
+var num = addZero(6);
+addZero()函数实现对num的判断，如果num是一位数，则前面补0返回，否则直接返回，如传入6返回06，传入15，返回15,横线处的代码可以是（    ） 
+</h3><ul><li id="radio280"><input name="radio28" value="true" type="checkbox">A if(num<10){ return '0'+num; }else{ return num; }
+</li><li id="radio281"><input name="radio28" value="false" type="checkbox">B if(num<10){ return 0+num; }else{ return num; }
+</li><li id="radio282"><input name="radio28" value="true" type="checkbox">C if(num<10){ return '0'+num; } return num;
+</li><li id="radio283"><input name="radio28" value="true" type="checkbox">D return num<10?'0'+num:num;
+</li></ul></div><div class="item"><h3 id="textradio29">29、字符串包含以下哪些方法？ 
+</h3><ul><li id="radio290"><input name="radio29" value="false" type="checkbox">A push()
+</li><li id="radio291"><input name="radio29" value="true" type="checkbox">B slice()
+</li><li id="radio292"><input name="radio29" value="true" type="checkbox">C substr()
+</li><li id="radio293"><input name="radio29" value="true" type="checkbox">D substring()
+</li></ul></div><div class="item"><h3 id="textradio30">30、以下字符串的哪些属性或方法返回的结果不是number类型？ 
+</h3><ul><li id="radio300"><input name="radio30" value="true" type="checkbox">A substr
+</li><li id="radio301"><input name="radio30" value="true" type="checkbox">B slice
+</li><li id="radio302"><input name="radio30" value="false" type="checkbox">C indexOf
+</li><li id="radio303"><input name="radio30" value="true" type="checkbox">D substring
+</li></ul></div></form><form id="form3" action="" method=""><h2 class="title">判断题:</h2>
+<div class="item"><h3 id="textradio31">31、  break，continue和return之间的区别是：return结束的是函数，break结束的是循环或switch，而continue让循环体执行下一次，且只能在循环中使用
+</h3>
+<ul><li id="panradio311"><input name="radio31" value="true" type="radio">√</li><li id="panradio312"><input name="radio31" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio32">32、同名函数会发生重载 
+</h3>
+<ul><li id="panradio321"><input name="radio32" value="false" type="radio">√</li><li id="panradio322"><input name="radio32" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio33">33、 +var test = function fn(){
+    return;alert(888);
+};
+console.log(test());打印结果是undefined 
+</h3>
+<ul><li id="panradio331"><input name="radio33" value="true" type="radio">√</li><li id="panradio332"><input name="radio33" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio34">34、myFun();
+var myFun = function() {
+    alert("hello world");
+}
+以上脚本会正常弹出警告对话框提示hello world 
+<ul><li id="panradio341"><input name="radio34" value="false" type="radio">√</li><li id="panradio342"><input name="radio34" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio35">35、函数的length属性表示定义函数时候的参数个数，arguments.length表示实参个数
+</h3>
+<ul><li id="panradio351"><input name="radio35" value="true" type="radio">√</li><li id="panradio352"><input name="radio35" value="true" type="radio">×</li></ul></div>
+
+
+</form><form id="formsubmit" action="" method="post" accept-charset="utf-8"><input id="commitButton" value="提交试卷" class="submit" onclick="commit()" type="button"> 
+<div class="hz"><h2>第14单元</h2><p>姓名：<span id="studentname">JS</span></p> 
+<p>总题数：<span id="totalnum">30</span></p> 
+ <p>错题数：<span id="errornum">0</span></p> 
+ <p>正确率：<span id="errorrate">0</span>％</p> 
+ <input id="istudentname" name="studentname" type="hidden">
+<input id="ierrorrate" name="errorrate" type="hidden">
+<input id="iexamunit" name="examunit" type="hidden">
+</div> </form></body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        /*
+         * 数组的迭代方法
+         * 语法:
+         *    arr.forEach(function(item,i,array){
+         *          item: 数组中的每一项
+         *          i: 对应项的下标
+         *          array:数组本身
+         *    })
+         *    
+         *    forEach: 相当于普通的for循环,没有返回值
+         *    every（每一个）: 循环遍历数组中的每一项，如果都为真返回true,否则返回false   &&
+         *    some（一些）: 循环遍历数组中的每一项，有一个为真返回true,否则返回false   ||
+         *    filter（筛选）: 循环遍历数组中的每一项，返回执行结果为真的项组成的数组
+         *    map:  循环遍历数组中的每一项,返回每一项的执行结果组成的数组，未执行的返回undefined
+         */
+
+        // var arr = [1, 2, 3, 4, 5, 6];
+        // arr.forEach(function(v, index) {
+        //     console.log(v, index);
+        // })
+        // var every = arr.every(function(item) {
+        //     return item>0;
+        // });
+        // console.log(every);
+        // var some = arr.some(function(item) {
+        //     return item > 8;
+        // });
+        // console.log(some);
+        // var filter = arr.filter(function(item) {
+        //     return item > 3;
+        // });
+        // console.log(filter);
+        // var map = arr.map(function(item, i) {
+        //     if (item > 3) {
+        //         return item *= 3;
+        //     }
+
+        // });
+        // console.log(map);
+
+
+
+            //案例1：使用数组的迭代方法找出所有姓马的人
+            // var arr = ["马云", "王思聪", "李彦宏", "马化腾", "雷军", "许家印", '任正非', '河马', '斑马'];
+
+        // var filter = arr.filter(function(item) {
+        //     return item[0] == '马';
+        // });
+        // console.log(filter);
+
+        /*案例2：封装一个函数找到数组中的最小值和最小值的下标*/
+        // var arr = [11, 5, 6, 1, 26, 59];
+
+        // function fn(arr) {
+        //     var min = arr[0]; //假设最小值就是数组中第一个值
+        //     var index = 0; //默认最小值下标
+        //     arr.forEach(function(item, i) {
+        //         if (item < min) {
+        //             min = item; //修改最小值
+        //             index = i; //修改最小值下标
+        //         }
+        //     })
+        //     return [min, index];
+        // }
+
+        // var res = fn(arr);
+        // console.log(res[0], res[1]);
+
+
+    </script>
+</body>
+
+</html>

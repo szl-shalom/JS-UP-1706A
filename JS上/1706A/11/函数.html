@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function a(b, c, d) {
+        //     console.log(b, c, d)
+        //     console.log(arguments)
+        //     arguments[0] = 11
+        //     console.log(b)
+        //     b = 22
+        //     console.log(arguments[0])
+        // }
+
+        // a(1, 2, 3)
+
+        // 什么函数
+        // 就是封装了一个代码块  只调用是执行代码块
+        // 函数的形参 默认值 为undefined
+        // 函数调用时 传入的实参保存在函数内部 arguments对象中
+        // arguments和实参列表 一一对应     实参和形参一一对应
+
+        // 声明  函数声明  
+        // function a() {
+
+        // }
+        // // 函数表达式   
+        // var b = function () { }
+        // function fn(a, b, c) {
+        //     console.log(a, b, c)  // 1 2 undefined
+        //     console.log(arguments)
+        //     c = 1
+        //     console.log(arguments)
+        //     a = 11
+        //     console.log(arguments)
+        // }
+        // fn(1, 2)
+        // var a = 1
+        // var a = new Number(1)
+
+        // 对象
+        // var obj = {}   //通过对象字面量
+        // var obj = new Object()  //通过构造函数
+
+        // var obj = {
+        //     name: "张三",
+        //     sayName: function () {
+        //         console.log(obj.name)
+        //     }
+        // }
+
+        // console.log(obj)
+
+
+        // 访问对象的属性
+
+        // 1 获取对象名字.属性名
+        // console.log(obj.name)  
+        // // 2 对象名字["属性名"]
+        // console.log(obj["name"])
+        // obj.name = "李四"
+        // console.log(obj.name)
+        // console.log(obj)
+
+        // 对象的名称.方法名
+        // console.log(obj.sayName)
+        // console.log(obj.sayName())
+
+        // function fn() {
+        //     // console.log(111)
+        //     return 111
+        // }
+        // console.log(fn())
+
+        // 改
+        // var obj = {
+        //     name: "张三",
+        //     sayName: function () {
+        //         console.log(obj.name)
+        //     }
+        // }
+
+        // console.log(obj.namh)
+        // 加属性  对象的名称.属性名 = 内容
+        // console.log(obj)
+        // obj["age"] = 18
+        // console.log(obj.age)
+        // console.log(obj)
+
+        // // obj.name = ""
+        // delete obj.name
+        // console.log(obj)
+
+        // delete obj.sayName
+        // delete obj["sayName"]
+        // console.log(obj)
+
+        // delete obj.age
+        // console.log(obj)
+        // var obj = {}
+
+
+
+        //案例1：用对象直接量的方式创建一个对象obj，里面有两个属性：姓名和年龄
+
+        // var obj = {
+        //     name: "张三",
+        //     age: 18,
+        //     myObj: {
+        //         myName: "李四"
+        //     },
+        //     sayName: function () {
+
+        //     }
+        // }
+
+        // // 1.用两种方法往obj对象中添加两个属性：性别和工作
+        // obj.sex = "男"
+        // obj["job"] = "学生"
+        // // 2.用两种方法往obj对象中添加两个方法：方法中分别打印自己的工作和姓名
+
+        // obj.sayName = function () {
+        //     console.log(obj.name)
+        // }
+
+        // obj.sayName()
+
+        // obj["sayJob"] = function () {
+        //     console.log(obj.job)
+        // }
+
+        // obj.sayJob()
+
+        // // 3.删除年龄属性
+        // delete obj.age
+        // console.log(obj)
+
+        // Date
+        // 日期对象  new Date()
+        // "2018-10-04 10:50:10"
+
+        // var date = new Date()
+
+        // var date1 = new Date("2018-10-04")   08: 00: 00    10月
+
+        // var date2 = new Date("2018/10/04")  00: 00: 00     10月
+
+
+        // console.log(date)
+        // console.log(date1)
+        // console.log(date2)
+        // console.log(+date)
+
+        var date = new Date()
+
+        console.log(date.getDate())  //获取几号     22
+
+        console.log(date.getDay())   //获取星期几     1
+
+        console.log(date.getFullYear())  //获取今年是第几年   2019
+
+        console.log(date.getHours())  // 获取现在几小时   16
+
+
+        console.log(date.getMilliseconds())  //获取当前毫秒数
+
+
+        console.log(date.getMinutes())  //获取当前分钟
+
+
+        console.log(date.getMonth())  //获取当前月份
+
+        console.log(date.getSeconds()) //获取秒数
+
+
+        console.log(date.getTime())  //转化为时间戳
+        console.log(+date)
+
+        console.log(date.toLocaleString())  //转化为时间格式
+
+        // 案例1: 封装一个函数，只有一个参数：用于接受传递过来的日期对象
+
+        // 将传递过来的日期对象处理成以下格式返回: 2019年2月27日 14:30:00 星期？
+        
+            
+        //案例2：封装一个函数，用于计算两个日期之间相隔多长时间（倒计时）
+        //接收2个参数：第一个为要设置倒计时的时间，第二个为提示信息
+
+    </script>
+</body>
+
+</html>

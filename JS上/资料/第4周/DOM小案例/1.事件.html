@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点我一下，有惊喜</button>
+    <script>
+        // 事件: 文档与浏览器交互的特定瞬间
+        //  HTML事件:  写在标签内,没有实习结构与行为的分离,不推荐使用
+        //  Dom 0级:  元素.on+事件名 = function(){}
+        //            元素['on事件名'] = function(){}     绑定事件
+        //            元素.on+事件名= null;     取消事件
+        // Dom 2级:(JS 下)
+        // 鼠标事件: 
+        //     click      点击事件   
+        //     dblclick   双击事件
+        //     mousedown  鼠标按下
+        //     mouseup    鼠标抬起
+        //     mouseover  鼠标滑过
+        //     mouseout   鼠标离开
+        //  在事件中,this指向绑定事件的元素
+
+
+        var btn = document.getElementsByTagName('button')[0];
+        // btn.onclick = function() {
+        //     alert(1);
+        // }
+        // btn.onclick = null;
+
+        // 滑过按钮颜色变成粉色
+        btn.onmouseover = function() {
+            this.style.background = 'pink';
+        };
+        // 滑出按钮颜色变成灰色
+        btn.onmouseout = function() {
+            this.style.background = '#ccc';
+        }
+    </script>
+</body>
+
+</html>

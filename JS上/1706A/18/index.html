@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function fn(arr) {
+        //     arr.forEach(function (item, i, arr) {
+        //         if (!isNaN(item) && typeof item === "number") {
+        //             arr[i] = item + 10
+        //         }
+
+        //     })
+        //     return arr
+        // }
+
+        // console.log(fn([1, 2, 3, 4, 5, 7, "7"]))
+
+        // 11．完成uniqueNums(),该函数接收1个参数n（一个不大于31的整数），其返回值是一个数组，该数组内是 n 个随机且不重复的整数，且整数取值范围是 [2, 32]；
+        // 例如：
+        // uniqueNums(3)  // return [19,7,10]
+
+        // function uniqueNums(number) {
+            // var arr = []
+            // for (var i = 0; ; i++) {
+            //     // Math.floor(Math.random() * (max - min + 1)) + min//含最大值，含最小值 
+            //     var num = Math.floor(Math.random() * (32 - 2 + 1)) + 2//含最大值，含最小值 
+            //     if (arr.indexOf(num) === -1) {
+            //         arr.push(num)
+            //     }
+
+            //     if (arr.length === number) {
+            //         break
+            //     }
+            // }
+            // return arr.sort(function(a,b){return a-b});
+     
+
+
+                // var arr = []
+
+                // for (var i = 0; i < 100; i++) {
+                //     var num = Math.floor(Math.random() * (32 - 2 + 1)) + 2//含最大值，含最小值 
+                //     if (arr.indexOf(num) === -1) {
+                //         arr.push(num)
+                //     }
+                // }
+
+                // if (arr.length != 31) {
+                //     console.log(arr)
+
+                // }
+                // return arr
+            // }
+
+            // return arr;
+        //  console.log(uniqueNums(31))
+
+                // 得到一个两数之间的随机整数
+                // Math.floor(Math.random() * (max - min)) + min   //不含最大值，含最小值
+                // 得到一个两数之间的随机整数，包括两个数在内
+                // Math.floor(Math.random() * (max - min + 1)) + min//含最大值，含最小值 
+
+    </script>
+</body>
+
+</html>

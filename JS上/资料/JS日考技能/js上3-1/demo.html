@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第二单元日考测试</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <ul id="list">
+        <li class="one">列表项内容</li>
+        <li id="item2">列表项内容</li>
+        <li>列表项内容</li>
+        <li>列表项内容</li>
+        <li>列表项内容</li> 
+        <li>列表项内容</li>
+    </ul>
+
+    <script>
+        //获取id名为demo的元素
+        var el = document.getElementById('demo');
+        //在控制台输出
+        console.log(el)
+        //获取UL下所有的li元素
+        var les = document.getElementById('list').getElementsByTagName("li");
+        console.log(les)
+        //在控制台打印li总个数
+        console.log(les.length)
+        //获取第2个li的id名
+        var c = les[1].id
+        //用弹框输出
+        alert(c) 
+        //获取第1个li的class名
+        var d = les[0].className;
+        //用弹框输出
+        alert(d)
+
+
+        // var a = '12311'
+        // console.log(a.length)
+
+    </script>
+</body>
+
+</html>

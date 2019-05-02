@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        h3 {
+            width: 500px;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 auto;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        #list {
+            width: 500px;
+            margin: 0 auto;
+        }
+        
+        #list li {
+            width: 500px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        #list li.active:hover {
+            background: goldenrod;
+            cursor: pointer;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="list">
+        <li>枯藤老树昏鸦</li>
+        <li>小桥流水人家</li>
+        <li>古道西风瘦马</li>
+        <li>太阳下山</li>
+        <li>断肠人在天涯</li>
+    </ul>
+    <script>
+        //1.将这首诗歌的标题放到诗句的最前面内容为  <h3>《天净沙·秋思》</h3>
+        var list = document.getElementById('list');
+        list.innerHTML = '<h3>《天净沙·秋思》</h3>' + list.innerHTML;
+        //2 将ul的背景色改成pink
+        list.style.background = 'pink';
+        //3.将标题的背景色改成skyblue
+        var h3 = list.getElementsByTagName('h3')[0];
+        h3.style.background = 'skyblue';
+        //4.将倒数第二句 ‘太阳下山’改成‘夕阳西下’
+        var lis = list.getElementsByTagName('li');
+        lis[lis.length - 2].innerHTML = '夕阳西下';
+        //5.给最后一句诗词添加‘active’类名，效果CSS样式中已经给出
+        lis[lis.length - 1].className = 'active';
+
+    </script>
+</body>
+
+</html>

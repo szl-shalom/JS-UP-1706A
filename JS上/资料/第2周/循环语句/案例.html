@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <script>
+        /*
+         *案例1:反转字符串
+         *    将"JavaScript"反转成"tpircSavaJ"
+         */
+
+
+        /*
+         *案例2:
+         *有字符串var str='abc!123bd',  
+         *将字符串中的数字用中括号括起来，形成结果：'abc![123]bd' 
+         */
+
+        // var str = 'abc!123bd';
+        // var newStr = '';
+        // //第一个数字:开始位置
+        // for (var i = 0; i < str.length; i++) {
+        //     if (!isNaN(str[i])) {
+        //         //是数字
+        //         var start = i;
+        //         break;
+        //     }
+        // }
+        // //最后一个数字:结束位置
+        // for (var i = 0; i < str.length; i++) {
+        //     if (!isNaN(str[i])) {
+        //         //是数字
+        //         var end = i;
+        //     }
+        // }
+        // //拼接
+        // for (var i = 0; i < str.length; i++) {
+        //     if (i == start) {
+        //         newStr += '[' + str[i];
+        //     } else if (i == end) {
+        //         newStr += str[i] + ']';
+        //     } else {
+        //         newStr += str[i];
+        //     }
+        // }
+        // console.log(newStr);
+
+        //案例3:  求任意个数的累加和
+        // 步骤1: 弹出输入框询问用户  要输入多少个整数
+        // 步骤2: 循环获取用户输入的数累加
+
+        // var num = +prompt('您要输入多少个数？');
+        // for (var i = 1, sum = 0; i <= num; i++) {
+        //     var a = +prompt('请输入数字');
+        //     sum += a;
+        // }
+        // alert(num + '次的累加和' + sum);
+
+
+        //案例4: 猜数游戏 (while  和  do while两种做法)
+        // 1: 默认设置一个谜底数字
+        // 2: 弹框输入你猜测的数字:
+        // 3:  如果大了，提示"输大啦，请重新输入"
+        // 4:  如果小了，提示"输小啦，请重新输入"
+        // 5:  如果猜对了，提示"输入正确"
+        // var a = 100;
+        // while (true) {
+        //     var b = prompt('请输入您猜测的数字');
+        //     if (b < 100) {
+        //         alert('输小啦，请重新输入');
+        //     } else if (b > 100) {
+        //         alert('输大啦，请重新输入');
+        //     } else {
+        //         alert('输入正确');
+        //         break;
+        //     }
+        // }
+
+        // do {
+        //     var b = prompt('请输入您猜测的数字');
+        //     if (b < 100) {
+        //         alert('输小啦，请重新输入');
+        //     } else if (b > 100) {
+        //         alert('输大啦，请重新输入');
+        //     } else {
+        //         alert('输入正确');
+        //         break;
+        //     }
+        // } while (1);
+
+        //案例5:找零
+        var money = prompt('请输入金额(100以内)');
+
+        while (true) {
+            if (money <= 0 || money >= 100 || isNaN(money)) {
+                money = prompt('请输入金额(100以内)');
+            } else {
+                var a = parseInt(money / 50); //50
+                var b = parseInt(money % 50 / 20); //20
+                var c = parseInt(money % 50 % 20 / 10); //10
+                var d = parseInt(money % 50 % 20 % 10 / 5); //5
+                var e = parseInt(money % 50 % 20 % 10 % 5 / 1); //1
+                document.write(`找零情况如下:<br>50元${a}张<br>20元${b}张<br>10元${c}张<br>5元${d}张<br>1元硬币${e}枚`);
+                break;
+            }
+        }
+    </script>
+</body>
+
+</html>

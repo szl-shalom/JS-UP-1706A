@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 案例1：编写一个函数 spacify，返回一个每个字符中添加空格的字符。例如：
+        // spacify("ScriptOJ") // => "S c r i p t O J"
+
+        // function spacify(str) {
+        //     // var str1 = '';
+        //     // for (var i = 0; i < str.length; i++) {
+        //     //     str1 += str[i] + ' ';
+        //     // }
+        //     return str.split("").join(" ");
+        // }
+
+        // var res = spacify("ScriptOJ");
+        // console.log(res);
+
+        //案例2:将字符串 "get-element-by-id"转为小驼峰格式:  'getElementById';
+
+        // var str = 'get-element-by-id';
+        // var arr = str.split('-');
+        // var str1 = arr[0];
+        // for (var i = 1; i < arr.length; i++) {
+        //     str1 += arr[i][0].toUpperCase() + arr[i].slice(1);
+        // }
+        // console.log(str1);
+
+        // 案例3：补全代码题：给定字符串 str，检查其是否包含数字，包含返回 true，否则返回 false。
+
+        // function containsNumber(str) {
+        //     //  此处补全代码，实现题目要求
+        //     for (var i = 0; i < str.length; i++) {
+        //         if (!isNaN(str[i])) {
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
+        // // 调用containsNumber()
+        // console.log(containsNumber('abc001')); // 打印结果是true
+
+        //案例4：封装一个函数，将字符串中的每一个数字乘以5，其它不变，然后返回结果
+        // function fn(str) {
+        //     var str1 = '';
+        //     for (var i = 0; i < str.length; i++) {
+        //         if (!isNaN(str[i])) {
+        //             str1 += str[i] * 5;
+        //         } else {
+        //             str1 += str[i];
+        //         }
+        //     }
+        //     return str1;
+        // }
+        // var res = fn('abc12drf345g5');
+        // console.log(res);
+
+        /*  案例5：封装一个函数，使用prompt弹出输入框，要求用户输入一个英文的语句，
+         *  将输入语句的第二个单词截取出来
+         */
+        // function fn() {
+        //     var res = prompt('请输入一个英文的语句').trim();
+        //     var arr = res.split(' ');
+        //     return arr[1].replace(/,|\./, '');
+        // }
+
+        // console.log(fn());
+
+        /*案例6：封装一个函数，模拟substr方法截取字符串
+         *第一个参数表示要从哪个字符串中截取
+         *第二个参数表示开始截取位置,如果没有第二个参数则从头截到尾
+         *第三个参数表示要截取的个数,如果没有第三个参数则截到最后
+         */
+
+        // function substr(str, start, len) {
+        //     //短路逻辑设置默认值
+        //     start = start || 0; //开始位置
+        //     len = len || str.length - start; //要截取的个数
+        //     var str1 = '';
+        //     for (var i = start; i < start + len; i++) {
+        //         str1 += str[i];
+        //     }
+        //     return str1;
+        // }
+
+        // var res = substr('abcdefg', 2);
+        // console.log(res);
+
+        // function fn(n = 4) {
+        //     alert(n);
+        // }
+        // console.log(fn(3))
+        // console.log(fn(3))
+    </script>
+</body>
+
+</html>

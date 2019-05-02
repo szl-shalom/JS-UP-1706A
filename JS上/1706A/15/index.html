@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // 1、通过函数表达式声明ToFixed（）函数，并定义形参(10分)      10
+        var ToFixed = function (num, len) {
+            // 2、判断是否省略了len,用0来代替保留的小数位数（10分）
+            len = len || 0
+            // console.log(len)
+            // 3、判断len是否在0~20之间，如果超出范围，则报错。（10分）
+            if (len < 0 || len > 20)
+                return "报错"
+            // 4、正确的拆分num整数与小数部分（10分）
+            num = num.toString()
+            var int = num.split(".")[0]
+            var float = num.split(".")[1]
+            // 5、判断num小数个数是否小于len，如果小于不够部分则补零（10分）
+            if (float.length < len)
+                for (var i = float.length; i < len; i++)
+                    float += "0"
+            // 6、如果num小数个数大于len，则按len指定的位置截取小数（10分）
+            if (float.length > len)
+                float = float.slice(0, len)
+            // 7、将截取后的小数与整数部分拼接并输出（10分）
+            return float.length ? int + "." + float : int
+        }
+        console.log(ToFixed(13.2346545))
+
+
+
+
+
+
+
+
+
+        // 8、正确的调用函数并传递实参（10分）
+        // 9、语句逻辑清晰（10分）
+        // 10、命名及书写代码语法规范（10分）
+        // console.log(ToFixed(13.234, 10))
+        // console.log(ToFixed(13.234))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

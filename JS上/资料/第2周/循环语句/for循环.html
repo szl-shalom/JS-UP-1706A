@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        /* for循环
+         *for(初始值;循环条件;步长){
+         *    循环体;
+         *}
+         * 1.初始值  (只执行一次)
+         * 2.循环条件
+         * 3.循环体
+         * 4.步长
+         * 
+         * continue   跳过本次循环，执行下一次循环
+         * break      终止循环
+         */
+        // 案例1:for中的死循环
+        // for (;;) {}
+        // for (var i = 0;; i++) {}
+        // for (var i = 1; i > 0; i++) {}
+
+        // 案例2: for中的i
+        // for (var i = 1; i <= 9; i += 3) {
+        //     console.log(i);
+        // }
+
+        // 案例3: 计算50以内的奇数累加和
+        // for (var i = 1, sum = 0; i <= 50; i++) {
+        //     if (i % 2 == 1) {
+        //         // sum = sum+i;
+        //         sum += i;
+        //     }
+        // }
+        // console.log(sum);
+        // for (var i = 1, sum = 0; i <= 50; i += 2) {
+        //     sum += i;
+        // }
+        // console.log(sum);
+
+        // 案例4: 找出30以内除了16和20,能被4整除的数的累加和
+        // for (var i = 0, sum = 0; i <= 30; i++) {
+        //     if (i % 4 == 0 && i != 16 && i != 20) {
+        //         sum += i;
+        //     }
+        // }
+        // console.log(sum);
+
+        // 案例5: 在控制台输出所有的"水仙花数"; 
+        //   水仙花是什么:
+        //   水仙花:指的是三位数
+        //   水仙花的特点:三位数中个位的立方和加上十位上数据的立方和加上百位上的数据的立方和=该数据本身
+        //   如：153 = 3*3*3+5*5*5+1*1*1
+
+        for (var i = 100; i < 100; i++) {
+            var a = i 
+        }
+
+
+        // for (var i = 100; i <= 999; i++) {
+        //     var a = i % 10; //个位数
+        //     var b = parseInt(i / 10) % 10; //十位数
+        //     var c = parseInt(i / 100); //百位数
+        //     if (a * a * a + b * b * b + c * c * c == i) {
+        //         console.log(i);
+        //     }
+        // }
+
+        // for (var a = 1; a <= 9; a++) {
+        //     for (var b = 0; b <= 9; b++) {
+        //         for (var c = 0; c <= 9; c++) {
+        //             if (a * a * a + b * b * b + c * c * c == '' + a + b + c) {
+        //                 console.log('' + a + b + c);
+        //             }
+        //         }
+        //     }
+        // }
+
+
+        // 案例6:公园里有一只猴子和一堆桃子，猴子每天吃掉桃子总数的一半，把剩下一半中扔掉一个坏的。 
+        // 到第七天的时候，猴子睁开眼发现只剩下一个桃子。问公园里刚开始有多少个桃子？
+
+        // for (var i = 1, tao = 1; i <= 6; i++) {
+        //     tao = (tao + 1) * 2
+        // }
+        // console.log(tao);
+
+        // 案例7: 循环中的continue和break;
+        // var sum = 1;
+        // for (var i = 0; i < 10; i++) {
+        //     if (i % 2 == 0) {
+        //         continue;
+        //     }
+        //     sum += i;
+        // }
+        // console.log(sum);
+
+        // for (var i = 0; i < 10; i++) {
+
+        //     if (i == 5) {
+        //         break;
+        //     }
+        //     console.log(i);
+        // }
+        document.body.style.color = 'hotpink';
+        document.body.style.textAlign = 'center';
+
+        // 案例8: 在页面上用红色的❤打印7*7的正方形
+        for (var i = 1; i <= 7; i++) {
+            for (var j = 1; j <= 7; j++) {
+                document.write('◉');
+            }
+            document.write('<br>');
+        }
+        document.write('<hr>');
+        // 案例9: 在页面上用红色的❤打印正三角
+        for (var i = 1; i <= 7; i++) {
+            for (var j = 1; j <= i; j++) {
+                document.write('△');
+            }
+            document.write('<br>');
+        }
+
+        document.write('<hr>');
+
+        // 案例10: 在页面上用红色的❤打印倒三角
+        for (var i = 1; i <= 7; i++) {
+            for (var j = 7; j >= i; j--) {
+                document.write('△');
+            }
+            document.write('<br>');
+        }
+
+
+        // 案例11: 打印九九乘法表♂'
+        // for (var i = 1; i <= 9; i++) {
+        //     for (var j = 1; j <= i; j++) {
+        //         document.write(j + '*' + i + '=' + i * j + '  ');
+        //     }
+        //     document.write('<br>');
+        // }
+
+
+
+        // 案例12: 用for循环在页面输出 h1-h6标签，内容为'这是h?标签'
+        //模板字符串
+        // for (var i = 1; i <= 6; i++) {
+        //     // document.write('<h' + i + '>这是h' + i + '标签</h' + i + '>');
+        //     document.write(`<h${i}>这是h${i}标签</h${i}>`);
+        // }
+
+        // 案例13: 统计字符串 "hello world"中'o'和'l'总共出现了多少次
+        // var str = "hello world";
+        // for (var i = 0, sum = 0; i < str.length; i++) {
+        //     if (str[i] == 'o' || str[i] == 'l') {
+        //         sum++;
+        //     }
+        // }
+        // console.log(sum);
+
+        // 案例14: 把字符串 "123hello520"中   
+        // 每一个数字乘以5，其他不变
+        // 组成一个新字符串，输出到控制台
+        // var str = "123hello520";
+        // var newStr = '';
+        // for (var i = 0; i < str.length; i++) {
+        //     if (isNaN(str[i])) {
+        //         //不是数字
+        //         newStr += str[i];
+        //     } else {
+        //         //是数字
+        //         newStr += str[i] * 5;
+        //     }
+        // }
+        // console.log(newStr);
+    </script>
+</body>
+
+</html>

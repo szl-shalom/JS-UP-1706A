@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 系统对话框
+        // 确认框  confirm('提示内容')   确认(true)     取消(false)  
+        // var res = confirm('周末去看电影吗？');
+        // console.log(res);
+        // if (res) {
+        //     alert('玫瑰香槟已备好');
+        // } else {
+        //     alert('天台见');
+        // }
+        // 输入框  prompt('提示内容')   确认(输入框中的内容)    取消 (null)
+        // var res = prompt('晚上吃什么？');
+        // console.log(res);
+
+
+        // 案例1:在ageA、ageB和ageC中找出能被3整除的那个数,赋值给number
+        // if (ageA % 3 == 0) {
+        //     number = ageA;
+        // } else if (ageB % 3 == 0) {
+        //     number = ageB;
+        // } else if (ageC % 3 == 0) {
+        //     number = ageC;
+        // }
+        // console.log(number); //60
+
+        /*案例2:验证手机号          
+         *如果是数字再去验证手机号的长度，如果手机号长度不等于11则提示'手机格式错误',
+         *否则提示输入正确
+         *如果不是数字则提示用户输入数字。
+         */
+        // var tel = prompt('请输入手机号');
+        // if (!isNaN(tel)) {
+        //     //是数字，再判断长度
+        //     if (tel.length != 11) {
+        //         alert('手机格式错误');
+        //     } else {
+        //         alert('输入正确');
+        //     }
+        // } else {
+        //     alert('请输入数字');
+        // }
+
+        // 案例3:根据用户输入的内容判断今天星期几,要求用户必须输入1-7之间的数字,否则弹出‘输入错误请重新输入’
+
+        // var week = parseInt(prompt('请输入今天星期几'));
+        // // var day = ['一', '二', '三', '四', '五', '六', '天'];
+        // var day1 = '一二三四五六日';
+        // if (week <= 7 && week >= 1) {
+        //     alert('今天星期' + day1[week - 1]);
+        // } else {
+        //     alert('输入错误请重新输入');
+        // }
+
+        // /* 案例4:检测变量a的数据类型
+        //  *  是字符串弹出'字符串'
+        //  *  是数字: 再判断是正数弹出'正数',负数弹出'负数',否则弹出'NaN'
+        //  *  是布尔值: 再判断是true弹出'真',false弹出'假'
+        //  *  是undefined弹出'未定义'
+        //  *  是对象:再判断是null弹出'空',否则弹出'对象'
+        //  */
+
+        // var a = null;
+        // if (typeof a == 'string') {
+        //     alert('字符串');
+        // } else if (typeof a == 'number') {
+        //     if (a < 0) {
+        //         alert('负数');
+        //     } else if (a >= 0) {
+        //         alert('正数');
+        //     } else {
+        //         alert('NaN');
+        //     }
+        // } else if (typeof a == 'boolean') {
+        //     if (a) {
+        //         alert('真');
+        //     } else {
+        //         alert('假');
+        //     }
+        // } else if (typeof a == 'undefined') {
+        //     alert('未定义');
+        // } else if (typeof a == 'object') {
+        //     // if (a == undefined || a == null) {
+        //     //     alert('空');
+        //     // } else {
+        //     //     alert('对象');
+        //     // }
+        //     if (Boolean(a)) {
+        //         alert('对象');
+        //     } else {
+        //         alert('空');
+        //     }
+        // }
+
+        //案例5: 相亲
+        // 高(height)：180cm以上；富(money)：月薪2万；帅(face)：90以上；
+        // 如果这三个条件同时满足，则：“确认过眼神，你是对的人”
+        // 如果这三个条件有为真的情况，则：“嫁了吧，比上不足，比下有余。”
+        // 如果这三个条件都不满足，则：“好的爱情不怕迟到，有缘再见！”
+        var height = prompt('请输入身高');
+        var money = prompt('请输入月薪');
+        var face = prompt('请输入颜值');
+        if (height >= 180 && money >= 20000 && face >= 90) {
+            alert('确认过眼神，你是对的人');
+        } else if (height >= 180 || money >= 20000 || face >= 90) {
+            alert('嫁了吧，比上不足，比下有余');
+        } else {
+            alert('好的爱情不怕迟到，有缘再见！');
+        }
+    </script>
+</body>
+
+</html

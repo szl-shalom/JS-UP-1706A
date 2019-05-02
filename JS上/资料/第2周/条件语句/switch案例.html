@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.企业发放的奖金根据利润提成，根据用户输入的利润，求发放的奖金? 请通过条件判断语句来完成。
+        // (1)利润低于或等于10万，奖金可提10%
+        // (2)利润高于10万，低于20万时，低于10万的部分按10%提，高于10万的部分按7.5%提
+        // (3)利润高于20万,低于10万的部分按10%提，高于10万低于20万的部分按7.5%提,高于20万的按5%提
+
+        // var money = prompt('请输入利润');
+        // var bouns;
+        // if (money >= 0 && money <= 100000) {
+        //     bouns = money * 0.1;
+        // } else if (money > 100000 && money <= 200000) {
+        //     bouns = 10000 + (money - 100000) * 0.075;
+        // } else if (money > 200000) {
+        //     bouns = 10000 + 7500 + (money - 200000) * 0.05;
+        // }
+        // alert('利润' + money + '元时，可获取奖金' + bouns);
+
+        //2.让用户输入月份，提示相应的季节(分别用switch和if两种做法)。
+        //12,1,2冬季
+        //3,4,5春季
+        //6,7,8夏季
+        //9,10,11秋季
+
+        var month = prompt('请输入月份');
+        // switch (month) {
+        //     case 12:
+        //     case 1:
+        //     case 2:
+        //         alert('冬季');
+        //         break;
+        //     case 3:
+        //     case 4:
+        //     case 5:
+        //         alert('春季');
+        //         break;
+        //     case 6:
+        //     case 7:
+        //     case 8:
+        //         alert('夏季');
+        //         break;
+        //     case 9:
+        //     case 10:
+        //     case 11:
+        //         alert('秋季');
+        //         break;
+        //     default:
+        //         alert('您的输入有误，请重新输入');
+        // }
+
+        if (month == 12 || month == 1 || month == 2) {
+            alert('冬季');
+        } else if (month == 3 || month == 4 || month == 5) {
+            alert('春季');
+        } else if (month == 6 || month == 7 || month == 8) {
+            alert('夏季');
+        } else if (month == 9 || month == 10 || month == 11) {
+            alert('秋季');
+        } else {
+            alert('您的输入有误，请重新输入');
+        }
+
+
+        // var month = prompt('请输入月份');
+        // switch (true) {
+        //     case month == '12' || month == '1' || month == '2':
+        //         alert('冬季');
+        //         break;
+        //     case month == '3' || month == '4' || month == '5':
+        //         alert('春季');
+        //         break;
+        //     case month == '6' || month == '7' || month == '8':
+        //         alert('夏季');
+        //         break;
+        //     case month == '9' || month == '10' || month == '11':
+        //         alert('秋季');
+        //         break;
+        //     default:
+        //         alert('您的输入有误');
+        // }
+        // switch (month) {
+        //     case '12':
+        //     case '1':
+        //     case '2':
+        //         alert('冬季');
+        //         break;
+        //     case '3':
+        //     case '4':
+        //     case '5':
+        //         alert('春季');
+        //         break;
+        //     case '6':
+        //     case '7':
+        //     case '8':
+        //         alert('夏季');
+        //         break;
+        //     case '9':
+        //     case '10':
+        //     case '11':
+        //         alert('秋季');
+        //         break;
+        //     default:
+        //         alert('您的输入有误');
+        // }
+        // if (month == '12' || month == '1' || month == '2') {
+        //     alert('冬季');
+        // } else if (month == '3' || month == '4' || month == '5') {
+        //     alert('春季');
+        // } else if (month == '6' || month == '7' || month == '8') {
+        //     alert('夏季');
+        // } else if (month == '9' || month == '10' || month == '11') {
+        //     alert('秋季');
+        // } else {
+        //     alert('您的输入有误');
+        // }
+    </script>
+</body>
+
+</html>

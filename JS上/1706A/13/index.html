@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 对象方法有啥用？
+
+        // var obj = {}
+        // obj.name = "1706A"
+
+        // obj.sayName = function () {
+        //     console.log(obj.name)
+        // }
+
+        // obj.modifyName = function (param) {
+        //     obj.name = param
+        // }
+
+        // var obj = {
+        //     class: "1706A",
+        //     count: "38",
+        //     dream: "升班",
+        //     getClass: function () {
+        //         return obj.class;
+        //     },
+        //     getCount: function () {
+        //         return obj.count;
+        //     },
+        //     getDream: function () {
+        //         return obj.dream;
+        //     }
+        // }
+
+        // obj.setClass = function (param) {
+        //     obj.class = param
+
+        // }
+        // obj.setCount = function (param) {
+        //     obj.count = param
+
+        // }
+        // obj.setDream = function (param) {
+        //     obj.dream = param
+        // }
+        // // 给obj对象加一个方法Alert  控制台打印 我是1706A的学生，我们班级38人，我们的目标是升班
+
+        // obj.Alert = function () {
+        //     console.log(`我是${obj.getClass()}的学生，我们班级${obj.count}人，我们的目标是${obj.dream}`)
+        // }
+        // obj.Alert()
+
+
+        // var a = obj.class
+        // var b = obj.count
+        // var c = obj.dream
+        // console.log(a, b, c)
+
+        // obj.setClass("1706B")
+        // obj.setCount("40")
+        // obj.setDream("也是升班")
+
+        // var aa = obj.getClass()
+        // var bb = obj.getCount()
+        // var cc = obj.getDream()
+        // console.log(aa, bb, cc)
+        // obj.Alert()
+
+
+
+
+
+
+
+
+        // 变量提升 var a提前 求值？
+        // var a = undefined
+
+        // var a = 10;
+        // console.log(a)  //10
+        // function test(b) {
+
+        //     a = 100;
+        //     console.log(a);  //100
+        //     console.log(this.a);  //10
+        //     var a;
+        //     console.log(a);  //100
+        //     console.log(b);  //1
+        //     console.log(c)
+        //     function
+
+
+
+        // }
+
+        // test(1)
+        // GO =>{
+        //     a:10,
+        //     test:function(){
+        //         a = 100;
+        //         console.log(a);
+        //         console.log(this.a);
+        //         var a;
+        //         console.log(a);
+        //     }
+        // }
+
+        //                             AO =>  {
+        //                                 a:100,
+        //                                 b:1
+        //                             }    
+        // ao
+        // 立即执行函数 | 封装函数
+
+
+
+
+        // (function fn(a) {
+        //     console.log(a)
+        // }(1))
+
+
+        //     console.log(fn)
+        // (function (a) {
+        //     console.log(a)
+        // }(1))
+
+
+
+        // 函数的return 的作用  涉及的层面  细讲
+        // function get(a) {
+        //     return a + 1
+        //     console.log(123)
+
+        // }
+
+        // var b = get(1)
+
+        // function test(data) {
+        //     if (isNaN(data))
+        //         return "不是数字"
+        //     if (data < 1 || data > 12)
+        //         return "不是1-12的数组"
+        //     return "符合要求，是数字。并且是1-12的数"
+        // }
+        // var a = test("adaweqwe")
+        // var b = test(255)
+        // var c = test(3)
+
+        // function fn(a) {
+        //     if (isNaN(a))
+        //         return "不是一个数字"
+        //     if (a < 1 || a > 12)
+        //         return "不是1到12之间的数字"
+
+        //     return "OK"
+        // }
+
+        //typeof 检测类型   5个基本类型的转化
+
+
+        // "number" | "string" | "undefined" | "boolean" | "object" | "function"
+
+
+
+        // Number  
+        // 1 Number("true") 
+
+        // 2 parseInt(值) 
+        // 3 parseFloat(值) 
+
+        // String   
+        // 1 String()
+        // 2 toString()
+        // Boolean
+
+        // "" false null 0 undefined NaN
+
+
+        // null
+        // undefined
+
+
+
+        // dom操作
+
+        // for 双层循环或者多层循环  （自己怎么理解的） | 循环范围 | while4
+        // function twoArrToOneArr(data) {
+        //     var arr = data
+        //     var arr1 = []
+
+        //     for (var i = 0; i < arr.length; i++) {
+        //         for (var j = 0; j < arr[i].length; j++) {
+        //             if (arr[i][j] !== "" && arr[i][j] !== undefined && arr[i][j] !== null)
+        //                 arr1[arr1.length] = arr[i][j]
+        //         }
+        //     }
+        //     // console.log(arr1)
+        //     return arr1
+        // }
+
+        // var arr = twoArrToOneArr([[1, 2, 3], [4, 5]])
+        // console.log(arr)
+        // var arr1 = twoArrToOneArr([[null, {}, undefined], ["", false, true]])
+        // console.log(arr1)
+        // i = 0;  j = 0  =>arr[0][0] = 1
+        //         j = 1  =>arr[0][1] = 2
+        // i = 1;  j = 0  =>arr[1][0] = 4
+        //         j = 1  =>arr[1][1] = 5
+        //         j = 2  =>arr[1][2] = 6
+
+        // 二位数组
+
+        // 算数运算符优先级  | 逻辑运算
+
+        // + - * / % 
+
+        // switch if
+
+
+
+        // var arr = []
+        // console.log(arr.length)  // 0
+        //       0
+        // arr[arr.length] = 1
+
+        // console.log(arr)   [1]
+        // console.log(arr.length)    // 1
+
+        //          1
+        // arr[arr.length] = 2
+
+        // console.log(arr.length)  2
+        // console.log(arr)  [1,2]
+
+
+        // arr[arr.length] = 3
+
+
+        // console.log(arr)
+
+
+
+
+
+
+        // 0 || null
+        // null
+
+
+
+
+        // null
+
+        // if ("3" - 3 && 5 < 4 || null)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // var compute = {
+        // }
+        // compute.open = function () {
+
+        // }
+        // compute.close = function () {
+
+        // }
+        // console.log(compute)
+
+        // for (var i = 0; i < 10; i++) {
+        //     for (var j = 10; j < 20; j++) {
+        //         console.log(j)
+        //         break;
+        //     }
+        //     console.log(i)
+        // }
+
+        // for (var i = 0; i < 10; i++) {
+        //     if (i == 5)
+        //         continue
+        //     console.log(i)
+        // }
+
+        // for (var i = 1; i <= 100; i++) {
+        //     if (i % 7 == 0) {
+        //         console.log(i)
+        //     }
+        // }
+
+        // for (var i = 2; i < 1000; i++) {
+        //     var num = 0;
+        //     for (var j = 1; j <= i; j++) {
+        //         if (i % j == 0) {
+        //             num++;
+        //         }
+        //     }
+
+        //     if (num == 2) {
+        //         console.log(i)
+        //     }
+        // }
+
+        // for (var i = 2; i <= 1000; i++) {
+        //     var num = 0;
+        //     for (var j = 2; j < i; j++) {
+        //         if (i % j == 0) {
+        //             num++;
+        //         }
+        //     }
+        //     if (num == 0) {
+        //         console.log(i);
+        //     }
+        // }
+
+    </script>
+</body>
+
+</html>

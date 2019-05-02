@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        button {
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            background: #333;
+            border-radius: 15px;
+            border: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="btn">随机颜色</button>
+    <script>
+        //作业1：
+        // 点击按钮时改变body的背景色
+        // 背景色随机生成
+        // 1.封装一个生成随机颜色的方法
+        // 2.点击按钮时修改body的背景色
+        // 3.body的背景的 = 调用随机颜色的返回值
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+            document.body.style.background = '#' + Math.random().toString(16).substr(2, 6);
+        }
+
+        // function randomColor() {
+        //     var str = '0123456789abcdef';
+        //     var str1 = '#';
+        //     for (var i = 0; i < 6; i++) {
+        //         var num = Math.floor(Math.random() * str.length);
+        //         str1 += str[num];
+        //     }
+        //     return str1;
+        // }
+    </script>
+</body>
+
+</html>

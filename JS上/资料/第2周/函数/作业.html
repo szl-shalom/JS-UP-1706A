@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*作业1
+         * 封装一个函数,接收一个字符串类型的参数,如果不是字符串则返回‘请输入字符串’;
+         * 如果是字符串则将字符串顺序颠倒后返回。
+         * */
+
+        function fn(str) {
+            if (typeof str == 'string') {
+                var newStr = '';
+                for (var i = str.length - 1; i >= 0; i--) {
+                    newStr += str[i];
+                }
+                return newStr;
+            } else {
+                return '请输入字符串';
+            }
+        }
+
+        var res = fn('abcdefg');
+        var res1 = fn(132243);
+        console.log(res);
+        console.log(res1);
+
+        /**作业2
+         * 封装一个打印三角的函数,共有两个参数，
+         * 第一个参数为布尔值，true则打印正三角，fasle则打印倒三角
+         * 第二个参数用于控制打印的行数
+         */
+
+        function fn(bool, num) {
+            if (bool === true) {
+                //正三角
+                for (var i = 1; i <= num; i++) {
+                    for (var j = 1; j <= i; j++) {
+                        document.write('❤');
+                    }
+                    document.write('<br>');
+                }
+            } else if (bool === false) {
+                //倒三角
+                for (var i = 1; i <= num; i++) {
+                    for (var j = num; j >= i; j--) {
+                        document.write('❤');
+                    }
+                    document.write('<br>');
+                }
+            }
+        }
+        fn(true, 6);
+        fn(false, 6);
+    </script>
+</body>
+
+</html>

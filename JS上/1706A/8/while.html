@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        /* text-align: center; */
+    }
+</style>
+
+<body>
+    <script>
+        // 案例1:while中的死循环
+        // while (true) {
+
+        // }
+        // 案例2: while中的i
+
+        // 案例3: 计算1-20的累加和
+        // var i = 1;
+        // var sum = 0;
+        // while (i <= 20) {
+        //     sum += i
+        //     i++
+        // }
+        // 案例4: 找出30以内除了16和20,能被4整除的数
+        // var i = 1;
+        // while (i <= 30) {
+        //     if (i != 16 && i != 20 && i % 4 == 0) {
+        //         cosnole.log(i)
+        //     }
+
+
+        //     i++
+        // }
+
+        // 案例5: 控制台输出100以内的奇数(偶数) : 两种方法
+
+
+        // var i = 1;
+        // while (i <= 100) {
+        //     if (i % 2 == 0) {
+        //         console.log(i)
+        //     }
+        //     i++
+        // }
+
+        // var i = 0;
+        // while (i < 100) {
+        //     console.log(i)
+        //     i = i + 2
+        // }
+
+
+
+        // 案例6: 在控制台输出所有的"水仙花数"; 
+        // 水仙花是什么:
+        // 水仙花:指的是三位数
+        // 水仙花的特点:三位数中个位的立方和加上十位上数据的立方和加上百位上的数据的立方和=该数据本身
+        // 如：153 = 3*3*3+5*5*5+1*1*1
+
+        // var i = 100
+        // while (i < 1000) {
+        //     var a = parseInt(i / 100)  //获取百位数字
+        //     var b = parseInt(i / 10 % 10)  //获取十位数字
+        //     var c = i % 10
+        //     if (i == a * a * a + b * b * b + c * c * c)
+        //         console.log(i)
+
+        //     i++
+        // }
+
+
+
+
+
+
+
+
+        // 案例8: 在页面上用红色的❤打印7*7的正方形
+
+        // var i=1
+        // while(i<8)
+        // {
+        //     var j=1;
+        //     while(j<i)
+        //     {
+        //         document.write("*")
+        //         j++;
+        //     }
+        //     document.write("<br>")
+        //     i++;
+
+        // }
+
+
+
+        // var i=8
+        // while(i>0)
+        // {
+        //     var j=1;
+        //     while(j<i)
+        //     {
+        //         document.write("*")
+        //         j++;
+        //     }
+        //     document.write("<br>")
+        //     i--;
+
+        // }
+
+        // 案例9: 在页面上用红色的❤打印正三角
+
+        // 案例10: 在页面上用红色的❤打印倒三角
+
+        // 案例11: 打印九九乘法表
+
+        var i = 1;
+        while (i <= 9) {
+            var j = 1;
+            var str = ``;
+            while (j <= i) {
+                str += j + "*" + i + "=" + i * j + " "
+                j++
+            }
+            document.write(str)
+            document.write("<br>")
+
+            i++
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

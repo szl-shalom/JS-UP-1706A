@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        #list {
+            width: 500px;
+            margin: 0 auto;
+        }
+        
+        #list li {
+            width: 400px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: pink;
+            color: aliceblue;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list">
+        <li>今夕何夕兮</li>
+        <li>搴舟中流</li>
+        <li>今日何日兮</li>
+        <li>得与王子同舟</li>
+        <li>蒙羞被好兮</li>
+        <li>不訾诟耻</li>
+        <li>心几烦而不绝兮</li>
+        <li>得知王子</li>
+        <li>山有木兮木有枝</li>
+        <li>心悦君兮君不知</li>
+    </ul>
+
+    <script>
+        //1.将页面中文字个数为奇数的标签背景色改为: #2bb8aa
+        //2.将页面中文字个数为偶数的标签背景色改为: #ccc
+
+        var lis = document.getElementsByTagName('li');
+        for (var i = 0; i < lis.length; i++) {
+            var j = lis[i].innerHTML;
+            if (j.length % 2 == 1) {
+                lis[i].style.background = '#2bb8aa'
+            } else {
+                lis[i].style.background = '#ccc'
+            }
+        }
+    </script>
+</body>
+
+</html>

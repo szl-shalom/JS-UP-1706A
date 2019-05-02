@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 创建日期对象实例
+        // 创建当前日期
+        // var time = new Date;
+        // console.log(time);
+        //以字符串的方式传参:时分秒后面必须加冒号
+
+        // var time1 = new Date(2009, 12, -1);
+        // console.log(time1);
+
+
+        //以数字的方式创建:月份从0开始算  0-11
+        // var time2 = new Date(2019, 8, 7, 10, 10, 10);
+        // console.log(time2);
+        //日期对象的容错能力
+        // var time3 = new Date(2019, 2, -1);
+        // console.log(time3);
+
+
+        //时间戳:  计算机元年 1970年1月1日0:0:0距离你设置时间的毫秒数
+        // var time4 = new Date;
+        // console.log(Number(time4));
+        // console.log(time4.getTime());
+        // console.log(time4.valueOf());
+        // console.log(Date.parse(time4));
+        // console.log(+time4);
+        //获取时间 get
+        // var time5 = new Date();
+        // console.log(time5.toLocaleString()); //转为当地时间字符串
+        // var year = time5.getFullYear(); //年
+        // console.log(year);
+        // var month = time5.getMonth(); //月: 月份从0开始算  0-11
+        // console.log(month);
+        // var date = time5.getDate(); //日
+        // console.log(date);
+        // var day = time5.getDay(); //星期: 星期天是 0
+        // console.log(day);
+        // var hour = time5.getHours(); //小时
+        // console.log(hour);
+        // var min = time5.getMinutes(); //分钟
+        // console.log(min);
+        // var second = time5.getSeconds(); //秒
+        // console.log(second);
+        // var mill = time5.getMilliseconds(); //豪秒
+        // console.log(mill);
+
+        //设置修改日期时间set
+        // time5.setFullYear(2020, 4, 8);
+        // time5.setMonth(6, 9);
+        // time5.setDate(13);
+        // time5.setHours(15, 15, 15);
+        // time5.setMinutes(40);
+        // time5.setSeconds(40);
+        // time5.setMilliseconds(2003);
+        // console.log(time5);
+
+        // 案例1: 封装一个函数，只有一个参数：用于接受传递过来的日期对象
+        // 将传递过来的日期对象处理成以下格式返回: 2019年2月27日 14:30:00 星期？
+
+        // function fn(t) {
+        //     var y = t.getFullYear(); //年
+        //     var m = t.getMonth() + 1; //月
+        //     var d = t.getDate();
+        //     var h = t.getHours();
+        //     var min = t.getMinutes();
+        //     var s = t.getSeconds();
+        //     var w = t.getDay();
+        //     var week = '日一二三四五六';
+        //     document.write(`${y}年${m}月${d}日 ${h}:${min}:${s} 星期${week[w]}`);
+        // }
+        // var time = new Date();
+        // fn(time);
+
+        // //案例2:  封装一个函数,获取n天之后星期几?
+        // function getWeek(n) {
+        //     var time = new Date;
+        //     time.setDate(time.getDate() + n); // 未来日期 = 今天的日期 + n天之后
+        //     var d = time.getDay();
+        //     console.log(d);
+        // }
+
+        // getWeek(3);
+
+
+
+        //案例3：封装一个函数，用于计算两个日期之间相隔多长时间（倒计时）
+        //接收2个参数：第一个为要设置倒计时的时间，第二个为提示信息
+
+
+
+        // function fn(time, tip) {
+        //     document.body.innerHTML = '';
+        //     var t1 = new Date; //当前时间
+        //     var t2 = new Date(time); //未来时间
+        //     t1 = t1.getTime();
+        //     t2 = t2.valueOf();
+        //     var t = t2 - t1;
+        //     var d = parseInt(t / 1000 / 60 / 60 / 24),
+        //         h = parseInt(t / 1000 / 60 / 60 % 24),
+        //         m = parseInt(t / 1000 / 60 % 60),
+        //         s = parseInt(t / 1000 % 60);
+        //     document.write(tip + d + '天' + h + '小时' + m + '分' + s + '秒');
+        // }
+
+        // fn('2019-8-7', '距离七夕还剩');
+
+        // setInterval(function() {
+        //     fn('2019-8-7', '距离七夕还剩');
+        // }, 1000);
+
+
+
+        // var date = new Date()
+        // console.log(date.getDate())  //获取几号
+        // console.log(date.getDay())   //获取星期几
+        // console.log(date.getFullYear())  //获取今年是第几年
+        // console.log(date.getHours())  // 获取现在几小时
+        // console.log(date.getMilliseconds())  //获取当前毫秒数
+        // console.log(date.getMinutes())  //获取当前分钟
+        // console.log(date.getMonth())  //获取当前月份
+        // console.log(date.getSeconds()) //获取秒数
+        // console.log(date.getTime())  //转化为时间戳
+
+        function date(start, end) {
+            var a = new Date(start)
+            var b = new Date(end)
+            var c = b - a
+            console.log(c)
+            if (c <= 0) {
+                alert("已经结束了")
+            } else {
+                // 获取年月日
+                // var d = new Date(c).getFullYear()
+                // var e = new Date(c).getMonth()
+                // var f = new Date(c).getDate()
+                // console.log(d, e, f)
+
+                console.log(parseInt(c / 1000 / 60 / 60 / 24 / 365)) //获取年
+                console.log(parseInt(c / 1000 / 60 / 60 / 24 % 365))  //获取天数
+                console.log(parseInt(c / 1000 / 60 / 60 / 24 % 365 / 30)) //获取月份
+                console.log(parseInt(c / 1000 / 60 / 60 / 24 % 365 % 30))  //获取余下天数
+                console.log(c / 1000 / 60 / 60 % 24)  //获取小时
+                console.log(c / 1000 / 60 % 60)  //获取分钟
+            }
+        }
+        date("2018-05-03 10:00", "2019-07-05 12:10")
+
+    </script>
+</body>
+
+</html>

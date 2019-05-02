@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #list {
+            width: 300px;
+            margin: 0 auto;
+        }
+        
+        #list li {
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            text-align: center;
+            background: rgba(0, 0, 0, .6);
+            list-style: none;
+        }
+        
+        #list li:hover {
+            background: #ffcccc;
+            cursor: pointer;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list"></ul>
+    <script>
+        //作业1：封装一个函数,将data数组中的每一项内容放到li标签中,渲染（输出）到页面
+        //使用forEach和for两种方法编写
+        var data = ['DIV', 'JS上', 'JS下', '模块化', 'PC项目整合',
+            '移动开发', '服务端开发', '移动项目整合', 'VUE', 'React', '小程序', '三个月实训'
+        ];
+
+        function render(data) {
+            //补全代码
+
+        }
+        var res = render(data);
+        list.innerHTML = res;
+    </script>
+</body>
+
+</html>

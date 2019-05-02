@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="img/pic1.png" alt="" id="img">
+    <button id="btn">开灯</button>
+
+    <script>
+        document.body.style.background = '#000';
+        var btn = document.getElementById('btn'); //找到按钮
+        var img = document.getElementById('img'); //找到图片
+
+        //给按钮绑定单击事件
+        btn.onclick = function() {
+            if (this.innerHTML == '开灯') {
+                img.src = 'img/pic2.png'; //修改图片路径
+                this.innerHTML = '关灯'; //修改开关文字
+                document.body.style.background = '#fff'; //修改背景色
+            } else {
+                img.src = 'img/pic1.png'; //修改图片路径
+                this.innerHTML = '开灯'; //修改开关文字
+                document.body.style.background = '#000'; //修改背景色
+            }
+        }
+    </script>
+</body>
+
+</html>

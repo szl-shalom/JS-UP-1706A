@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.模拟一个trim()方法
+        // function trim(str) {
+        //     var start, end;
+        //     for (var i = 0; i < str.length; i++) {
+        //         if (str[i] != ' ') {
+        //             start = i; // 截取的开始位置
+        //             break;
+        //         }
+        //     }
+        //     for (var i = str.length - 1; i >= 0; i--) {
+        //         if (str[i] != ' ') {
+        //             end = i;
+        //             break;
+        //         }
+        //     }
+        //     return str.slice(start, end + 1);
+        // }
+
+        // var res = trim('  abcdef  ');
+        // console.log(res.length);
+
+        //  2、字符串出现最多个数（2种）
+        //  .str=”abcdefgaaass”找字符中出现最多的;
+        // var strr = 'aaasssssbbbcccccctyrcccccccccccccccc';
+
+        // function change(str) {
+        //     var str1 = '', //默认出现次数最多的字母
+        //         len = 0; //默认出现次数
+        //     for (var i = 0; i < str.length; i++) {
+        //         var arr = str.split(str[i]);
+        //         if (arr.length - 1 > len) {
+        //             len = arr.length - 1;
+        //             str1 = str[i];
+        //         }
+        //     }
+        //     return `出现次数最多的字母是${str1},出现了${len}次`
+        // }
+
+        // console.log(change(strr));
+
+
+        // 3、编程实现，往数组里插入一个元素
+        // var arr = ["1411A", "44", "34305", "djg", "pic"];
+
+        // function fun3(arr, index, date) {
+        //     arr.splice(index, 0, date);
+        //     return arr;
+        // }
+        // var res = fun3(arr, 2, "hello");
+        // console.log(res);
+
+
+        // 4、求数组中最大值和最小值
+        // var arr = [2, 41, 3, 1, 8];
+        // arr.sort(function(a, b) {
+        //     return a - b;
+        // });
+        // var max = arr[arr.length - 1];
+        // var min = arr[0];
+
+        //   5、将字符串转换为驼峰形式
+        // var str = "border-bottom-color";
+
+        // function isstr(str) {
+        //     var arr = str.split('-');
+        //     var str1 = '';
+        //     for (var i = 0; i < arr.length; i++) {
+        //         str1 += arr[i][0].toUpperCase() + arr[i].slice(1);
+        //     }
+        //     return str1;
+
+        // }
+        // console.log(isstr(str));
+
+
+        // 6、var  str='a2b4admin3'将字符串中的数字用中括号括起来 'a[2]b[4]admin[3]'
+        // var str = 'a2b4admin3';
+
+        // function num(str) {
+        //     var str1 = '';
+        //     for (var i = 0; i < str.length; i++) {
+        //         if (!isNaN(str[i])) {
+        //             str1 += '[' + str[i] + ']';
+        //         } else {
+        //             str1 += str[i];
+        //         }
+        //     }
+        //     return str1;
+        // }
+
+        // console.log(num(str));
+        //  7、首先判断在数组中哪个数最大，然后让数组中的第一个数与最大的数相乘，返回结果
+        // function maxn(arr) {
+        //     var first = arr[0];
+        //     arr.sort(function(a, b) {
+        //         return b - a;
+        //     });
+        //     return first * arr[0];
+        // }
+        // console.log(maxn([2, 1, 80, 6, 10]));
+
+
+        // 8、 var str='abc' 让字符串重复n遍，成为 str='abcabcabc'
+        // var str = 'abc';
+
+        // function xun(a, b) {
+        //     var str = '';
+        //     for (var i = 0; i < b; i++) {
+        //         str += a;
+        //     }
+        //     return str;
+        // }
+        // console.log(xun(str, 3));
+
+
+
+        // 9、封装一个方法，实现求任意多个数的平均值。
+        // function f1() {
+        //     var sum = 0;
+        //     for (var i = 0; i < arguments.length; i++) {
+        //         sum += arguments[i];
+        //     }
+        //     return sum / arguments.length;
+        // }
+        // console.log(f1(1, 2, 3, 4, 9))
+
+        // 10、/*判断字符串是否对称*/
+        // var str1 = "abch654g6hcba";
+
+        // function isduic(str) {
+        //     var arr = str.split('').reverse().join("");
+        //     if (str == arr) {
+        //         return '对称';
+        //     }
+        //     return '不对称';
+        // }
+        // console.log(isduic(str1));
+
+
+        // 11、随机生成十六进制的颜色值 
+        // var arr = ["0", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d"]
+        // var arrHex = ["0", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d"];
+        // var fuhao = "#";
+        // for (var i = 0; i < 6; i++) {
+        //     var color = arrHex[Math.floor(Math.random() * arrHex.length)];
+        //     fuhao = fuhao + color;
+        //     str = str + arrHex[a];
+        // }
+        // console.log(fuhao);
+
+        // 12、随机从数组中取出三个不同的值。
+        // var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        // function fn(arr) {
+        //     var arr1 = [];
+        //     while (arr1.length < 3) {
+        //         var num = Math.floor(Math.random() * arr.length);
+        //         if (arr1.indexOf(arr[num]) == -1) {
+        //             arr1.push(arr[num]);
+        //         }
+        //     }
+        //     return arr1.sort(function(a, b) {
+        //         return a - b;
+        //     });
+        // }
+        // console.log(fn(arr));
+
+        // 13、求数组中字符串的个数
+        // var str = [0, 1, 2, 3, 4, 5, "a", "b", "c", "b"];
+
+        // function strn(arr) {
+        //     var sum = 0;
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (typeof arr[i] == 'string') {
+        //             sum++;
+        //         }
+        //     }
+        //     return sum;
+        // }
+        // console.log(strn(str));
+
+        // 14、删除数组中指定的值
+        // var drr = ["1411A", "44", "34305", "djg", "pic", 100, 35, 28];
+
+        // function fun5(arr, num) {
+        //     var index = arr.indexOf(num);
+        //     if (index != -1) {
+        //         arr.splice(index, 1);
+        //     }
+        //     return arr;
+        // }
+        // console.log(fun5(arr, 1));
+
+
+
+        //15.10到100的十位随机数并升序排序(不允许重复)
+        // function fn(a, b) {
+        //     var arr = [];
+        //     while (arr.length < 10) {
+        //         var num = Math.floor(Math.random() * (b - a + 1) + a);
+        //         if (arr.indexOf(num) == -1) {
+        //             arr.push(num);
+        //         }
+        //     }
+        //     return arr.sort(function(a, b) {
+        //         return a - b;
+        //     });
+        // }
+
+        // console.log(fn(30, 70));
+
+        //16.封装一个函数:判断两个数组中的元素和顺序是否全等
+        //是返回true，不是返回false
+
+        // var arr1 = [1, 2, 3];
+        // var arr2 = [1, 2, '3'];
+
+        // function fn(arr1, arr2) {
+        //     for (var i = 0; i < arr1.length; i++) {
+        //         if (arr1[i] !== arr2[i]) {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+
+        // var res = fn(arr1, arr2);
+        // console.log(res);
+
+        // 17.补全代码，将数组和fn函数作为参数，传递给forEach函数，打印出数组中的每一个元素及下标
+        var arr = ['a', 'b', 'c'];
+
+        function forEach() {
+            //补全代码
+            for (var i = 0; i < arr.length; i++) {
+                fn(arr[i], i);
+            }
+        }
+
+        function fn(val, index) {
+            console.log(val, index);
+        }
+
+        forEach();
+
+        
+
+
+
+
+
+    </script>
+
+    </script>
+</body>
+
+</html>

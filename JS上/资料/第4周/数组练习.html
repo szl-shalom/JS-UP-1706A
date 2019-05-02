@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p {
+            background: #ccc;
+        }
+
+        li {
+            background: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="list"></ul>
+    <div id="box"></div>
+    <script>
+        // 1.将arrs中所有的数字乘以5，返回[30,25,15]
+        // var arrs = ["a", "c", 6, "e", 5, 3, "d"];
+
+        // function fn(arrs) {
+        //     var arr1 = [];
+        //     for (var i = 0; i < arrs.length; i++) {
+        //         if (!isNaN(arrs[i])) {
+        //             arr1.push(arrs[i] * 5);
+        //         }
+        //     }
+        //     return arr1;
+        // }
+        // var res = fn(arrs);
+
+        //2、写一个函数，将这个数组中所有的一位数前面补0，输出一个新数组，即最后返回[18,"06","09",23,88,"05"]
+        // var nums = [18, 6, 9, 23, 88, 5];
+
+        // function fn(arr) {
+        //     var arr1 = [];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (arr[i] < 10) {
+        //             arr1.push('0' + arr[i]);
+        //         } else {
+        //             arr1.push(arr[i]);
+        //         }
+        //     }
+        //     return arr1;
+        // }
+
+        // var res = fn(nums);
+        // console.log(res);
+
+        //3、遍历数组，找最小值和最小值的下标.
+        // var arr = [3, 4, 2, 8, 15, 1, 98]; //最小值为:1，最小值的下标为5.
+
+        // function fn(arr) {
+        //     var min = arr[0];
+        //     var index = 0;
+        //     for (var i = 1; i < arr.length; i++) {
+        //         if (arr[i] < min) {
+        //             min = arr[i];
+        //             index = i;
+        //         }
+        //     }
+        //     // return `最小值为:${min}，最小值的下标为${index}.`;
+        //     return [min, index];
+        // }
+
+        // var res = fn(arr);
+        // console.log(res);
+
+        //4、随机生成一个十六进制的颜色值，改变页面颜色 
+        // 十六进制数它由0-9，A-F组成，字母不区分大小写
+        // function randomColor() {
+        //     var str = '0123456789abcdef';
+        //     var color = '#';
+        //     for (var i = 0; i < 6; i++) {
+        //         var num = Math.floor(Math.random() * str.length);
+        //         color += str[num];
+        //     }
+        //     return color;
+        // }
+
+        // document.body.style.background = randomColor();
+
+
+        // 5.将数组中重复的值只保留一个，且做升序排列，返回[1,2,3,5,6,7,8,9]
+        // var nums = [1, 5, 9, 5, 3, 6, 10, 8, 9, 2, 7, 6];
+
+        // function fn(arr) {
+        //     var arr1 = [];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         if (arr1.indexOf(arr[i]) == -1) {
+        //             arr1.push(arr[i]);
+        //         }
+        //     }
+        //     return arr1.sort(function(a, b) {
+        //         return a - b;
+        //     });
+        // }
+
+        // var res = fn(nums);
+        // console.log(res);
+
+        //6.reverse封装
+        // var arr = [1, 2, 3, 4, 5, 6];
+
+        // function reverse(arr) {
+        //     var arr1 = [];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         arr1.unshift(arr[i]);
+        //     }
+        //     return arr1;
+        // }
+
+        // var res = reverse(arr);
+        // console.log(res);
+
+        //7.indexOf的完整封装
+        // 封装一个函数，检测一个值在数组中出现的位置，如果没有出现返回-1，否则返回值在数组中出现的索引。
+        // var arr = [1, 2, '5', 4, '5', 6];
+
+        // function indexOf(arr, val, index = 0) {
+        //     for (var i = index; i < arr.length; i++) {
+        //         if (arr[i] === val) {
+        //             return i;
+        //         }
+        //     }
+        //     return -1;
+        // }
+
+        // var res = indexOf(arr, '5', 3);
+        // console.log(res);
+
+        //8.封装一个排序方法, 可实现数组的内容从小到大排序（sort的封装）
+        // var arr = [9, 35, 4, 8, 14, 2, 5, 1];
+
+        // function sort(arr) {
+        //     var c;
+        //     for (var i = 1; i < arr.length; i++) { //外层循环定义循环的次数
+        //         for (var j = 0; j < arr.length - i; j++) { //内层循环两两比较
+        //             if (arr[j] > arr[j + 1]) { //比较交换位置
+        //                 c = arr[j];
+        //                 arr[j] = arr[j + 1];
+        //                 arr[j + 1] = c;
+        //             }
+        //         }
+        //     }
+        //     return arr;
+        // }
+
+        // var res = sort(arr);
+        // console.log(res);
+
+        //9.求二维数组的和
+        // var arr = [
+        //     [1, 2, 3],
+        //     [7, 8, 9],
+        //     [11, 54, 99]
+        // ];
+
+        // function fn(arr) {
+        //     var sum = 0;
+        //     for (var i = 0; i < arr.length; i++) {
+        //         for (var j = 0; j < arr[i].length; j++) {
+        //             sum += arr[i][j];
+        //         }
+        //     }
+        //     return sum;
+        // }
+
+        // var res = fn(arr);
+        // console.log(res);
+        // 10.封装一个函数searchResult(),根据传入的数据及条件，输出符合条件的人名，最终得到是一个数组。
+        // searchResult(stus,’女’,’大一’)根据数据去查询，将符合条件女且大一的学生姓名放到一个数组中返回
+        // var stus = [
+        //     ['小A', '女', 21, '大一'],
+        //     ['小B', '男', 23, '大三'],
+        //     ['小C', '男', 24, '大四'],
+        //     ['小D', '女', 21, '大一'],
+        //     ['小E', '女', 22, '大四'],
+        //     ['小F', '男', 21, '大一'],
+        //     ['小G', '女', 22, '大二'],
+        //     ['小H', '女', 20, '大三'],
+        //     ['小I', '女', 20, '大一'],
+        //     ['小J', '男', 20, '大三'],
+        //     ['小K', '女', 23, '大四'],
+        //     ['小L', '男', 20, '大三'],
+        //     ['小M', '女', 21, '大二'],
+        //     ['小N', '男', 20, '大一']
+        // ];
+
+        // function searchResult(arr) {
+        //     var arr1 = [];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         var sum = 0;
+        //         for (var j = 1; j < arguments.length; j++) {
+        //             if (arr[i].indexOf(arguments[j]) != -1) {
+        //                 sum++;
+        //             }
+        //         }
+        //         if (sum == arguments.length - 1) {
+        //             arr1.push(arr[i][0]);
+        //         }
+        //     }
+        //     return arr1;
+        // }
+
+        // // var res = searchResult(stus, '女');
+        // // var res = searchResult(stus, '男', '大三');
+        // var res = searchResult(stus, '女', '大一');
+        // console.log(res);
+        
+        // 11、现在有一个数组存放字符串数据：
+        // ['item1', 'item2','item3', 'item4', 'item5']
+        // 有另外一个数组存放一组数组：
+        // [
+        //   [ 'section1',  0 ],
+        //   [ 'section2',  2  ]
+        // ]
+        // 最后结果是：['section1', 'item1', 'item2', 'section2', 'item3', 'item4', 'item5']
+        // 请你完成 injectSections 函数，可以达到上述的功能：
+        // var arr = ['item1', 'item2', 'item3', 'item4', 'item5'];
+        // var arr1 = [
+        //     ['section1', 0],
+        //     ['section2', 2]
+        // ];
+
+        // function injectSections(arr, arr1) {
+        //     for (var i = 0; i < arr1.length; i++) {
+        //         var con = arr1[i][0]; //要插入的内容
+        //         var index = arr1[i][1]; //要插入的下标
+        //         arr.splice(index + i, 0, con);
+        //     }
+        //     return arr;
+        // }
+
+        // var res = injectSections(arr, arr1)
+        // console.log(res);
+
+        //12.一维数组转二维
+        // var arr = [1, 2, 32, 4, 5, 6, 7, 8, 9, 10];
+
+        // function fn(arr, n) {
+        //     var arr1 = [];
+        //     while (arr.length > 0) {
+        //         arr1.push(arr.splice(0, n));
+        //     }
+        //     return arr1;
+        // }
+
+        // var res = fn(arr, 3);
+        // console.log(res);
+
+        //13.二维转一维
+        // var arr = [
+        //     [1, 2, 3],
+        //     [4, 5, 6]
+        // ];
+
+        // function fn(arr) {
+        //     var arr1 = [];
+        //     for (var i = 0; i < arr.length; i++) {
+        //         arr1 = arr1.concat(arr[i]);
+        //     }
+        //     return arr1;
+        // }
+        // var res = fn(arr);
+        // console.log(res);
+
+        //14.封装一个createHTML()函数，要求传入数组，根据数组的内容去生成指定的HTML标签放入到指定的元素中。例如：createHTML(data,tag);
+        // 参数说明： 
+        //     data 是数组
+        //      tag  是指定的HTML标签，该参数可以省略，如果省略要求设置默认标签为p
+        // 	结构：<ul id="list"></ul>  
+        // <div id="box"></div>
+        // Js:
+        var data = ["JavaScript", "Node.js", "HTML+CSS", "Vue", "React"]
+        //     //  调用将html添加到UL中 createHTML(data, 'li');
+        //     //调用将html添加到DIV中 createHTML(data)
+
+        function createHTML(data, tag) {
+            tag = tag ? tag : 'p';
+            // tag = tag || 'p';
+            var html = '';
+            for (var i = 0; i < data.length; i++) {
+                html += `<${tag}>${data[i]}</${tag}>`;
+            }
+            return html;
+        }
+
+        var ul = document.getElementById('list');
+        var div = document.getElementById('box');
+
+        ul.innerHTML = createHTML(data, 'li');
+        div.innerHTML = createHTML(data);
+    </script>
+</body>
+
+</html>

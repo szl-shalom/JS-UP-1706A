@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .box {
+            width: 1000px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        
+        #img {
+            margin: 0 auto;
+            height: 130px;
+        }
+        
+        #img li {
+            width: 195px;
+            height: 125px;
+            float: left;
+            border: 1px solid #ccc;
+        }
+        
+        #btn {
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            background: hotpink;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul id="img">
+            <li><img src="img/img1.png" alt=""></li>
+            <li><img src="img/img2.png" alt=""></li>
+            <li><img src="img/img3.png" alt=""></li>
+            <li><img src="img/img4.png" alt=""></li>
+            <li><img src="img/img5.png" alt=""></li>
+        </ul>
+        <div id="btn">随机图片</div>
+    </div>
+    <script>
+        //1.获取按钮绑定单击事件
+        var btn = document.getElementById('btn');
+        btn.onclick = function() {
+            var arr = ["img/img1.png", "img/img2.png", "img/img3.png", "img/img4.png", "img/img5.png"];
+            //2.获取所有img标签
+            var imgs = document.getElementById('img').getElementsByTagName('img');
+            for (var i = 0; i < imgs.length; i++) {
+                var num = Math.floor(Math.random() * arr.length); //获取图片路径的随机下标
+                imgs[i].src = arr[num]; //修改图片路径
+                //去重: 删掉已经使用过的路径
+                arr.splice(num, 1);
+            }
+        }
+    </script>
+</body>
+
+</html>

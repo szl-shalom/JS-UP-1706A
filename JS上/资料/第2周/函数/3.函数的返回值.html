@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 返回值:  每一个函数都有返回值,如果函数中没有写return或return后什么都没有,返回值就是undefined
+        //    return 具有终止函数运行的功能
+        //    函数调用会得到return的结果
+
+
+        // function fn(a, b) {
+        //     console.log(a + b)
+        //     return a + b;
+        // }
+
+
+        // var res = fn(1, 2);
+        // console.log(res);
+        /*
+         *  案例1：
+         *  封装一个函数，传入两个参数，第一个参数表示循环的起始值，
+         *  第二个参数表示循环的终止值，用来计算从起始值到终止值之间的和，
+         *  例如两个参数分别为start和end，如：start为1，end为10，就计算1到10之间所有数的和，
+         *  最终将计算出来的结果返回。
+         */
+
+        function add(start, end) {
+            var sum = 0;
+            for (var i = start; i <= end; i++) {
+                sum += i;
+            }
+            return sum;
+        }
+
+        var res = add(15, 25);
+        console.log(res);
+
+        /*案例2:封装一个函数，对传过来的参数进行判断，返回参数的类型*/
+        // 如果没有参数，默认返回false
+        // 如果参数是string，返回 '字符串'
+        // 如果参数是number，返回'数字'
+        // 如果是boolean，ture返回'真'，false返回'假'（使用三元运算符）
+        // 如果是undefined，返回'未定义'
+        // 如果不是以上判断的几种情况，返回null
+        // your code here
+
+
+
+        function fn(type) {
+            if (arguments.length == 0) {
+                return false;
+            } else {
+                switch (typeof type) {
+                    case 'string':
+                        return '字符串';
+                    case 'number':
+                        return '数字';
+                    case 'boolean':
+                        return type ? '真' : '假';
+                    case 'undefined':
+                        return '未定义';
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        console.log(fn());
+        console.log(fn('122'));
+        console.log(fn(1));
+    </script>
+</body>
+
+</html>

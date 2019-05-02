@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 作业一
+        // var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        // // 根据上面的arr数组 产生一个4位数的随机数
+
+        // function getData(arr) {
+        //     console.log(arr)
+        //     var str = ''
+        //     for (var i = 4; i < 8; i++) {
+        //         // console.log(i)
+        //         var index = Math.floor((Math.random() * arr.length - 1) + 1)
+        //         // console.log(index)
+        //         str += arr[index]
+        //     }
+        //     return str
+        // }
+        // console.log(getData(arr))
+
+
+
+        // 作业二
+        // 猜数  要求系统随机一个1 - 100之间的整数
+        // 用户进行输入验证
+        // 输入小于随机值提示 “用户第几次输入  输入的过小”  重复让用户输入验证
+        // 输入大于随机值提示 “用户第几次输入  输入的过大”  重复让用户输入验证
+        // 输入等于随机值提示 “用户第几次输入  输入的正确”
+
+
+        // function fn() {
+        //     var randomNumber = Math.floor(Math.random() * 100 + 1)
+        //     for (var i = 1; ; i++) {
+        //         var number = Math.floor(Math.random() * 100 + 1)
+        //         if (number < randomNumber) {
+        //             // alert("系统第" + i + "次输入  输入的过小")
+        //         } else if (number > randomNumber) {
+        //             // alert("系统第" + i + "次输入  输入的过大")
+
+        //         } else {
+        //             // alert("系统第" + i + "次输入  输入的正确")
+        //             console.log(i)
+        //             break;
+        //         }
+        //     }
+        // }
+        // fn();
+        // 作业三
+        // 5文钱可以买一只公鸡，3文钱可以买一只母鸡，1文钱可以买3只雏鸡。现在用100文钱买100只鸡，那么各有公鸡、母鸡、雏鸡多少只？
+
+        // function fn() {
+        //     var index = 1
+        //     for (var x = 0; x <= 20; x++) {  //21
+        //         for (var y = 0; y <= 33; y++) {   //34
+        //             for (var z = 0; z <= 300; z++) {   //301
+        //                 index++
+        //                 if (5 * x + 3 * y + (1 / 3 * z) == 100 && x + y + z == 100) {
+        //                     console.log(x, y, z)
+        //                 }
+        //             }
+        //         }
+        //     }
+
+        //     console.log(index)
+        // }
+        // fn()
+
+        // 作业四
+        // 完成getSum(),该函数接收1个数组作为参数，返回该数组中所有非重复数字的和；
+        // 例如：
+        // getSum([undefined,"23year",19,"097",1,"hello",null,1]) // return 20
+
+        function getSum(arr) {
+            var arr1 = []
+
+
+            arr.forEach(function (item) {
+                if (!isNaN(item) && typeof item === "number") {
+
+                    if (arr1.indexOf(item) === -1) {
+                        arr1.push(item)
+                    }
+                }
+            })
+
+
+
+
+            var sum = 0;
+            arr1.forEach(function (item) {
+                sum += item
+            })
+            return sum
+
+        }
+        console.log(getSum([undefined, "23year", 19, "097", 1, "hello", null, 1, 1, 1, 1, 1, 1, 1, 1, 2]))
+
+
+    </script>
+</body>
+
+</html>

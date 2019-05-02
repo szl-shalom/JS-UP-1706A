@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <img src="image/111.jpg" alt="">
+        <p>猜测该商品价格<b style="color:red;">100-200</b></p>
+        <button>开始游戏</button>
+    </div>
+    <script>
+        //btn按钮
+        var btn = document.querySelector('button');
+        //正确价格
+        var price = 128;
+        //点击btn按钮时触发
+        btn.onclick = function() {
+            //补全代码
+            var money = prompt('请输入价格');
+            var sum = 1;
+            while (true) {
+                if (money <= 100 || money >= 200) {
+                    alert('游戏结束');
+                    break;
+                } else {
+                    if (money > price) {
+                        money = prompt('大啦,请重新输入价格');
+                    } else if (money < price) {
+                        money = prompt('小啦,请重新输入价格');
+                    } else {
+                        alert('输入正确,使用了' + sum + '次');
+                        break;
+                    }
+                }
+                sum++;
+            }
+        }
+    </script>
+</body>
+
+</html>

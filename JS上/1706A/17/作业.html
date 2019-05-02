@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 7．封装一个numberSort(nList)函数，实现如下功能：nList是个数字串，例如1,4,5,23,2,17,24,897。
+        // 请把这串数字转为数组后按照中间高两边低进行排序，最后的结果是["1", " 4", " 5", " 23", " 897", " 24", " 17", " 2"]，
+        // 请注意左右翼数据数据的平衡性（左右两边的数个数一致）。
+        // console.log(numberSort('1, 4, 5, 23, 2, 17, 24, 897')); 
+        // //打印结果是["1", " 4", " 5", " 23", " 897", " 24", " 17", " 2"]
+        // console.log(umberSort('12, 4, 0,65,30,8,19')); 
+        // 打印结果是[" 0", " 4", "12", "65", "30", "19", "8"]
+
+        function fn(str) {
+            // 将字符串以逗号间隔 转化数组
+            var arr = str.split(",")
+            // console.log(arr)
+            if (arr.length % 2 == 0) {
+                return fn1(arr)
+
+            } else {
+                // 说明数组长度为奇数            }
+                // 找最大值 下标
+                var max = arr[0]
+                var i = 0
+                arr.forEach(function (item, index) {
+                    if (+max < +item) {
+                        max = item
+                        i = index
+                    }
+                })
+                // 将最大值在数组中切除
+                var a = arr.splice(i, 1)
+                return fn1(arr, max)
+            }
+        }
+        // console.log(fn("1, 44, 442, 3, 4, 56, 7, 8, 9, 88"))
+
+        function fn1(arr, max) {
+            // 说明数组长度为偶数
+            console.log(max)
+            // 拿到中间下标
+            var midLength = arr.length / 2
+            // 截取中间下标左边的数组
+            var leftArr = arr.slice(0, midLength)
+
+            // 截取中间下标右边的数组
+            var rightArr = arr.slice(midLength)
+
+            // 将左边数组升序
+            leftArr.sort(function (a, b) {
+                return a - b
+            })
+
+            // 将右边数组升序
+            rightArr.sort(function (a, b) {
+                return b - a
+            })
+
+            // 将右边数组放到左边数组的后面   同时返回
+            if (max) {
+                return leftArr.concat(max, rightArr)
+            } else {
+                return leftArr.concat(rightArr)
+            }
+        }
+
+
+        // 9．完成 isAnagram，接受两个字符串作为参数，返回true 或者 false 表示这两个字符串是否同字母异序。
+        // 同字母异序指的是两个字符串字母种类和字母的数量相同，但是顺序可能不同
+        // 例如：
+        // isAnagram("anagram", "nagaram") // return true.
+        // isAnagram("rat", "car") // return false.
+
+        // function isAnagram(number1, number) {
+           
+
+        //     return number1.toString().split("").sort().join("") === number.toString().split("").sort().join("")
+
+
+
+        //     return 
+           
+        // }
+        // console.log(isAnagram(123, 321))
+        //                         [a,n,a,g,r,a,m]
+        //                         [n,a,g,a,r,a,m]
+    </script>
+</body>
+
+</html>

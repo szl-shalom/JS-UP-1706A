@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //13、封装一个函数searchResult(),根据传入的数据及条件，输出符合条件的人名，最终得到是一个数组。
+        // (1) 数据：
+        // (2)searchResult(stus,’女’,’大一’)根据数据去查询，将符合条件女且大一的学生姓名放到一个数组中返回
+        var stus = [
+            ['小A', '女', 21, '大一'],
+            ['小B', '男', 23, '大三'],
+            ['小C', '男', 24, '大四'],
+            ['小D', '女', 21, '大一'],
+            ['小E', '女', 22, '大四'],
+            ['小F', '男', 21, '大一'],
+            ['小G', '女', 22, '大二'],
+            ['小H', '女', 20, '大三'],
+            ['小I', '女', 20, '大一'],
+            ['小J', '男', 20, '大三']
+        ];
+
+        function searchResult(data) {
+            var arr = [];
+
+
+            for (var i = 1; i < arguments.length; i++) {
+                for (var j = 0; j < data.length; j++) {
+                    
+                }
+            }
+
+
+            return arr;
+        }
+
+        var res = searchResult(stus, '大一', '女');
+        console.log(res);
+    </script>
+</body>
+
+</html>

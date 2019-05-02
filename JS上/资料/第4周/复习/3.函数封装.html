@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1.三种创建方式
+        //2.匿名函数自调
+        //3.参数
+        //4.arguments
+        //5.返回值
+        //6.作用域
+
+
+
+
+        /*封装一个函数模拟trim方法,
+         * 接收一个参数，去除字符串的前后空格
+         * 思路1：//1.从开头循环遍历每一个字符往后找，当找到的字符不是空格时，保存该下标，退出循环
+         * 思路2：//2.从结尾循环遍历每一个字符往前找，当找到的字符不是空格时，保存该下标，退出循环
+         * 思路3：//3.截取保存的两个下标之间的字符，并返回
+         */
+
+        function trim(str) {
+            var start, end;
+            //1.从开头循环遍历每一个字符往后找，当找到的字符不是空格时，保存该下标，退出循环
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] != ' ') {
+                    start = i;
+                    break;
+                }
+            }
+            //2.从结尾循环遍历每一个字符往前找，当找到的字符不是空格时，保存该下标，退出循环
+            for (var i = str.length - 1; i >= 0; i--) {
+                if (str[i] != ' ') {
+                    end = i;
+                    break;
+                }
+            }
+            //3.截取保存的两个下标之间的字符，并返回
+            return str.slice(start, end + 1);
+        }
+        var res = trim('  hello word    ');
+        console.log(res);
+
+
+        /*模拟concat方法,拼接数组或字符串*/
+        //1.由于拼接数据的长度不确定，所以不需要定义形参，用arguments获取实参拼接
+        //2.检测arguments中每一个元素是不是都是字符串
+        //3.检测arguments中每一个元素是不是都是数组
+        //4.如果都是字符串则拼接成字符串，并返回
+        //6.否则如果是数组，外层循环相当于遍历有多少个数组
+        //7.内层循环将每一个数组里的每一个值，push到一个新数组，全部push完成后返回
+        //8.如果不是字符串也不是数组则直接return;
+
+
+        function concat() {
+            var newStr = '';
+            var newArr = [];
+            var data = [...arguments]; //  Array.form(arguments);类数组转数组
+            //2.检测arguments中每一个元素是不是都是字符串
+            var isStr = data.every(function(item, index) {
+                return typeof item === 'string';
+            });
+            //3.检测arguments中每一个元素是不是都是数组
+            var isArr = data.every(function(item, index) {
+                return Array.isArray(item);
+            });
+            //4.如果都是字符串则拼接成字符串，并返回
+            if (isStr) {
+                for (var i = 0; i < data.length; i++) {
+                    newStr += data[i];
+                }
+                return newStr;
+            } else if (isArr) {
+                //6.否则如果是数组，外层循环相当于遍历有多少个数组
+                for (var i = 0; i < data.length; i++) {
+                    for (var j = 0; j < data[i].length; j++) {
+                        newArr.push(data[i][j]);
+                    }
+                }
+                return newArr;
+            }
+            return;
+        }
+    </script>
+</body>
+
+</html>

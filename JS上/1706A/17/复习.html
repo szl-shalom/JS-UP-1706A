@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //  数组的方法    方法名          参数个数          参数的作用     函数返回值     会不会改变原数组      方法作用
+        //   Array       concat             >=0          拼接为新数组    返回新数组         不会             拼接新数组
+        //   Array       join              <=1          指定字符间隔    返回新的字符串      不会            数组以指定字符间隔转化为字符串
+        //   Array       reverse           无             无           返回翻转后的原数组     会                 翻转原数组
+
+
+
+
+
+        //    Array        slice    //   param1 = 0            param1 指定开始下标
+        //   param = arr.length    param2 指定结束下标     返回截取的数组     不会     截取数组
+        // //  [param1,param2)
+        // var arr = [1, 2, 3, 4, 5, 5];
+        // var arr1 = arr.indexOf(5, 5)
+        // console.log(arr)
+        // console.log(arr1)
+
+
+        //                 lastIndexOf
+        //     Array       indexOf        param1 = 查找的数组的元素            返回下标 没有找数据 返回-1   不会  查找数组中的元素  找到返回下标 
+        //param2 =  默认值为0  从哪个下标开始查找                            找不到返回-1
+
+
+
+        //                
+        //                 pop        尾部的删除      直接删除数组尾部的数据         返回值  返回删除的项
+        //                 shift      头部的删除      直接删除数组头部的数据         返回值  返回删除的项
+
+        //                 push       尾部推入数组   直接根据参数依次推入数组的尾部   返回值 原数组的长度
+        //                 unshift    头部推入数组   直接根据参数依次推入数组的头部   返回值 原数组的长度
+        //   //  数学迭代方法     
+
+        //                   forEach
+
+
+        // var arr = [1, 2]
+        // var length = arr.pop()
+
+        // // [3,4,1,2]
+        // // [4,3,1,2]
+        // console.log(arr)
+        // console.log(length)
+
+        //                   map 
+        //                   some
+        //                   filter
+        //                   every
+
+
+
+
+
+        //                 sort    参数是一个   回调函数
+        //                                       回调函数  两个参数  a前一个元素 , b后一个元素   
+        //  返回  a - b  升序
+        // 返回   b - a 降序  
+
+        // var arr = [{ age: 11 }, { age: 99 }, { age: 22 }, { age: 1 }]
+        // var arr1 = arr.sort(function (a, b) {
+        //     return a.age - b.age
+        // })
+        // console.log(arr)
+        // console.log(arr1)
+        // splice(param1,param2,param3.....)
+        // param1 操作位置的下标
+        // param2 要删除的个数
+        // param3...  插入的内容  依次插入
+        // 返回值 是一个数组 数组的内容删除的项目
+        // var arr = [1, 2, 3, 4, 5]
+
+        // var arr1 = arr.splice(1, 0, 999)  
+        // console.log(arr)
+        // console.log(arr1)
+
+        // var arr = [1, 2, 3, 4, {}, undefined]
+        // // arr.forEach(function (value, index, qq) {
+        // //     console.log(value, index, qq)
+        // // })
+
+        // for (var i = 0; i < arr.length; i++) {
+        //     console.log(arr[i], i, arr)
+        // }
+        // var date = new Date(2020, 0, 24)
+
+        // console.log(date.toLocaleDateString())
+        // var month = date.getMonth()
+        // console.log(month)
+        // 2016,9,38
+        // 2016,10,7
+
+        // function a() {
+
+        // }
+
+        // console.log(typeof a)
+
+        // 2017,9,  32
+        // 2017   10   1
+    </script>
+</body>
+
+</html>

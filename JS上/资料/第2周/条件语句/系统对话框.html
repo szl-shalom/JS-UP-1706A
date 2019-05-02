@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 确认对话框 confirm   取消false  确认true
+        // var res = confirm('今天星期六？');
+        // console.log(res);
+        // 输入弹出框   取消 null  确认 文本的内容
+        // var res = prompt('请输入手机号');
+        // console.log(res);
+
+        //案例1：今天晚上吃什么？
+
+        //案例2：根据用户输入的分数进行评级 使用if
+        //0-60  不及格  60-70 合格  70-85 良好 85以上优秀
+        // var res = prompt('请输入分数');
+        // console.log(res);
+        // if (res >= 0 && res < 60) {
+        //     alert('不及格');
+        // } else if (res < 70) {
+        //     alert('合格');
+        // } else if (res < 85) {
+        //     alert('良好');
+        // } else if (res <= 100) {
+        //     alert('优秀');
+        // } else {
+        //     alert('输入有误');
+        // }
+        /*
+         *弹出输入框判断用户是否输入值，
+         *没输入内容：弹出提示框“请刷新页面重新输入动作”
+         *输入内容：再判断是不是数字：
+         *不是数字：弹出提示框“只允许输入数字”
+         *是数字：弹出第二个输入框要求输入运算的第二个值，依次再判断是否输入内容，是否为数字，与第一个值判断一致
+         *当第1及第2个值都输入后再弹出第三个输入框，要求输入运算符，通过switch语句分别判断：
+         *如果是”+”号，则执行加法运算并alert运算结果
+         *如果是”-”号，则执行减法运算并alert运算结果
+         *如果是”*”号，则执行乘法运算并alert运算结果
+         *如果是”/”号，则执行除法运算并alert运算结果
+         *其它符号，则alert “很遗憾，你输入的运算超出了运算范围
+         */
+        var a = prompt('请输入数字');
+        if (a) {
+            //有内容
+            if (isNaN(a)) {
+                //不是数字
+                alert('只允许输入数字');
+            } else {
+                //是数字
+                var b = prompt('请输入数字');
+                if (b) {
+                    //有内容
+                    if (isNaN(b)) {
+                        //不是数字
+                        alert('只允许输入数字');
+                    } else {
+                        //是数字
+                        var c = prompt('请输入运算符');
+                        if (c == '+') {
+                            alert(+a + Number(b));
+                        } else if (c == '-') {
+                            alert(a - b);
+                        } else if (c == '*') {
+                            alert(a * b);
+                        } else if (c == '/') {
+                            alert(a / b);
+                        } else {
+                            alert('很遗憾，你输入的运算超出了运算范围');
+                        }
+                    }
+                } else {
+                    //没有内容
+                    alert('请刷新页面重新输入动作');
+                }
+            }
+        } else {
+            //没有内容
+            alert('请刷新页面重新输入动作');
+        }
+    </script>
+</body>
+
+</html>

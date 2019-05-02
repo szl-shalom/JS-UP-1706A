@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 使用两种方法定义各定义一个数组，并自定义一个函数，
+        // 将两个数组组合成一个数组，并将这个组合在一起的新数组当成返回值
+
+        function fn(arr, arr1) {
+            // console.log(arr, arr1)
+            return arr.concat(arr1)
+        }
+
+        function fn1(arr, arr1) {
+            for (var i = 0; i < arr1.length; i++) {
+                arr.push(arr1[i])
+            }
+            return arr
+        }
+        var arr = [1, 2, 3]
+        console.log(fn(arr, [2, 3, 4]))
+
+    </script>
+</body>
+
+</html>

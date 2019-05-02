@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 简述 逻辑与 && 的运算规则   比如 表达式1 &&表达式2
+
+        // 表达式1 && 表达式2
+        // var a = 1 + 2 && 1 + 0
+
+        // 如果表达式1的结果的布尔值为真   返回的是  表达式2的结果
+        //                         假    返回的是  表达式1的结果
+
+        // 一假则假 全真则真 （条件判断中）
+
+
+        // 简述 逻辑或 || 的运算规则   比如 表达式1 ||表达式2
+
+        // 表达式3 ||表达式4
+
+        // 当表达式3的结果  转布尔值  为真 返回表达式3的结果
+        //                          为假 返回表达式4的结果   
+
+        // 一真则真 全假则假（条件判断中）
+
+        // 简述 逻辑非 ! 的运算规则
+
+        // !表达式  
+
+        // 将表达式的结果 先转布尔   再取反
+
+        // !! (Boolean())
+
+        // 简述三元表达式运算规则    比如 表达式1 ？表达式2 ：表达式3
+
+        // 表达式1 ？表达式2 ：表达式3
+
+        // 表达式1的结果 转布尔值 为真  返回？后面的表达式结果   就是表达式2的结果
+        //                        假  返回：后面的表达式结果   就是表达式3的结果
+
+        // 简述都有什么比较运算符（关系运算符） 总共8个 提示 ：==    并说明运算规则
+
+        // > < <= >=  !=   ==                           
+        // 观看比较运算符两端
+        // 如果两端为字符串    比较的是 两端字符串的每一位 对应ASCLL码上的字符对应十进制的数字  一一对应进行依次判断比较
+        // 如果两端不全字符串  那么比较的事数值   就将将两端转化为数字类型  进行比较
+
+        // !==  === 
+        // 直接比较两端的数值和类型
+
+        // 都返回布尔值
+
+        // 简述 + 号运算规则
+
+        // + 至少一端为字符串就拼接  
+        // + 其他情况 两端转为数值  就直接相加
+
+
+        // 简述变量命名规则
+
+        // 不能以数字开头
+        // 必须字母 下划线 美元  
+        // 不能是关键字,保留字
+        // 建议使用驼峰式规则 
+
+
+
+        // 简述基本类型 5
+
+        // number string null undefined boolean  
+
+        // // 引用类型   3
+
+        // function  array   object 
+
+        // // 引用类型  1 
+
+        // object
+
+        // 简述typeof 返回值有几个？  总共6个
+
+        // number string object undefined boolean function 
+
+        // 简述转化为布尔的六个为false的值是什么？
+
+        // ""  0  false null NaN undefined
+
+
+        // 写出下面类型转换的结果
+
+        // null == 0    false
+
+        // NaN == NaN   false
+
+
+        // null == undefined  true
+
+        // Number()    0
+        // Number("")   0
+
+        // 简述parseInt 和 parseFloat 的区别
+
+        // parseInt 取整数
+        // parseFloat 取浮点数
+
+        // 语法基本一致  但是parseFloat 能后识别第一个小数点  paeseInt 不能
+
+
+        // 简述break在 switch条件语句 for循环 while循环中的作用
+
+
+
+
+
+
+
+
+        // // 获取id名称为myID的元素节点
+
+        // var a = document.getElementById("myID")
+
+        // // 获取页面中所有的li标签
+
+        // var lis = document.getElementsByTagName("li")
+
+        // // 修改  id名称为myID  的类名为myClass
+
+        // a.className = "myClass"
+
+        // // 修改 id名称为myID的  内容为 "我是1706A的一员，我很优秀，接下来的一周。我会很努力"
+
+        // a.innerHTML = "我是1706A的一员，我很优秀，接下来的一周。我会很努力"
+
+        // // 获取页面倒数第一个li元素节点 并将其背景颜色改为 red
+
+
+        // var c = lis.length - 1  //获取最后一个li元素下表
+        // var b = lis[lis.length - 1]  //最后li元素节点
+        // b.style.background = "red"
+
+        // // 修改 页面中第一个li标签   的id名称为 myMyID
+
+
+        // lis[0].id = "myMyID"
+
+
+
+
+
+
+
+
+
+        // 算法题
+
+        // if条件语句练习 
+        //  *  检测变量a的数据类型
+        //  *  是字符串弹出'字符串'
+        //  *  是数字: 再判断是正数弹出'正数',负数弹出'负数',否则弹出'NaN'
+        //  *  是布尔值: 再判断是true弹出'真',false弹出'假'
+        //  *  是undefined弹出'未定义'
+        //  *  是对象:再判断是null弹出'空',否则弹出'对象'
+
+        // var a = document
+
+        // if (typeof a == "string") {
+        //     alert("字符串")
+        // }
+        // if (typeof a == "number") {
+        //     if (a > 0) {
+        //         alert("正数")
+        //     } else if (a < 0) {
+        //         alert("负数")
+        //     } else {
+        //         alert("NaN")
+        //     }
+        // }
+        // if (typeof a == "boolean") {
+
+        //     if (a) {
+        //         alert("真")
+        //     } else {
+        //         alert("假")
+        //     }
+        // }
+        // if (typeof a == "undefined") {
+        //     alert("未定义")
+        // }
+        // if (typeof a == "object") {
+        //     if (a == null) {
+        //         alert(null)
+        //     } else {
+        //         alert("对象")
+        //     }
+        // }
+
+
+
+        //for循环语句练习
+        // 输出打印 9 * 9 乘法口诀表
+
+        // for (var i = 1; i <= 9; i++) {
+        //     var str = ""
+        //     for (var j = 1; j <= i; j++) {
+        //         // str += "" + j + " * " + i + " = " + i * j + " "
+        //         // str+= `${j} * ${i} = ${i * j} `
+        //     }
+        //     document.write(str + "<br>")
+        // }
+
+
+        // 函数
+        //封装一个函数，传入两个参数，第一个参数表示循环的起始值，
+        //第二个参数表示循环的终止值，用来计算从起始值到终止值之间的和，
+        //例如两个参数分别为start和end，如：start为1，end为10，就计算1到10之间所有数的和，(包括1和10)
+        //最终将计算出来的结果返回。
+
+        // function sum(start, end) {
+        //     var sum = 0;
+        //     for (var i = start; i <= end; i++) {
+        //         sum += i
+        //     }
+        //     return sum
+
+        // }
+
+        // console.log(sum(1, 10))
+        // console.log(sum(1, 100))
+
+        // for    while    do-while
+
+        //     do {
+        //         循环体
+        //     } while (表达式)
+
+
+        //   循环判断=》  执行循环体   =》  表达式的结果 转布尔 为真  =》循环判断
+        //                                                    假  结束
+        // //     while (表达式) {
+        // //         循环体
+        // //     }
+
+        //    循环判断=》 表达式的结果 转布尔 为真  执行循环体  =》循环判断
+        //                                   假    结束
+
+        // while (false) {
+        //     console.log(1)
+        // }
+
+
+        // do {
+        //     console.log(1)
+        // } while (false)
+    </script>
+</body>
+
+</html>

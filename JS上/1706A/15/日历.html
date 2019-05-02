@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+
+<body>
+    <h1 id="h1">日历</h1>
+    <h1 class="clear"><button class="left">上个月</button><button class="right">下个月</button></h1>
+    <ul id="ul" class="clear">
+        
+    </ul>
+    <script>
+        var datetime, year, date, month, lastDate, lastDay;
+        //  当前日期   年份  几号  星期 上个月最后一天
+        var ul = document.getElementById("ul")
+        var h1 = document.getElementById("h1")
+        // 初始化日期函数
+        function getData(data) {
+            // 获取当前时间  年  几号
+            datetime = data;
+
+            year = datetime.getFullYear()
+            month = datetime.getMonth()
+            date = datetime.getDate()
+
+            h1.innerHTML = "当前日期" + datetime.toLocaleDateString()
+            currLastDate = new Date(year, month + 1, 0).getDate()
+            // ************************************************************
+            // 获取上月最后一个一天几号
+            lastDate = new Date(year, month, 0).getDate()
+
+            // 获取上个月最后一天星期几
+            lastDay = new Date(year, month, 0).getDay()
+
+
+            lastDate = lastDate - lastDay + 1
+
+
+            rander()
+        }
+
+        // 渲染dom
+        function rander() {
+            var index = 1
+            var html = `
+                        <li>星期一</li>
+                        <li>星期二</li>
+                        <li>星期三</li>
+                        <li>星期四</li>
+                        <li>星期五</li>
+                        <li>星期六</li>
+                        <li>星期日</li>`;
+
+
+            for (var i = 1; i <= 42; i++) {
+                // 循环上个月
+                if (i <= lastDay) {
+                    html += `<li class="active2">${lastDate++}</li>`
+                    // 循环下个月
+                } else if (i <= lastDay + currLastDate) {
+                    if (i - lastDay === date) {
+                        html += `<li class="active1">${i - lastDay}</li>`
+
+                    } else {
+                        html += `<li>${i - lastDay}</li>`
+                    }
+                } else {
+                    html += `<li class="active2">${index++}</li>`
+                }
+            }
+            ul.innerHTML = html;
+
+        }
+
+        // 加事件
+        function addEvent() {
+            document.getElementsByClassName("left")[0].onclick = function () {
+                month--;
+                getData(new Date(year, month, date))
+            }
+
+            document.getElementsByClassName("right")[0].onclick = function () {
+                month++;
+                getData(new Date(year, month, date))
+            }
+        }
+        getData(new Date())
+        addEvent()
+    </script>
+</body>
+
+</html>

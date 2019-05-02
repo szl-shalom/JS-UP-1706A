@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    h1 {
+        margin: auto;
+        text-align: center;
+    }
+
+    ul {
+
+        width: 700px;
+        margin: auto;
+    }
+
+    li {
+        list-style: none;
+        border: 1px solid rgba(100, 100, 100.3);
+        display: block;
+        float: left;
+        box-sizing: border-box;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        line-height: 100px;
+    }
+</style>
+
+<body>
+    <h1 id="h1"></h1>
+    <ul id="ul">
+        <li>星期一</li>
+        <li>星期二</li>
+        <li>星期三</li>
+        <li>星期四</li>
+        <li>星期五</li>
+        <li>星期六</li>
+        <li>星期天</li>
+    </ul>
+    <script>
+        // 当前的
+        var dateTime = new Date()  //获取当前时间
+        setInterval(function () {
+            document.getElementById("h1").innerHTML = new Date().toLocaleString();
+        }, 1000)
+        document.getElementById("h1").innerHTML = dateTime.toLocaleString();
+        var date = dateTime.getDate()  //获取今天几号
+        var month = dateTime.getMonth()  //获取月份
+        var year = dateTime.getFullYear()  //获取年份
+
+
+        var prvFirstDate = new Date(year, month, 0).getDate() //获取上一个月最后一天
+
+        var prvFirstDay = new Date(year, month, 0).getDay() //获取上一个星期几
+
+        // if (prvFirstDay == 0) {
+        //     prvFirstDay = 7
+        // }
+
+        prvFirstDate -= prvFirstDay - 1
+
+        console.log(prvFirstDate)
+        console.log(prvFirstDay)
+
+
+
+
+        var nextDateDay = new Date(year, month + 1, 0).getDate()  //获取当前月份最后一天
+        console.log(nextDateDay)
+
+        var html = ""
+        var j = 1;
+        for (var i = 1; i <= 42; i++) {
+            if (i <= prvFirstDay) {
+                html += `<li style=background:rgba(100,100,100,.7)>${prvFirstDate++}</li>`
+            } else if (i <= nextDateDay + prvFirstDay) {
+                if (i == date + prvFirstDay) {
+                    html += `<li style=background:red>${i - prvFirstDay}</li>`
+                    continue
+                }
+                html += `<li>${i - prvFirstDay}</li>`
+            }
+            else {
+                html += `<li style=background:rgba(100,100,100,.7)>${j++}</li>`
+            }
+        }
+        document.getElementById("ul").innerHTML += html
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,356 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK"> <title>测试题</title><style>
+*{ margin:0; padding:0;}img{ border:0;}
+body{ font-family:微软雅黑; font-size:14px; color:#333; padding-left:10px;}
+li{ list-style:none;}
+input{ vertical-align:middle;}
+.title{ line-height:60px; height:60px; color:#000;}
+.item h3{ line-height:40px; font-size:16px; font-weight:normal;}
+.item ul{ line-height:30px; padding-left:26px; font-size:13px;}
+.item ul input{ margin:0 10px 0 0;}
+.submit{ display:block; position:fixed; right:50px; top:50; margin-top:170px; width:100px; height:30px; font-family:微软雅黑; cursor:pointer; font-size:16px;}
+.hz{width:140px;line-height:30px; height:150px; position:fixed;right:10px; top:50;margin-top:15px;color:#cd0000; font-size:16px;}.hz input{border:0;}
+</style><script type="text/javascript" language="javascript"> 
+ 	var allerrornum = 0;
+ 	var totalnum = 0;  
+    var postData = ''; 
+ 	function stop(){ 
+ 		return false; 
+ 	} 
+ 	document.oncontextmenu=stop; 
+ 	function createXmlHttp() { 
+ 	  var xmlHttp = null; 
+ 		 
+ 	  try { 
+ 		//Firefox, Opera 8.0+, Safari 
+ 		xmlHttp = new XMLHttpRequest(); 
+ 	  } catch (e) { 
+ 		//IE 
+ 		try { 
+ 		  xmlHttp = new ActiveXObject('Msxml2.XMLHTTP'); 
+ 		} catch (e) { 
+ 		  xmlHttp = new ActiveXObject('Microsoft.XMLHTTP'); 
+ 		} 
+ 	  } 
+ 		 
+ 	  return xmlHttp; 
+ 	} 
+ 	   
+ 	function submitForm() { 
+ 	  var xmlHttp = createXmlHttp(); 
+ 	  if(!xmlHttp) { 
+ 		alert('您的浏览器不支持AJAX！'); 
+ 		return 0; 
+ 	  } 
+ 	    
+ 	  var url = 'score.cgi'; 
+ 	    
+ 	  xmlHttp.open('POST', url, true); 
+ 	  xmlHttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); 
+ 	  xmlHttp.onreadystatechange = function() { 
+ 		if(xmlHttp.readyState == 4 && xmlHttp.status == 200) { 
+ 		  if(xmlHttp.responseText == '1') { 
+ 			alert('post successed'); 
+ 		  } 
+ 		} 
+ 	  } 
+ 	  xmlHttp.send(postData); 
+ 	} 
+ 	function init(){ 
+ 		var spanid; 
+		forms = document.getElementById('form1');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form2');  totalnum+=forms.length/4; 
+ 		forms = document.getElementById('form3');  totalnum+=forms.length/2; 
+ 		spanid = document.getElementById('totalnum');
+ 		spanid.innerHTML = totalnum; 
+ 		spanid = document.getElementById('studentname'); 
+ 		spanid.innerHTML = decodeURI('JS'); 
+ 	} 
+ 	function commit() {  
+ 		var i;  
+ 		var rid;  
+ 		var radios; 
+ 		var checkrightflag;
+ 		var forms = document.getElementById('form1');  
+ 		var errornum = forms.length/4;
+ 		allerrornum = 0;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					rid.style.color = 'black';  
+ 					errornum--;
+ 				}
+ 			}  
+ 		}  
+ 		allerrornum = errornum;
+ 		
+ 		forms = document.getElementById('form2');  
+ 		errornum = forms.length/4;
+ 		for (i=0; i<forms.length/4; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i * 4].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 0;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if( (radios[x].value == 'true' && radios[x].checked == false) || (radios[x].value == 'false' && radios[x].checked == true) ){  
+ 					checkrightflag = 1;
+ 				}
+ 			}  
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		allerrornum = allerrornum + errornum;
+ 
+ 		forms = document.getElementById('form3');  
+ 		errornum = forms.length/2;
+ 		for (i=0; i<forms.length/2; i++) {  
+ 			radios = document.getElementsByName(forms.elements[i*2].name);  
+ 			rid = document.getElementById('text' + radios[0].name);  
+ 			rid.style.color = 'red';  
+ 			checkrightflag = 1;
+ 			for(var x=0; x<radios.length; x++){  
+ 				if(radios[x].checked == true  && radios[x].value == 'true' ){  
+ 					checkrightflag = 0;
+ 				}
+ 			} 
+ 			if(0 == checkrightflag){
+ 				rid.style.color = 'black';  
+ 				errornum--;
+ 			}
+ 		}  
+ 		rid = document.getElementById('errornum');
+ 		allerrornum = allerrornum + errornum;
+ 		rid.innerHTML = allerrornum;
+ 		rid = document.getElementById('errorrate');
+ 		var errrate = 100.0 - (allerrornum * 1.0) / totalnum * 100; 
+		rid.innerHTML = errrate.toFixed(2); 
+ 		document.getElementById('ierrorrate').value = errrate.toFixed(2); 
+ 	  postData = 'studentname=JS'; 
+ 	  postData += '&errorrate='; 
+ 	  postData += errrate.toFixed(2); 
+ 	  postData += '&examunit=1'; 
+ 	  document.getElementById('commitButton').disabled=true; 
+     submitForm();	}   
+ 	window.onload=init;</script></head> 
+ 
+ 
+ <body><noscript><iframe src='*.htm'></noscript><form id="form1" action="" method=""><h2 class="title">单选题:</h2><div class="item"><h3 id="textradio1">1、 以下那个是正确的输出的输出是_________。
+var a = '123';
+var i = 0;
+if(i){console.log(a)}
+if(a){console.log(i)}
+console.log(i);
+</h3><ul><li id="radio10"><input name="radio1" value="false" type="radio">A  123 0
+</li><li id="radio11"><input name="radio1" value="false" type="radio">B  123 0 0
+</li><li id="radio12"><input name="radio1" value="true" type="radio">C 0 0
+</li><li id="radio13"><input name="radio1" value="false" type="radio">D  undefined 0
+</li></ul></div><div class="item"><h3 id="textradio2">2、下列程序的输出是_________。
+（网站）var a = '123';
+var b;
+switch (a) {
+    case 123:
+        b = 1;
+    case '123':
+        b = 2;
+    default:
+        b = 3;
+}
+console.log(b)  
+</h3><ul><li id="radio20"><input name="radio2" value="false" type="radio">A 1
+</li><li id="radio21"><input name="radio2" value="false" type="radio">B 2
+</li><li id="radio22"><input name="radio2" value="true" type="radio">C 3
+</li><li id="radio23"><input name="radio2" value="false" type="radio">D  undefined
+</li></ul></div><div class="item"><h3 id="textradio3">3、  关于wile语句不对对是
+</h3><ul><li id="radio30"><input name="radio3" value="false" type="radio">A 条件表达是必须有
+</li><li id="radio31"><input name="radio3" value="true" type="radio">B 语句组必须有
+</li><li id="radio32"><input name="radio3" value="false" type="radio">C  表达式形式为while(条件表达式){语句组}
+</li><li id="radio33"><input name="radio3" value="false" type="radio">D  常用于执行重复动作的情况下
+</li></ul></div><div class="item"><h3 id="textradio4">4、var sock = 91.5,level = parseInt(sock/10),result;if(level<6){result="不及格"}else if(level>=6 && level<=8){result="及格"}else if(level==9 || level==10){result="优秀"}else{result="成绩出错"}console.log(result)打印结果是___________________。  
+</h3><ul><li id="radio40"><input name="radio4" value="false" type="radio">A 不及格	
+</li><li id="radio41"><input name="radio4" value="false" type="radio">B 及格
+</li><li id="radio42"><input name="radio4" value="true" type="radio">C 优秀
+</li><li id="radio43"><input name="radio4" value="false" type="radio">D 成绩出错
+</li></ul></div><div class="item"><h3 id="textradio5">5、for(var i=0;i<=4;i+=2){
+   console.log(i);
+}打印结果是？   
+</h3><ul><li id="radio50"><input name="radio5" value="true" type="radio">A 0 2 4
+</li><li id="radio51"><input name="radio5" value="false" type="radio">B 4 2 0
+</li><li id="radio52"><input name="radio5" value="false" type="radio">C 0 1 2 3 4
+</li><li id="radio53"><input name="radio5" value="false" type="radio">D 4 0 2
+</li></ul></div><div class="item"><h3 id="textradio6">6、以下循环不是死循环的是？
+</h3><ul><li id="radio60"><input name="radio6" value="false" type="radio">A for(var i=10;i>0;i++){}
+</li><li id="radio61"><input name="radio6" value="false" type="radio">B for(var i=1;i<=10;i--){}
+</li><li id="radio62"><input name="radio6" value="false" type="radio">C for(var i=50;i>=0;i+=5){}
+</li><li id="radio63"><input name="radio6" value="true" type="radio">D for(var i=5;i<=30;i+=2){}
+</li></ul></div><div class="item"><h3 id="textradio7">7、结束本次循环，并开始下一次的关键字是？ 
+</h3><ul><li id="radio70"><input name="radio7" value="false" type="radio">A break
+</li><li id="radio71"><input name="radio7" value="true" type="radio">B continue
+</li><li id="radio72"><input name="radio7" value="false" type="radio">C return
+</li><li id="radio73"><input name="radio7" value="false" type="radio">D switch
+</li></ul></div><div class="item"><h3 id="textradio8">8、for(var i=1;i<5;i++){
+     if(i<3){
+console.log(i)
+}else{
+console.log(i+2)
+}
+}
+}打印结果是？  
+</h3><ul><li id="radio80"><input name="radio8" value="false" type="radio">A 3 4 1 2
+</li><li id="radio81"><input name="radio8" value="false" type="radio">B 1 2
+</li><li id="radio82"><input name="radio8" value="true" type="radio">C 1 2 5 6
+</li><li id="radio83"><input name="radio8" value="false" type="radio">D 1 2 3 4
+</li></ul></div><div class="item"><h3 id="textradio9">9、以下选项中有关函数描述不正确的是 
+</h3><ul><li id="radio90"><input name="radio9" value="true" type="radio">A 函数必须有返回值
+</li><li id="radio91"><input name="radio9" value="false" type="radio">B 函数可以为匿名
+</li><li id="radio92"><input name="radio9" value="false" type="radio">C  同名函数会覆盖
+</li><li id="radio93"><input name="radio9" value="false" type="radio">D js没有重载
+</li></ul></div><div class="item"><h3 id="textradio10">10、test();function test(){console.log(1)}运行结果  
+</h3><ul><li id="radio100"><input name="radio10" value="true" type="radio">A 1
+</li><li id="radio101"><input name="radio10" value="false" type="radio">B 报错 
+</li><li id="radio102"><input name="radio10" value="false" type="radio">C 无结果
+</li><li id="radio103"><input name="radio10" value="false" type="radio">D  浏览器崩溃
+</li></ul></div><div class="item"><h3 id="textradio11">11、var test =  function(){console.log(9+1)}
+test;
+</h3><ul><li id="radio110"><input name="radio11" value="false" type="radio">A  1
+</li><li id="radio111"><input name="radio11" value="false" type="radio">B 3
+</li><li id="radio112"><input name="radio11" value="false" type="radio">C 4
+</li><li id="radio113"><input name="radio11" value="true" type="radio">D 无结果
+</li></ul></div><div class="item"><h3 id="textradio12">12、for循环下列说法错误的是 
+</h3><ul><li id="radio120"><input name="radio12" value="false" type="radio">A  for循环可以用break退出
+</li><li id="radio121"><input name="radio12" value="false" type="radio">B  for循环可以嵌套使用
+</li><li id="radio122"><input name="radio12" value="true" type="radio">C for循环内部只能有一个表达式
+</li><li id="radio123"><input name="radio12" value="false" type="radio">D for循环中可以添加判断
+</li></ul></div><div class="item"><h3 id="textradio13">13、var running = function(){console.log('eating')}
+running = 'run';
+running(); 
+</h3><ul><li id="radio130"><input name="radio13" value="false" type="radio">A  running
+</li><li id="radio131"><input name="radio13" value="false" type="radio">B run
+</li><li id="radio132"><input name="radio13" value="true" type="radio">C 报错
+</li><li id="radio133"><input name="radio13" value="false" type="radio">D undefind
+</li></ul></div><div class="item"><h3 id="textradio14">14、函数名下列正确的是 
+</h3><ul><li id="radio140"><input name="radio14" value="true" type="radio">A  function _$(){} 
+</li><li id="radio141"><input name="radio14" value="false" type="radio">B function 34running(){}
+</li><li id="radio142"><input name="radio14" value="false" type="radio">C  function !(){}
+</li><li id="radio143"><input name="radio14" value="false" type="radio">D function %(){}
+</li></ul></div><div class="item"><h3 id="textradio15">15、函数的创建，错误的是 
+</h3><ul><li id="radio150"><input name="radio15" value="false" type="radio">A  function fun(){}
+</li><li id="radio151"><input name="radio15" value="true" type="radio">B  fun function (){}
+</li><li id="radio152"><input name="radio15" value="false" type="radio">C var fun = function(){}
+</li><li id="radio153"><input name="radio15" value="false" type="radio">D function Fun(){} var fun = new Fun(){}
+</li></ul></div><div class="item"><h3 id="textradio16">16、function fun(){console.log('function is running')}运行结果
+</h3><ul><li id="radio160"><input name="radio16" value="true" type="radio">A 无结果
+</li><li id="radio161"><input name="radio16" value="false" type="radio">B 报错
+</li><li id="radio162"><input name="radio16" value="false" type="radio">C function is running
+</li><li id="radio163"><input name="radio16" value="false" type="radio">D console.log('function is running') 
+</li></ul></div><div class="item"><h3 id="textradio17">17、function  run(){console.log(123)}
+function run2(){console.log(456)};
+run(); 
+</h3><ul><li id="radio160"><input name="radio17" value="true" type="radio">A 123
+</li><li id="radio171"><input name="radio17" value="false" type="radio">B 456
+</li><li id="radio172"><input name="radio17" value="false" type="radio">C 123 456
+</li><li id="radio173"><input name="radio17" value="false" type="radio">D  报错
+</li></ul></div><div class="item"><h3 id="textradio18">18、 var run = functon(){console.log(run)}
+run = function(){console.log(123)}
+run();
+</h3><ul><li id="radio180"><input name="radio18" value="false" type="radio">A  run
+</li><li id="radio181"><input name="radio18" value="true" type="radio">B 报错
+</li><li id="radio182"><input name="radio18" value="false" type="radio">C 123
+</li><li id="radio183"><input name="radio18" value="false" type="radio">D  run 123
+</li></ul></div><div class="item"><h3 id="textradio19">19、var eat = function(){console.log('eating')}
+eat = 'eat';
+eat(); 
+</h3><ul><li id="radio190"><input name="radio19" value="false" type="radio">A eating
+</li><li id="radio191"><input name="radio19" value="false" type="radio">B eat
+</li><li id="radio192"><input name="radio19" value="true" type="radio">C 报错
+</li><li id="radio193"><input name="radio19" value="false" type="radio">D  eating eat
+</li></ul></div><div class="item"><h3 id="textradio20">20、var running = function(){console.log('123')}
+
+var running = function(){console.log('run')}
+runnint(); 
+</h3><ul><li id="radio200"><input name="radio20" value="false" type="radio">A 123
+</li><li id="radio201"><input name="radio20" value="true" type="radio">B run
+</li><li id="radio202"><input name="radio20" value="false" type="radio">C 123 run
+</li><li id="radio203"><input name="radio20" value="false" type="radio">D  报错
+</li></ul></div></form><form id="form2" action="" method=""><h2 class="title">多选题:</h2>
+<div class="item"><h3 id="textradio21">21、以下选项中语法正确的是  
+</h3><ul><li id="radio210"><input name="radio21" value="false" type="checkbox">A  var str = 'asdf" 
+</li><li id="radio211"><input name="radio21" value="true" type="checkbox">B  var str = ''
+</li><li id="radio212"><input name="radio21" value="true" type="checkbox">C  var some;
+</li><li id="radio213"><input name="radio21" value="true" type="checkbox">D var ul='li' 
+</li></ul></div><div class="item"><h3 id="textradio22">22、 以下语句定义正确的有哪些?
+</h3><ul><li id="radio220"><input name="radio22" value="false" type="checkbox">A vav a="hello",a+=" world";
+</li><li id="radio221"><input name="radio22" value="false" type="checkbox">B var = []
+</li><li id="radio222"><input name="radio22" value="true" type="checkbox">C var str = []
+</li><li id="radio223"><input name="radio22" value="true" type="checkbox">D var arr = '123'
+</li></ul></div><div class="item"><h3 id="textradio23">23、以下哪些语句可以打印1-100之间所有的奇数?  
+</h3><ul><li id="radio230"><input name="radio23" value="false" type="checkbox">A for(var i=1;i<=100;i+=1){console.log(i);}
+</li><li id="radio231"><input name="radio23" value="true" type="checkbox">B for(var i=1;i<=100;i+=2){console.log(i);}
+</li><li id="radio232"><input name="radio23" value="true" type="checkbox">C for(var i=1;i<=100;i++){if(i%2==1){console.log(i);}}
+</li><li id="radio233"><input name="radio23" value="false" type="checkbox">D for(var i=1;i<=100;i++){if(i%2==0){console.log(i);}}
+</li></ul></div><div class="item"><h3 id="textradio24">24、网站+for(var i=10;i>=0;i--){
+ console.log(i);
+}此处的i--也可以被写为？  
+</h3><ul><li id="radio240"><input name="radio24" value="true" type="checkbox">A  i-=1
+</li><li id="radio241"><input name="radio24" value="false" type="checkbox">B i-1
+</li><li id="radio242"><input name="radio24" value="false" type="checkbox">C i++
+</li><li id="radio243"><input name="radio24" value="true" type="checkbox">D i=i-1
+</li></ul></div><div class="item"><h3 id="textradio25">25、在循环中能起到作用的语句有（   ） 
+</h3><ul><li id="radio250"><input name="radio25" value="false" type="checkbox">A default
+</li><li id="radio251"><input name="radio25" value="false" type="checkbox">B return
+</li><li id="radio252"><input name="radio25" value="true" type="checkbox">C break
+</li><li id="radio253"><input name="radio25" value="true" type="checkbox">D continue
+</li></ul></div><div class="item"><h3 id="textradio26">26、对下列程序描述错误的是：
+for(var i = 0; ; i++) {}  
+</h3><ul><li id="radio260"><input name="radio26" value="true" type="checkbox">A 报错 
+</li><li id="radio261"><input name="radio26" value="false" type="checkbox">B 死循环
+</li><li id="radio262"><input name="radio26" value="true" type="checkbox">C 没影响，js引擎会忽略这句话
+</li><li id="radio263"><input name="radio26" value="true" type="checkbox">D 执行一次
+</li></ul></div><div class="item"><h3 id="textradio27">27、下面错误的函数定义是  
+</h3><ul><li id="radio270"><input name="radio27" value="true" type="checkbox">A  speack(){}
+</li><li id="radio271"><input name="radio27" value="false" type="checkbox">B function running(){}
+</li><li id="radio272"><input name="radio27" value="true" type="checkbox">C var eat = new Fun()
+</li><li id="radio273"><input name="radio27" value="false" type="checkbox">D function Fun(){} var fun = new Fun(){}
+</li></ul></div><div class="item"><h3 id="textradio28">28、关于js函数的命名下列错误的是 
+</h3><ul><li id="radio280"><input name="radio28" value="false" type="checkbox">A function _fun(){}
+</li><li id="radio281"><input name="radio28" value="true" type="checkbox">B function 2fun(){}
+</li><li id="radio282"><input name="radio28" value="false" type="checkbox">C function $(){}
+</li><li id="radio283"><input name="radio28" value="true" type="checkbox">D function 45(){}
+</li></ul></div><div class="item"><h3 id="textradio29">29、 下面关于函数定义的错误的是
+</h3><ul><li id="radio290"><input name="radio29" value="true" type="checkbox">A eat(){}
+</li><li id="radio291"><input name="radio29" value="false" type="checkbox">B function run(){}
+</li><li id="radio292"><input name="radio29" value="true" type="checkbox">C var eat = new Fun()
+</li><li id="radio293"><input name="radio29" value="false" type="checkbox">D function Fun(){} var fun = new Fun(){}
+</li></ul></div><div class="item"><h3 id="textradio30">30、function test(){};var run = funtion(){};以下正确的调用为 
+</h3><ul><li id="radio300"><input name="radio30" value="false" type="checkbox">A test;run
+</li><li id="radio301"><input name="radio30" value="false" type="checkbox">B test();run
+</li><li id="radio302"><input name="radio30" value="true" type="checkbox">C run();test()
+</li><li id="radio303"><input name="radio30" value="true" type="checkbox">D test();run()
+</li></ul></div></form><form id="form3" action="" method=""><h2 class="title">判断题:</h2>
+<div class="item"><h3 id="textradio31">31、if与if之间是可以互相嵌套的,if与 switch之间是不可以相互嵌套的。  
+</h3>
+<ul><li id="panradio311"><input name="radio31" value="false" type="radio">√</li><li id="panradio312"><input name="radio31" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio32">32、 遍历对象在es5之前只能用for-in。
+</h3>
+<ul><li id="panradio321"><input name="radio32" value="true" type="radio">√</li><li id="panradio322"><input name="radio32" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio33">33、  函数定义后不调用会造成内存泄漏
+</h3>
+<ul><li id="panradio331"><input name="radio33" value="false" type="radio">√</li><li id="panradio332"><input name="radio33" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio34">34、 函数中定义的变量外部可以引用
+<ul><li id="panradio341"><input name="radio34" value="false" type="radio">√</li><li id="panradio342"><input name="radio34" value="true" type="radio">×</li></ul></div>
+<div class="item"><h3 id="textradio35">35、函数必须使用new关键字定义
+</h3>
+<ul><li id="panradio351"><input name="radio35" value="false" type="radio">√</li><li id="panradio352"><input name="radio35" value="true" type="radio">×</li></ul></div>
+
+</form><form id="formsubmit" action="" method="post" accept-charset="utf-8"><input id="commitButton" value="提交试卷" class="submit" onclick="commit()" type="button"> 
+<div class="hz"><h2>第13单元</h2><p>姓名：<span id="studentname">JS</span></p> 
+<p>总题数：<span id="totalnum">30</span></p> 
+ <p>错题数：<span id="errornum">0</span></p> 
+ <p>正确率：<span id="errorrate">0</span>％</p> 
+ <input id="istudentname" name="studentname" type="hidden">
+<input id="ierrorrate" name="errorrate" type="hidden">
+<input id="iexamunit" name="examunit" type="hidden">
+</div> </form></body></html>

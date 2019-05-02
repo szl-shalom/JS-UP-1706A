@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 会改变原数组
+        // 1.1    Array.push()
+        // 在数组的尾部推入数据   根据参数依次推入   返回数组的长度
+        // var arr = [1, 2, 3]
+        // var flag = arr.push([4, 5, 6])
+
+        // // [1, 2, 3, 4, 5, 6]
+        // // [1, 2, 3, [4, 5, 6]]
+        // console.log(arr)
+        // console.log(flag)
+
+
+        // 1.2 Array.pop()
+        // 尾部删除    返回的删除的项
+        // var arr = [1, 2, 3, 4]
+        // var flag = arr.pop()
+        // console.log(flag)
+        // console.log(arr)
+
+        // 1.3  Array.shift()
+        // 头部删除    返回删除的项
+        // var arr = [1, 2, 3, 4]
+        // var flag = arr.shift()
+        // console.log(flag)
+        // console.log(arr)
+        // // 1.4  Array.unshift()
+        // '
+        // '
+        //  头部推入  根据参数依次推入 返回数组的长度
+
+        // var arr = [1, 2, 3, 4,]
+
+        // var flag = arr.push(11, 12, 13, 14)
+
+        // // [11, 12, 13, 14, 1, 2, 3, 4]
+        // // [14, 13, 12, 11, 1, 2, 3, 4]
+        // console.log(flag)
+        // console.log(arr)
+
+        // 1.5 Array.reverse()
+        // var arr = [1, 2, 3, 4, null, undefined, {}]
+        // var arr1 = arr.reverse()
+        // console.log(arr)
+        // console.log(arr1)
+
+        // 1.6 Arrar.splice()
+
+        // Array.splice(a, b)
+
+        // var arr = [1, 2, 3, 4, 5]
+        // [1, 2, 4, 6, 4, 5]
+        // 两个参数 要删除的第一项的位置和要删除的项数。  两个参数的时候 返回你删除的项
+        // 大于等于三个参数  第二参数为0时候  插入的位置 在第一个参数的前面 
+
+
+
+        // var arr1 = arr.splice(1, 0, 4, 6)
+        // // console.log(arr1)
+        // console.log(arr)
+
+
+//   岳泽华sb
+
+
+
+
+
+
+
+
+
+
+        // 2不会改变原数组
+        //  2.1 Array.toString()
+        // 返回值    里面默认调通每一位的toString()方法  每一位用逗号隔开
+
+        // {}.toString()  =>"[object Object]"
+        // var arr = [1, { name: 1 }, 2, false, null, undefined, "", [99, 88, 66], 77, function () { },]
+
+        // var arr1 = arr.toString()  
+        // console.log(arr1)
+        // console.log(arr)
+        // 2.2  Array.join(spr) 
+        //  返回值  里面默认调通每一位的toString()方法     每一位用spr隔开  如果没有参数逗号隔开
+        // var arr = [1, { name: 1 }, 2, false, null, undefined, "", [99, 88, 66], 77, function () { },]
+        // var arr1 = [1, { name: 1 }, 2, false, null, undefined, "", [99, 88, 66], 77, function () { },]
+
+
+        // "1,{name:1}"
+        // var str = arr.join(" 88 ")
+        // var str1 = arr1.toString()
+        // console.log(str)
+        // console.log(str1)
+
+        // 2.3 Array.concat()
+        // 进行数组拼接  根据参数依次拼接  返回值拼接出来的新数组  
+
+        // var arr = [[1, 2, 3]]
+        // var arr1 = arr.concat([[4, 5, 6]])
+
+        // // [1, 2, 3, 4, 5, 6]
+        // // [[1, 2, 3], [4, 5, 6]]
+
+        // console.log(arr)
+        // console.log(arr1)
+
+
+        // var arr = [1, 2, 3, 4]
+        // var arr1 = [5, 6, 7, 8]
+        // // 要你使用 for  push  
+        // for (var i = 0; i < arr1.length; i++) {
+        //     arr.push(arr1[i])
+        // }
+        // console.log(arr)
+
+        // var arr = [1, 2, 3, [1]]
+
+        // var arr1 = arr.concat()
+
+        // arr1.push(4)
+        // arr1[3].push(2)
+
+        // console.log(arr)
+
+        // Array.slice(a,b)   a开始下标  b为结束下标  包含开头下标元素 不包含结束下标元素  包含坐标之间的所有元素  返回值新的数组 数组为截取的元素
+
+        // var arr = [1, 2, 3, 4, 5, 6, 7]
+
+        // var arr1 = arr.slice(-8, -3)   //[3,4,5]
+        // var arr2 = arr.slice(0, 4)
+        // console.log(arr1)
+        // console.log(arr)
+
+    </script>
+</body>
+
+</html>
